@@ -1,0 +1,15 @@
+<NodeEditor @node={{@story}} @onSubmit={{this.save}}/>
+
+<ul class="timelines">
+	{{#each @story.timelines as |timeline|}}
+		<li><Timeline @timeline={{timeline}}/></li>
+	{{else}}
+		<li><p>No timelines here</p></li>
+	{{/each}}
+	<li class="add-timeline">
+		<button type="button" {{on "click" this.addTimeline}}>Add timeline</button>
+	</li>
+</ul>
+
+
+{{yield}}

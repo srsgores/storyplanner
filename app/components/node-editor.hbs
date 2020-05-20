@@ -1,0 +1,23 @@
+<form action="">
+	<div class="form-field">
+		<label for="{{this.elementId}}-node-title">Name</label>
+		<Input @type="text" @value={{@node.title}} id="{{this.elementId}}-node-title"/>
+	</div>
+	<div class="form-field">
+		<label for="{{this.elementId}}-node-summary">Summary</label>
+		<Textarea @value={{@node.summary}} id="{{this.elementId}}-node-summary"/>
+	</div>
+	{{#if @node.startTime}}
+		<div class="form-field">
+			<label for="{{this.elementId}}-node-start-time">Start Time</label>
+			<Input @type="date" @value={{@node.startTime}} id="{{this.elementId}}-node-start-time"/>
+		</div>
+	{{/if}}
+	{{#if @node.endTime}}
+		<div class="form-field">
+			<label for="{{this.elementId}}-node-end-time">End Time</label>
+			<Input @type="date" @value={{@node.endTime}} id="{{this.elementId}}-node-end-time"/>
+		</div>
+	{{/if}}
+	{{yield}}
+</form>

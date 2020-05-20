@@ -2,8 +2,8 @@ import Model, {attr, belongsTo} from  "@ember-data/model";
 
 export default class EventModel extends Model {
 	@attr("string") title;
-	@attr("string") description;
-	@attr("date") startTime;
-	@attr("date") endTime;
+	@attr("string") summary;
+	@attr("date", {defaultValue: () => new Date()}) startTime;
+	@attr("date", {defaultValue: () => new Date()}) endTime;
 	@belongsTo("timeline") timeline;
 }
