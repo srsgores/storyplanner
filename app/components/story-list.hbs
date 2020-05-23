@@ -8,11 +8,23 @@
 				<li>
 					<dl>
 						<dt>Story Name</dt>
-						<dd><LinkTo @route="stories.story" @model={{story}}>{{story.title}}</LinkTo></dd>
-						<dt>Summary</dt>
-						<dd>{{story.summary}}</dd>
-						<dt>Characters</dt>
-						<dd>{{story.characters.length}}</dd>
+						<dd>
+							<LinkTo @route="stories.story" @model={{story}}>
+								{{#if story.title}}
+									{{story.title}}
+								{{else}}
+									Untitled story
+								{{/if}}
+							</LinkTo>
+						</dd>
+						{{#if story.summary}}
+							<dt>Summary</dt>
+							<dd>{{story.summary}}</dd>
+						{{/if}}
+						{{#if story.characters.length}}
+							<dt>Characters</dt>
+							<dd>{{story.characters.length}}</dd>
+						{{/if}}
 					</dl>
 					<ul>
 						<li>

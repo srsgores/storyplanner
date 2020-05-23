@@ -1,27 +1,48 @@
-<NodeEditor @node={{@timeline}}/>
+<article class="timeline">
+	<NodeEditor @node={{@timeline}}>
+		<legend>
+			{{#if @timeline.title}}
+				{{@timeline.title}}
+			{{else}}
+				Timeline {{@index}}
+			{{/if}}
+		</legend>
+		<ul class="actions">
+			<li class="action">
+				<button type="button" {{on "click" this.addNestedTimeline}}>Add nested timeline</button>
+			</li>
+			<li class="action">
+				<button type="button" {{on "click" this.addEvent}}>Add event</button>
+			</li>
+			<li class="action">
+				<button type="button" {{on "click" this.remove}}>Remove timeline</button>
+			</li>
+		</ul>
+	</NodeEditor>
 
-<ul class="actions">
-	<li class="action">
-		<button type="button" {{on "click" this.addNestedTimeline}}>Add nested timeline</button>
-	</li>
-	<li class="action">
-		<button type="button" {{on "click" this.addEvent}}>Add event</button>
-	</li>
-</ul>
-
-<ul class="events">
-	{{#each @timeline.events as |event|}}
-		<li class="event">
-			<NodeEditor @node={{event}}/>
-		</li>
-	{{/each}}
-</ul>
-{{#each @timeline.timelines as |nestedTimeline|}}
-	<ul class="nested-timelines">
-		<li class="nested-timeline">
-			<Timeline @timeline={{nestedTimeline}}/>
-		</li>
+	<ul class="events">
+		{{#each this.sortedEvents as |event|}}
+			<li class="event node">
+				<NodeEditor @node={{event}}>
+					<ul class="actions">
+						<li class="action">
+							<button type="button" {{on "click" (fn this.removeEvent event)}}>Remove event</button>
+						</li>
+						<li class="action">
+							<button type="button" {{on "click" (fn this.addEvent event)}}>Add event after this one</button>
+						</li>
+					</ul>
+				</NodeEditor>
+			</li>
+		{{/each}}
 	</ul>
-{{/each}}
+	{{#each @timeline.timelines as |nestedTimeline index|}}
+		<ul class="nested-timelines">
+			<li class="nested-timeline">
+				<Timeline @timeline={{nestedTimeline}} @index={{index}}/>
+			</li>
+		</ul>
+	{{/each}}
 
-{{yield}}
+	{{yield}}
+</article>
