@@ -1,31 +1,33 @@
-<ul class="actions">
-	<li class="action"><button type="button" {{on "click" this.createStory}}>Create a story</button></li>
-</ul>
-{{#if @stories.length}}
-	{{#each @stories as |story|}}
-		<li>
-			<dl>
-				<dt>Story Name</dt>
-				<dd><LinkTo @route="stories.story" @model={{story}}>{{story.title}}</LinkTo></dd>
-				<dt>Summary</dt>
-				<dd>{{story.summary}}</dd>
-				<dt>Characters</dt>
-				<dd>{{story.characters.length}}</dd>
-			</dl>
-			<ul>
+<article class="story-list">
+	<ul class="actions">
+		<li class="action"><button type="button" {{on "click" this.createStory}}>Create a story</button></li>
+	</ul>
+	{{#if @stories.length}}
+		<ul class="stories">
+			{{#each @stories as |story|}}
 				<li>
-					<button type="button" {{on "click" (fn this.removeStory story)}}>Remove</button>
+					<dl>
+						<dt>Story Name</dt>
+						<dd><LinkTo @route="stories.story" @model={{story}}>{{story.title}}</LinkTo></dd>
+						<dt>Summary</dt>
+						<dd>{{story.summary}}</dd>
+						<dt>Characters</dt>
+						<dd>{{story.characters.length}}</dd>
+					</dl>
+					<ul>
+						<li>
+							<button type="button" {{on "click" (fn this.removeStory story)}}>Remove</button>
+						</li>
+					</ul>
 				</li>
-			</ul>
-		</li>
-	{{/each}}
-{{else}}
-	<dialog role="dialog">
-		<h3>No stories found</h3>
-		<button type="button" {{on "click" this.createStory}}>Try creating one</button>
-	</dialog>
-{{/if}}
+			{{/each}}
+		</ul>
+	{{else}}
+		<dialog role="dialog">
+			<h3>No stories found</h3>
+			<button type="button" {{on "click" this.createStory}}>Try creating one</button>
+		</dialog>
+	{{/if}}
 
-
-
-{{yield}}
+	{{yield}}
+</article>
