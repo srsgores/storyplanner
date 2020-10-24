@@ -1,5 +1,5 @@
 :root {
-	--sidebar-width: 15em;
+	--sidebar-width: 20.5em;
 }
 
 body {
@@ -9,11 +9,19 @@ body {
 	background: #1f4037;
 	background: linear-gradient(to right, #426f65, #41695e);
 	color: #fff;
+	display: flex;
+	flex-direction: column;
+}
+
+
+html, body {
+	height: 100%;
 }
 
 
 :global(.grid) {
 	display: flex;
+	height: inherit;
 }
 
 .story-editor-container {
@@ -69,6 +77,11 @@ header[role="banner"] {
 	padding: 1em;
 }
 
+main[role="main"] {
+	height: inherit;
+	flex: 1;
+}
+
 :global(.nav-item-link) {
 	display: block;
 	padding: 0.5em 1em;
@@ -76,14 +89,9 @@ header[role="banner"] {
 }
 
 :global(.story-list + .story-editor-container) {
-	margin-left: calc(var(--sidebar-width) * -0.8);
+	margin-left: calc(var(--sidebar-width) * -0.5);
 	background-color: #3b3b3b;
 	flex: 1;
-}
-
-:global(.story-editor-container) {
-	box-sizing: border-box;
-	padding: 1.5em;
 }
 
 :global(.story-list) {
