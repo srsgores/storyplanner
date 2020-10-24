@@ -9,14 +9,14 @@
 				{{/if}}
 			</LinkTo>
 		</h4>
-		<ul class="actions">
-			<li class="action">
+		<ul local-class="actions">
+			<li local-class="action">
 				<button type="button" {{on "click" this.addNestedTimeline}}>Add nested timeline</button>
 			</li>
-			<li class="action">
+			<li local-class="action">
 				<button type="button" {{on "click" this.addEvent}}>Add event</button>
 			</li>
-			<li class="action">
+			<li local-class="action">
 				<button type="button" {{on "click" this.remove}}>Remove timeline</button>
 			</li>
 		</ul>
@@ -26,11 +26,11 @@
 		{{#each this.sortedEvents as |event|}}
 			<li class="event node" data-test-id={{event.id}}>
 				<NodeEditor @node={{event}}>
-					<ul class="actions">
-						<li class="action">
+					<ul local-class="actions">
+						<li local-class="action">
 							<button type="button" {{on "click" (fn this.removeEvent event)}}>Remove event</button>
 						</li>
-						<li class="action">
+						<li local-class="action">
 							<button type="button" {{on "click" (fn this.addEvent event)}}>Add event after this one</button>
 						</li>
 					</ul>

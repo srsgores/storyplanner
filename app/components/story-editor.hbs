@@ -1,9 +1,9 @@
-<article class="story-editor-container">
+<article class="story-editor-container" ...attributes>
 	<NodeEditor @node={{@story}} @onSubmit={{this.save}}/>
 
 	<ul class="timelines">
 		{{#each @story.timelines as |timeline index|}}
-			<li class="timeline-container">
+			<li local-class="timeline-container">
 				<Timeline @timeline={{timeline}} @index={{index}}>
 					{{yield}}
 				</Timeline>
@@ -11,7 +11,7 @@
 		{{else}}
 			<li><p>No timelines here</p></li>
 		{{/each}}
-		<li class="add-timeline">
+		<li local-class="add-timeline">
 			<button type="button" {{on "click" this.addTimeline}}>Add timeline</button>
 		</li>
 	</ul>

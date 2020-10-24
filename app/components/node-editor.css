@@ -1,0 +1,32 @@
+.node {
+	margin: 1em;
+	padding: 1em;
+	border: 0.1em solid;
+}
+
+.node[draggable] {
+	cursor: move;
+	opacity: 0.9;
+	transition: transform 0.4s ease, opacity 0.2s ease;
+}
+
+.node:hover {
+	opacity: 1;
+}
+
+.form-field label {
+	display: block;
+	cursor: pointer;
+}
+
+.node + .node {
+	margin-left: 1.5em;
+	position: relative;
+}
+
+.node + .node::before {
+	content: "➡";
+	position: absolute;
+	right: calc(100% + 1em);
+	top: 50%;
+}

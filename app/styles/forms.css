@@ -1,0 +1,33 @@
+
+input, textarea {
+	background-color: rgba(17, 17, 17, 0.45);
+	border: none;
+	color: inherit;
+	box-sizing: border-box;
+	padding: 0.3em 0.6em;
+	font-family: inherit;
+}
+
+legend {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+fieldset {
+	padding: 1em;
+	box-sizing: border-box;
+	border: 1px solid #ffffff1c;
+	display: inline-block;
+}
+
+:global(.form-field input), :global(.form-field textarea) {
+	display: block;
+}
+
+:global(.form-field + .form-field) {
+	margin-top: 1em;
+}
+
+:global(.form-field label + input), :global(.form-field label + textarea) {
+	margin-top: 1em;
+}
