@@ -1,23 +1,31 @@
 <form action="" class="node-editor">
 	{{yield}}
-	<div class="form-field">
-		<label for="{{this.elementId}}-node-title">Name</label>
-		<Input @type="text" @value={{@node.title}} id="{{this.elementId}}-node-title" @focusOut={{this.save}}/>
-	</div>
-	<div class="form-field">
-		<label for="{{this.elementId}}-node-summary">Summary</label>
-		<Textarea @value={{@node.summary}} id="{{this.elementId}}-node-summary" @focusOut={{this.save}}/>
-	</div>
-	{{#if @node.startTime}}
+	<fieldset>
+		<legend>Basic Information</legend>
 		<div class="form-field">
-			<label for="{{this.elementId}}-node-start-time">Start Time</label>
-			<Input @type="date" @value={{@node.startTime}} id="{{this.elementId}}-node-start-time" @focusOut={{this.save}}/>
+			<label for="{{this.elementId}}-node-title">Name</label>
+			<Input @type="text" @value={{@node.title}} id="{{this.elementId}}-node-title" @focusOut={{this.save}}/>
 		</div>
-	{{/if}}
-	{{#if @node.endTime}}
 		<div class="form-field">
-			<label for="{{this.elementId}}-node-end-time">End Time</label>
-			<Input @type="date" @value={{@node.endTime}} id="{{this.elementId}}-node-end-time" @focusOut={{this.save}}/>
+			<label for="{{this.elementId}}-node-summary">Summary</label>
+			<Textarea @value={{@node.summary}} id="{{this.elementId}}-node-summary" @focusOut={{this.save}}/>
 		</div>
+		{{#if this.isEvent}}
+			<LinkTo @route="stories.story.timeline.event" @models={{array @node.timeline.story.id @node.timeline.id @node.id}}>Edit content for this event</LinkTo>
+		{{/if}}
+
+	</fieldset>
+	{{#if this.isEvent}}
+		<fieldset>
+			<legend>Timing Information</legend>
+			<div class="form-field">
+				<label for="{{this.elementId}}-node-start-time">Start Time</label>
+				<Input @type="date" @value={{@node.startTime}} id="{{this.elementId}}-node-start-time" @focusOut={{this.save}}/>
+			</div>
+			<div class="form-field">
+				<label for="{{this.elementId}}-node-end-time">End Time</label>
+				<Input @type="date" @value={{@node.endTime}} id="{{this.elementId}}-node-end-time" @focusOut={{this.save}}/>
+			</div>
+		</fieldset>
 	{{/if}}
 </form>

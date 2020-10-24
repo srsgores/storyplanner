@@ -3,7 +3,11 @@
 
 	<ul class="timelines">
 		{{#each @story.timelines as |timeline index|}}
-			<li class="timeline-container"><Timeline @timeline={{timeline}} @index={{index}}/></li>
+			<li class="timeline-container">
+				<Timeline @timeline={{timeline}} @index={{index}}>
+					{{yield}}
+				</Timeline>
+			</li>
 		{{else}}
 			<li><p>No timelines here</p></li>
 		{{/each}}
@@ -11,5 +15,4 @@
 			<button type="button" {{on "click" this.addTimeline}}>Add timeline</button>
 		</li>
 	</ul>
-	{{yield}}
 </article>
