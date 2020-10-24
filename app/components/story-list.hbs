@@ -1,7 +1,4 @@
 <article class="story-list">
-	<ul class="actions">
-		<li class="action"><button type="button" {{on "click" this.createStory}}>Create a story</button></li>
-	</ul>
 	{{#if @stories.length}}
 		<ul class="stories">
 			{{#each @stories as |story|}}
@@ -37,7 +34,7 @@
 	{{else}}
 		<dialog role="dialog">
 			<h3>No stories found</h3>
-			<button type="button" {{on "click" this.createStory}}>Try creating one</button>
+			<LinkTo @route="stories.create">Create a story</LinkTo>
 		</dialog>
 	{{/if}}
 

@@ -31,3 +31,15 @@ fieldset {
 :global(.form-field label + input), :global(.form-field label + textarea) {
 	margin-top: 1em;
 }
+
+:global(.primary-button) {
+	transition: 0.2s ease background-color;
+	background-color: #8bc34a82;
+	text-decoration: none;
+	font-weight: bold;
+	text-shadow: 0 0.01em #000;
+}
+
+:global(.primary-button:hover) {
+	background-color: #495d337d;
+}
