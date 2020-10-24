@@ -20,11 +20,11 @@
 			<legend>Timing Information</legend>
 			<div class="form-field">
 				<label for="{{this.elementId}}-node-start-time">Start Time</label>
-				<Input @type="date" @value={{@node.startTime}} id="{{this.elementId}}-node-start-time" @focusOut={{this.save}}/>
+				<Inputs::DateInput @value={{@node.startTime}} id="{{this.elementId}}-node-start-time" @onClose={{this.save}} @onChange={{fn (mut @node.startTime)}} @maxDate={{@node.endTime}}/>
 			</div>
 			<div class="form-field">
 				<label for="{{this.elementId}}-node-end-time">End Time</label>
-				<Input @type="date" @value={{@node.endTime}} id="{{this.elementId}}-node-end-time" @focusOut={{this.save}}/>
+				<Inputs::DateInput @value={{@node.endTime}} id="{{this.elementId}}-node-end-time" @onChange={{fn (mut @node.endTime)}} @onClose={{this.save}} @minDate={{@node.startTime}}/>
 			</div>
 		</fieldset>
 	{{/if}}
