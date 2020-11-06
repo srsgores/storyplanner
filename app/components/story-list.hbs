@@ -3,26 +3,25 @@
 		<ul local-class="stories">
 			{{#each @stories as |story|}}
 				<li local-class="story">
-					<dl local-class="story-meta">
-						<dt>Story Name</dt>
-						<dd>
-							<LinkTo @route="stories.story" @model={{story}} local-class="story-link">
-								{{#if story.title}}
-									{{story.title}}
-								{{else}}
-									Untitled story
-								{{/if}}
-							</LinkTo>
-						</dd>
-						{{#if story.summary}}
-							<dt>Summary</dt>
-							<dd>{{story.summary}}</dd>
-						{{/if}}
-						{{#if story.characters.length}}
-							<dt>Characters</dt>
-							<dd>{{story.characters.length}}</dd>
-						{{/if}}
-					</dl>
+					<LinkTo @route="stories.story" @model={{story}} local-class="story-link">
+						<strong local-class="story-title">
+							{{#if story.title}}
+								{{story.title}}
+							{{else}}
+								Untitled story
+							{{/if}}
+						</strong>
+						<dl local-class="story-meta">
+							{{#if story.summary}}
+								<dt>Summary</dt>
+								<dd>{{story.summary}}</dd>
+							{{/if}}
+							{{#if story.characters.length}}
+								<dt>Characters</dt>
+								<dd>{{story.characters.length}}</dd>
+							{{/if}}
+						</dl>
+					</LinkTo>
 					<ul local-class="story-actions">
 						<li local-class="story-action">
 							<button type="button" {{on "click" (fn this.removeStory story)}}>Remove</button>

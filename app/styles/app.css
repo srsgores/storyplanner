@@ -1,5 +1,6 @@
 :root {
 	--sidebar-width: 20.5em;
+	--box-spacing: calc(1.5em + 1.5%);
 }
 
 body {
@@ -24,10 +25,6 @@ html, body {
 	height: inherit;
 }
 
-.story-editor-container {
-	flex: 1;
-}
-
 :global(.events) {
 	display: flex;
 }
@@ -44,6 +41,7 @@ button {
 	font-weight: bold;
 	border: 0;
 	padding: 0.5em 1em;
+	box-sizing: border-box;
 	border-radius: 0.5em;
 	cursor: pointer;
 }
@@ -74,6 +72,7 @@ header[role="banner"] {
 	display: flex;
 	align-items: center;
 	box-sizing: border-box;
+	justify-content: space-between;
 	padding: 1em;
 }
 
@@ -89,13 +88,8 @@ main[role="main"] {
 }
 
 :global(.story-list + .story-editor-container) {
-	margin-left: calc(var(--sidebar-width) * -0.5);
-	background-color: #3b3b3b;
+	background-color: #ffffff08;
 	flex: 1;
-}
-
-:global(.story-list) {
-	min-width: var(--sidebar-width);
 }
 
 

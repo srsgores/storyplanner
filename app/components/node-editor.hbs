@@ -1,7 +1,7 @@
-<form action="" class="node-editor">
+<form action="" class="node-editor" ...attributes>
 	{{yield}}
 	<fieldset>
-		<legend>Basic Information</legend>
+		<legend class="visuallyhidden">Basic Information</legend>
 		<div class="form-field">
 			<label for="{{this.elementId}}-node-title">Name</label>
 			<Input @type="text" @value={{@node.title}} id="{{this.elementId}}-node-title" @focusOut={{this.save}}/>

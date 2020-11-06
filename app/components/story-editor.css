@@ -1,0 +1,12 @@
+.story-editor-container {
+	flex: 1;
+}
+
+.story-editor-container > * {
+	padding: var(--box-spacing);
+	box-sizing: border-box;
+}
+
+:global(.story-editor) {
+	background-color: #3f51b547;
+}
