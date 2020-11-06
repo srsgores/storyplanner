@@ -1,5 +1,7 @@
 .story-action {
 	display: inline-block;
+	box-sizing: border-box;
+	margin: 0 var(--story-list-item-padding-horizontal);
 }
 
 .story {
@@ -8,8 +10,16 @@
 	align-items: center;
 }
 
+.story-meta {
+	flex: 1;
+}
+
 .story-list {
-	background: #00000052;
+	--story-list-background: #00000052;
+	--story-list-item-padding-horizontal: 1.5em;
+	--story-list-item-padding-vertical: 1em;
+	--story-list-item-padding: var(--story-list-item-padding-vertical) var(--story-list-item-padding-horizontal);
+	background: var(--story-list-background);
 	min-width: var(--sidebar-width);
 }
 
