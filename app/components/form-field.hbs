@@ -1,0 +1,24 @@
+<div class="{{this.className}} {{if this.hasFocus this.focusedClassName}}" ...attributes>
+	<label for={{this.elementId}} class={{this.labelClassName}}>
+		{{#if @labelText}}
+			{{@labelText}}
+		{{else}}
+			{{@field}}
+		{{/if}}
+	</label>
+	{{#if this.isTextarea}}
+		<Textarea @value={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{true}} @focus-in={{fn (mut this.hasFocus) true}} @focus-out={{fn (mut this.hasFocus) false}} @required={{this.isRequired}} {{on "blur" @focusOut}}/>
+	{{else}}
+		{{#if this.isCheckbox}}
+			<Input @type={{this.type}} @checked={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} @change={{@focusOut}}/>}
+		{{else}}
+			{{#if this.isDate}}
+				<Inputs::DateInput @value={{get @model @field}} id={{this.elementId}} @onClose={{@focusOut}} @onChange={{fn (mut (get @model @field))}} @maxDate={{@max}} @minDate={{@min}}/>
+			{{else}}
+				<Input @type={{this.type}} @value={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} @min={{@min}} @max={{@max}} @step={{@step}} @focus-in={{fn (mut this.hasFocus) true}} @focus-out={{fn (mut this.hasFocus) false}} {{on "blur" @focusOut}}/>
+			{{/if}}
+		{{/if}}
+	{{/if}}
+
+	{{yield}}
+</div>

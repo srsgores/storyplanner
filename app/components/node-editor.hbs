@@ -2,14 +2,8 @@
 	{{yield}}
 	<fieldset>
 		<legend class="visuallyhidden">Basic Information</legend>
-		<div class="form-field">
-			<label for="{{this.elementId}}-node-title">Name</label>
-			<Input @type="text" @value={{@node.title}} id="{{this.elementId}}-node-title" @focusOut={{this.save}}/>
-		</div>
-		<div class="form-field">
-			<label for="{{this.elementId}}-node-summary">Summary</label>
-			<Textarea @value={{@node.summary}} id="{{this.elementId}}-node-summary" @focusOut={{this.save}}/>
-		</div>
+		<FormField @model={{@node}} @field="title" @focusOut={{this.save}}/>
+		<FormField @model={{@node}} @field="summary" @focusOut={{this.save}}/>
 		{{#if this.isEvent}}
 			<LinkTo @route="stories.story.timeline.event" @models={{array @node.timeline.story.id @node.timeline.id @node.id}}>Edit content for this event</LinkTo>
 		{{/if}}
@@ -18,14 +12,11 @@
 	{{#if this.isEvent}}
 		<fieldset>
 			<legend>Timing Information</legend>
-			<div class="form-field">
-				<label for="{{this.elementId}}-node-start-time">Start Time</label>
-				<Inputs::DateInput @value={{@node.startTime}} id="{{this.elementId}}-node-start-time" @onClose={{this.save}} @onChange={{fn (mut @node.startTime)}} @maxDate={{@node.endTime}}/>
-			</div>
-			<div class="form-field">
-				<label for="{{this.elementId}}-node-end-time">End Time</label>
-				<Inputs::DateInput @value={{@node.endTime}} id="{{this.elementId}}-node-end-time" @onChange={{fn (mut @node.endTime)}} @onClose={{this.save}} @minDate={{@node.startTime}}/>
-			</div>
+			<FormField @model={{@node}} @field="startTime" @type="datetime-local" @focusOut={{this.save}} @max={{@node.endTime}}/>
+			<FormField @model={{@node}} @field="endTime" @type="datetime-local" @focusOut={{this.save}} @min={{@node.startTime}}/>
+			{{#if this.eventDuration}}
+				<output>{{@node.name}} will last {{moment-duration this.eventDuration}}</output>
+			{{/if}}
 		</fieldset>
 	{{/if}}
 </form>

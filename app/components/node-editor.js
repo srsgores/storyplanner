@@ -10,6 +10,9 @@ export default class NodeEditorComponent extends Component {
 	get isEvent() {
 		return this.args.node instanceof EventModel;
 	}
+	get eventDuration() {
+		return this.args.node.endTime - this.args.node.startTime;
+	}
 	@action save() {
 		return this.args.node.save();
 	}
