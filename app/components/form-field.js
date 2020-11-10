@@ -3,13 +3,15 @@ import {assert} from "@ember/debug";
 import {guidFor} from "@ember/object/internals";
 import {computed} from "@ember/object";
 import {tracked} from "@glimmer/tracking";
+import {isEmpty} from "@ember/utils";
 import guessType from "ember-former/utils/guess-type";
 
 export const CLASS_NAMES = {
 	FOCUSED_STATE: "focused",
 	FORM_CONTROL: "form-control",
 	FORM_FIELD: "form-field",
-	LABEL: "form-field-label"
+	LABEL: "form-field-label",
+	FORM_FIELD_WITH_VALUE: "has-value"
 };
 
 export const ERROR_MESSAGES = {
@@ -23,6 +25,7 @@ export default class FormFieldComponent extends Component {
 	focusedClassName = CLASS_NAMES.FOCUSED_STATE;
 	formControlClassName = CLASS_NAMES.FORM_CONTROL;
 	labelClassName = CLASS_NAMES.LABEL;
+	hasValueClassName = CLASS_NAMES.FORM_FIELD_WITH_VALUE;
 
 	@tracked hasFocus = false;
 
@@ -33,6 +36,10 @@ export default class FormFieldComponent extends Component {
 
 	get type() {
 		return this.args.type || guessType(this.args.model, {attributeName: this.args.field});
+	}
+
+	get hasValue() {
+		return !isEmpty(this.args.model[this.args.field]);
 	}
 
 	constructor() {
