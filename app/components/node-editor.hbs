@@ -2,8 +2,8 @@
 	{{yield}}
 	<fieldset>
 		<legend class="visuallyhidden">Basic Information</legend>
-		<FormField @model={{@node}} @field="title" @focusOut={{this.save}}/>
-		<FormField @model={{@node}} @field="summary" @focusOut={{this.save}}/>
+		<FormField @model={{@node}} @field="title"/>
+		<FormField @model={{@node}} @field="summary"/>
 		{{#if this.isEvent}}
 			<LinkTo @route="stories.story.timeline.event" @models={{array @node.timeline.story.id @node.timeline.id @node.id}}>Edit content for this event</LinkTo>
 		{{/if}}
@@ -12,11 +12,12 @@
 	{{#if this.isEvent}}
 		<fieldset>
 			<legend>Timing Information</legend>
-			<FormField @model={{@node}} @field="startTime" @type="datetime-local" @focusOut={{this.save}} @max={{@node.endTime}}/>
-			<FormField @model={{@node}} @field="endTime" @type="datetime-local" @focusOut={{this.save}} @min={{@node.startTime}}/>
-			{{#if this.eventDuration}}
-				<output>{{@node.name}} will last {{moment-duration this.eventDuration}}</output>
-			{{/if}}
+			<FormField @model={{@node}} @field="startTime" @type="datetime-local" @max={{@node.endTime}}/>
+			<FormField @model={{@node}} @field="endTime" @type="datetime-local" @min={{@node.startTime}} as |field|>
+				{{#if this.eventDuration}}
+					<output for={{field.id}}>{{@node.name}} will last {{moment-duration this.eventDuration}}</output>
+				{{/if}}
+			</FormField>
 		</fieldset>
 	{{/if}}
 </form>
