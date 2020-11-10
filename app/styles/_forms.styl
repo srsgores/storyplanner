@@ -2,21 +2,28 @@
 	--form-padding-vertical 0.3em
 	--form-padding-horizontal 0.6em
 input, textarea
-	background-color rgba(17, 17, 17, 0.45)
+	background-color transparent
+	outline none
+	font-size inherit
+	transition 0.2s ease background-color, 0.2s ease border-color
 	border none
+	border-bottom 0.15em solid transparent
 	color inherit
 	box-sizing border-box
-	padding 0.3em 0.6em
+	padding var(--form-padding-vertical) var(--form-padding-horizontal)
 	font-family inherit
+	font-weight inherit
+	text-align inherit
+	&:focus
+		background-color rgba(17, 17, 17, 0.45)
+		border-bottom-color currentColor
 
 textarea
 	width 100%
-	min-height 6em
 
 legend
 	font-size 1.2em
 	font-weight bold
-
 .primary-button
 	transition 0.2s ease background-color
 	background-color #8bc34a82

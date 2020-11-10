@@ -6,6 +6,7 @@
 			{{@field}}
 		{{/if}}
 	</label>
+
 	{{#if this.isTextarea}}
 		<Textarea @value={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{true}} @focus-in={{fn (mut this.hasFocus) true}} @focus-out={{fn (mut this.hasFocus) false}} @required={{this.isRequired}} {{on "blur" this.autosave}}/>
 	{{else}}
@@ -19,6 +20,5 @@
 			{{/if}}
 		{{/if}}
 	{{/if}}
-
 	{{yield}}
 </div>
