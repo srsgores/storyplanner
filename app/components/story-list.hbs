@@ -1,17 +1,17 @@
-<article local-class="story-list" class="story-list">
+<article class="story-list">
 	{{#if @stories.length}}
-		<ul local-class="stories">
+		<ul class="stories">
 			{{#each @stories as |story|}}
-				<li local-class="story">
-					<LinkTo @route="stories.story" @model={{story}} local-class="story-link">
-						<strong local-class="story-title">
+				<li class="story">
+					<LinkTo @route="stories.story" @model={{story}} class="story-link">
+						<strong class="story-title">
 							{{#if story.title}}
 								{{story.title}}
 							{{else}}
 								Untitled story
 							{{/if}}
 						</strong>
-						<dl local-class="story-meta">
+						<dl class="story-meta">
 							{{#if story.summary}}
 								<dt>Summary</dt>
 								<dd>{{story.summary}}</dd>
@@ -22,8 +22,8 @@
 							{{/if}}
 						</dl>
 					</LinkTo>
-					<ul local-class="story-actions">
-						<li local-class="story-action">
+					<ul class="story-actions">
+						<li class="story-action">
 							<button type="button" {{on "click" (fn this.removeStory story)}}>Remove</button>
 						</li>
 					</ul>

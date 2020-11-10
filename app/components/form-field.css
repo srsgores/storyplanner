@@ -1,8 +1,0 @@
-.form-field label {
-
-}
-
-.form-field input:focus-within ~ label, .form-field textarea:focus-within ~ label {
-	opacity: 1;
-	transform: scale(1);
-}
