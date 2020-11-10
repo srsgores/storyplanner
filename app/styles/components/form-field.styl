@@ -1,7 +1,7 @@
 .form-field
 	&.focused
 		.form-field-label
-			transform translateY(-25%)
+			transform translateY(-0.5em)
 	&.has-value
 		.form-field-label
 			opacity 0
@@ -11,7 +11,7 @@
 	&-label
 		transition 0.2s ease opacity, 0.2s ease transform
 		display block
-		transform translateY(100%)
+		transform translateY(calc(100% + var(--form-padding-vertical))) translateX(var(--form-padding-horizontal))
 	&-control
 		display block
 	& + .form-field
