@@ -2,7 +2,7 @@ import Model, {attr, hasMany, belongsTo} from "@ember-data/model";
 
 export default class TimelineModel extends Model {
 	@attr("string") title;
-	@attr("string") summary;
+	@attr() summary;
 	@belongsTo("story", {autosave: true}) story;
 	@hasMany("timeline", {inverse: "parentTimeline", autosave: true}) timelines;
 	@belongsTo("timeline", {inverse: "timelines", autosave: true}) parentTimeline;

@@ -8,7 +8,8 @@
 	</label>
 
 	{{#if this.isTextarea}}
-		<Textarea @value={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{true}} @focus-in={{fn (mut this.hasFocus) true}} @focus-out={{fn (mut this.hasFocus) false}} @required={{this.isRequired}} {{on "blur" this.autosave}}/>
+		<MobiledocEditor @mobiledoc={{get @model @field}} @on-change={{this.onContentChange}} class={{this.formControlClassName}} id={{this.elementId}} required={{true}} as |editor|>
+		</MobiledocEditor>
 	{{else}}
 		{{#if this.isCheckbox}}
 			<Input @type={{this.type}} @checked={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} @change={{this.autosave}}/>}
