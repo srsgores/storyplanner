@@ -58,12 +58,13 @@ export default class FormFieldComponent extends Component {
 			this.args.model.save();
 		}
 	}
+
 	@action onUpdateValue(updatedValue) {
 		this.args.model[this.args.field] = updatedValue;
 	}
 
 	@action onContentChange(updatedDocument) {
-		debounce(this, "onUpdateValue", updatedDocument, 1000);
-		debounce(this, "autosave", 1000);
+		debounce(this, "onUpdateValue", updatedDocument, 100);
+		debounce(this, "autosave", 2000);
 	}
 }

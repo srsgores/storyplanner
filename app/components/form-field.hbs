@@ -9,6 +9,52 @@
 
 	{{#if this.isTextarea}}
 		<MobiledocEditor @mobiledoc={{get @model @field}} @on-change={{this.onContentChange}} class={{this.formControlClassName}} id={{this.elementId}} required={{true}} as |editor|>
+			<nav class="mobiledoc-toolbar__container">
+				<ul class="mobiledoc-toolbar" role="menubar">
+					<li class="mobiledoc-toolbar__control">
+						<MobiledocMarkupButton @editor={{editor}} @for="strong">
+							{{svg-jar "format_bold"}}
+						</MobiledocMarkupButton>
+					</li>
+					<li class="mobiledoc-toolbar__control">
+						<MobiledocMarkupButton @editor={{editor}} @for="em">
+							{{svg-jar "format_italic"}}
+						</MobiledocMarkupButton>
+					</li>
+					<li class="mobiledoc-toolbar__control">
+						<MobiledocLinkButton @editor={{editor}}>
+							{{svg-jar "link"}}
+						</MobiledocLinkButton>
+					</li>
+				</ul>
+				<ul class="mobiledoc-toolbar" role="menubar">
+					<li class="mobiledoc-toolbar__control">
+						<MobiledocSectionButton @editor={{editor}} @for="h1">
+							<abbr title="Heading 1">H1</abbr>
+						</MobiledocSectionButton>
+					</li>
+					<li class="mobiledoc-toolbar__control">
+						<MobiledocSectionButton @editor={{editor}} @for="h2">
+							<abbr title="Heading 2">H2</abbr>
+						</MobiledocSectionButton>
+					</li>
+					<li class="mobiledoc-toolbar__control">
+						<MobiledocSectionButton @editor={{editor}} @for="blockquote">
+							{{svg-jar "format_quote"}}
+						</MobiledocSectionButton>
+					</li>
+					<li class="mobiledoc-toolbar__control">
+						<MobiledocSectionButton @editor={{editor}} @for="ol">
+							{{svg-jar "format_list_numbered"}}
+						</MobiledocSectionButton>
+					</li>
+					<li class="mobiledoc-toolbar__control">
+						<MobiledocSectionButton @editor={{editor}} @for="ul">
+							{{svg-jar "format_list_bulleted"}}
+						</MobiledocSectionButton>
+					</li>
+				</ul>
+			</nav>
 		</MobiledocEditor>
 	{{else}}
 		{{#if this.isCheckbox}}
