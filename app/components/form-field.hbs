@@ -16,7 +16,7 @@
 			{{#if this.isDate}}
 				<Inputs::DateInput @value={{get @model @field}} id={{this.elementId}} @onClose={{@focusOut}} @onChange={{fn (mut (get @model @field))}} @maxDate={{@max}} @minDate={{@min}}/>
 			{{else}}
-				<Input @type={{this.type}} @value={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} @min={{@min}} @max={{@max}} @step={{@step}} @focus-in={{fn (mut this.hasFocus) true}} @focus-out={{fn (mut this.hasFocus) false}} {{on "blur" this.autosave}}/>
+				<Input @type={{this.type}} @value={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} @min={{@min}} @max={{@max}} @step={{@step}} @focus-in={{fn (mut this.hasFocus) true}} @focus-out={{fn (mut this.hasFocus) false}} {{on "blur" this.autosave}} @size={{get (get @model @field) "length"}}/>
 			{{/if}}
 		{{/if}}
 	{{/if}}

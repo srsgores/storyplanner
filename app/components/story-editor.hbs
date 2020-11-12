@@ -1,7 +1,7 @@
 <article class="story-editor-container" class="story-editor-container" ...attributes>
 	<NodeEditor class="story-editor" @node={{@story}} @onSubmit={{this.save}}/>
 
-	<ul class="timelines">
+	<ol class="timelines">
 		{{#each @story.timelines as |timeline index|}}
 			<li class="timeline-container">
 				<Timeline @timeline={{timeline}} @index={{index}}>
@@ -12,7 +12,7 @@
 			<li><p>No timelines here</p></li>
 		{{/each}}
 		<li class="add-timeline">
-			<button type="button" {{on "click" this.addTimeline}}>Add timeline</button>
+			<button type="button" {{on "click" this.addTimeline}}>Add timeline {{svg-jar "add"}}</button>
 		</li>
-	</ul>
+	</ol>
 </article>
