@@ -1,5 +1,6 @@
 .form-field
 	position relative
+	margin 1rem 0
 	&:hover:not(.focused)
 		.edit-overlay
 			opacity 1
@@ -14,17 +15,17 @@
 		.form-field-label
 			transform translateY(-0.5em)
 	&.has-value
-		.form-field-label
+		> .form-field-label
 			opacity 0
 	&.focused.has-value
-		.form-field-label
+		> .form-field-label
 			opacity initial
 	&-label
 		opacity 0.8
 		line-height 0
 		transition 0.2s ease opacity, 0.2s ease transform
 		display block
-		transform translateY(calc(100% + var(--form-padding-vertical) * 2)) translateX(var(--form-padding-horizontal)) scale(0.8)
+		transform translateY(calc(100% + var(--form-padding-vertical) * 3.5)) translateX(var(--form-padding-horizontal)) scale(0.8)
 		transform-origin left
 	&-control
 		display block

@@ -2,6 +2,7 @@
 	--form-padding-vertical 0.3em
 	--form-padding-horizontal 0.6rem
 input, textarea
+	max-width 100%
 	background-color transparent
 	outline none
 	font-size inherit
@@ -34,3 +35,10 @@ legend
 .primary-button
 	&:hover
 		background-color #495d337d
+.form-actions
+	display flex
+	justify-content space-between
+.close-button
+	&, &:hover
+		background-color transparent
+	padding 0

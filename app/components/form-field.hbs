@@ -1,14 +1,16 @@
 <div class="{{this.className}} {{if this.hasFocus this.focusedClassName}} {{if this.hasValue this.hasValueClassName}} {{if @model.isSaving this.savingClassName}} {{if @model.hasDirtyAttributes this.unsavedClassName}}" ...attributes>
-	<label for={{this.elementId}} class={{this.labelClassName}}>
-		{{#if @labelText}}
-			{{@labelText}}
-		{{else}}
-			{{@field}}
-		{{/if}}
-	</label>
+	{{#unless this.isTextarea}}
+		<label for={{this.elementId}} class={{this.labelClassName}}>
+			{{#if @labelText}}
+				{{@labelText}}
+			{{else}}
+				{{@field}}
+			{{/if}}
+		</label>
+	{{/unless}}
 
 	{{#if this.isTextarea}}
-		<MobiledocEditor @mobiledoc={{get @model @field}} @on-change={{this.onContentChange}} class={{this.formControlClassName}} id={{this.elementId}} required={{true}} as |editor|>
+		<MobiledocEditor @mobiledoc={{get @model @field}} @on-change={{this.onContentChange}} class={{this.formControlClassName}} @placeholder="{{@field}}..." id={{this.elementId}} required={{true}} as |editor|>
 			<nav class="mobiledoc-toolbar__container">
 				<ul class="mobiledoc-toolbar" role="menubar">
 					<li class="mobiledoc-toolbar__control">
@@ -23,7 +25,7 @@
 					</li>
 					<li class="mobiledoc-toolbar__control">
 						<MobiledocLinkButton @editor={{editor}}>
-							{{svg-jar "link"}}
+							{{svg-jar "add_link"}}
 						</MobiledocLinkButton>
 					</li>
 				</ul>
@@ -63,7 +65,7 @@
 			{{#if this.isDate}}
 				<Inputs::DateInput @value={{get @model @field}} id={{this.elementId}} @onClose={{@focusOut}} @onChange={{fn (mut (get @model @field))}} @maxDate={{@max}} @minDate={{@min}}/>
 			{{else}}
-				<Input @type={{this.type}} @value={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} @min={{@min}} @max={{@max}} @step={{@step}} @focus-in={{fn (mut this.hasFocus) true}} @focus-out={{fn (mut this.hasFocus) false}} {{on "blur" this.autosave}} @size={{get (get @model @field) "length"}}/>
+				<Input @type={{this.type}} @value={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} @min={{@min}} @max={{@max}} @step={{@step}} @focus-in={{fn (mut this.hasFocus) true}} @focus-out={{fn (mut this.hasFocus) false}} {{on "blur" this.autosave}} @size={{if this.hasValue (get (get @model @field) "length") 5}}/>
 			{{/if}}
 		{{/if}}
 	{{/if}}

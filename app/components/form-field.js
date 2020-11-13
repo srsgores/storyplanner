@@ -54,7 +54,7 @@ export default class FormFieldComponent extends Component {
 	}
 
 	@action autosave() {
-		if (this.args.autosave !== false) {
+		if (this.args.autosave !== false && this.args.model.save) {
 			this.args.model.save();
 		}
 	}

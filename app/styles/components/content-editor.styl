@@ -1,4 +1,11 @@
 .mobiledoc-editor__editor
+	line-height 1.5
+	color inherit
+	margin 0
+	padding 1em
+	box-sizing border-box
+	border 1px solid #00000024
+	background-color rgba(43, 43, 43, 0.09)
 	h1
 		font-size 2.3em
 	h2
@@ -20,10 +27,8 @@
 		list-style-type disc
 	ol
 		list-style-type decimal
-	line-height 1.5
 	* + *
 		margin-top 1em
-	color inherit
 	blockquote
 		padding 1em 1.5em
 		box-sizing border-box
@@ -35,6 +40,13 @@
 	&__control
 		display inline-block
 		vertical-align middle
+		button
+			padding 0
+			border-radius 0
+			background-color transparent
+			cursor pointer
+			&:hover, &.active
+				background-color rgba(255, 255, 255, 0.17)
 		abbr
 			font-size 1.3em
 			text-decoration none
@@ -42,6 +54,18 @@
 		display flex
 		justify-content space-between
 		align-items center
+		padding 0.5em 1em
+		box-sizing border-box
+		background: #2b2b2b;
+.mobiledoc-editor
+	&__link-prompt
+		background-color #464646
+		color inherit
+		padding 2em 1em 1em 1em
+		box-sizing border-box
+		border 0.1em solid rgba(0, 0, 0, 0.46)
+		.form-control
+			min-width 20em
 button
 	background-color #6978ff
 	transition 0.2s ease background-color
