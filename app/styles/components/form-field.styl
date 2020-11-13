@@ -1,6 +1,10 @@
 .form-field
 	position relative
 	margin 1rem 0
+	transition 0.5s ease-out opacity, 0.2s filter
+	&.unsaved
+		opacity 0.8
+		filter grayscale(1)
 	&:hover:not(.focused)
 		.edit-overlay
 			opacity 1
@@ -13,7 +17,7 @@
 		display inline-block
 	&.focused
 		.form-field-label
-			transform translateY(-0.5em)
+			transform translateY(-0.75em)
 	&.has-value
 		> .form-field-label
 			opacity 0

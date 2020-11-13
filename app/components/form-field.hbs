@@ -10,7 +10,7 @@
 	{{/unless}}
 
 	{{#if this.isTextarea}}
-		<MobiledocEditor @mobiledoc={{get @model @field}} @on-change={{this.onContentChange}} class={{this.formControlClassName}} @placeholder="{{@field}}..." id={{this.elementId}} required={{true}} as |editor|>
+		<MobiledocEditor @mobiledoc={{get @model @field}} @on-change={{this.onContentChange}} class={{this.formControlClassName}} @placeholder="{{@field}}..." @spellcheck={{true}} required={{true}} as |editor|>
 			<nav class="mobiledoc-toolbar__container">
 				<ul class="mobiledoc-toolbar" role="menubar">
 					<li class="mobiledoc-toolbar__control">
