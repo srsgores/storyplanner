@@ -1,7 +1,7 @@
 .form-field
 	position relative
 	margin 1rem 0
-	transition 0.5s ease-out opacity, 0.2s filter
+	transition 0.5s ease-out opacity, 0.2s ease filter
 	&.unsaved
 		opacity 0.8
 		filter grayscale(1)
@@ -17,6 +17,7 @@
 		display inline-block
 	&.focused
 		.form-field-label
+			line-height 1
 			transform translateY(-0.75em)
 	&.has-value
 		> .form-field-label
@@ -27,7 +28,7 @@
 	&-label
 		opacity 0.8
 		line-height 0
-		transition 0.2s ease opacity, 0.2s ease transform
+		transition 0.2s ease opacity, 0.2s ease transform, 0.2s ease line-height
 		display block
 		transform translateY(calc(100% + var(--form-padding-vertical) * 3.5)) translateX(var(--form-padding-horizontal)) scale(0.8)
 		transform-origin left
