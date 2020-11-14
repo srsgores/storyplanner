@@ -53,6 +53,9 @@ export default class FormFieldComponent extends Component {
 		super(...arguments);
 		assert(ERROR_MESSAGES.NO_MODEL_SUPPLIED_MESSAGE, this.args.model);
 		assert(ERROR_MESSAGES.NO_FIELD_NAME_SUPPLIED_MESSAGE, this.args.field);
+		if (!isEmpty(this.args.fieldId)) {
+			this.elementId = this.args.fieldId;
+		}
 	}
 
 	@action autosave() {

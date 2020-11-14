@@ -1,5 +1,8 @@
 <form action="" class="node-editor" ...attributes>
 	{{yield}}
+	{{#if this.eventDuration}}
+		<output for="{{this.elementId}}-end-time" aria-atomic="true" aria-live="assertive">{{moment-duration this.eventDuration}}</output>
+	{{/if}}
 	<fieldset>
 		<legend class="visuallyhidden">Basic Information</legend>
 		<FormField @model={{@node}} @field="title" class="node-title"/>
@@ -15,11 +18,7 @@
 			<fieldset aria-live="assertive" aria-atomic="true">
 				<legend class="visuallyhidden">Timing Information</legend>
 				<FormField @model={{@node}} @field="startTime" @type="datetime-local" @max={{@node.endTime}}/>
-				<FormField @model={{@node}} @field="endTime" @type="datetime-local" @min={{@node.startTime}} as |field|>
-					{{#if this.eventDuration}}
-						<output for={{field.id}}>{{@node.name}} will last {{moment-duration this.eventDuration}}</output>
-					{{/if}}
-				</FormField>
+				<FormField @model={{@node}} @field="endTime" @type="datetime-local" @min={{@node.startTime}} @fieldId="{{this.elementId}}-end-time"/>
 			</fieldset>
 		</details>
 	{{/if}}
