@@ -1,4 +1,4 @@
-<div class="{{this.className}} {{if this.hasFocus this.focusedClassName}} {{if this.hasValue this.hasValueClassName}} {{if @model.isSaving this.savingClassName}} {{if @model.hasDirtyAttributes this.unsavedClassName}}" ...attributes>
+<div class="{{this.className}} {{if this.hasFocus this.focusedClassName}} {{if this.hasValue this.hasValueClassName}} {{if @model.isSaving this.savingClassName}} {{if @model.hasDirtyAttributes this.unsavedClassName}} {{if this.isTextfield "is-textfield"}}" ...attributes>
 	{{#unless this.isTextarea}}
 		<label for={{this.elementId}} class={{this.labelClassName}}>
 			{{#if @labelText}}
@@ -60,7 +60,7 @@
 		</MobiledocEditor>
 	{{else}}
 		{{#if this.isCheckbox}}
-			<Input @type={{this.type}} @checked={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} @change={{this.autosave}}/>}
+			<Input @type={{this.type}} @checked={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} @change={{this.autosave}}/>
 		{{else}}
 			{{#if this.isDate}}
 				<Inputs::DateInput @value={{get @model @field}} id={{this.elementId}} @onClose={{@focusOut}} @onChange={{fn (mut (get @model @field))}} @maxDate={{@max}} @minDate={{@min}}/>

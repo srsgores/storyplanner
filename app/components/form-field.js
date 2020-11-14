@@ -36,6 +36,8 @@ export default class FormFieldComponent extends Component {
 
 	@computed.equal("type", "checkbox") isCheckbox;
 	@computed.equal("type", "textarea") isTextarea;
+	@computed.or("isTextarea", "isCheckbox") isNotTextfield;
+	@computed.not("isNotTextfield") isTextfield;
 	@computed.empty("args.required") isRequired;
 	@computed.match("args.type", /date/i) isDate;
 

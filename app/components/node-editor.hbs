@@ -10,14 +10,17 @@
 
 	</fieldset>
 	{{#if this.isEvent}}
-		<fieldset>
-			<legend>Timing Information</legend>
-			<FormField @model={{@node}} @field="startTime" @type="datetime-local" @max={{@node.endTime}}/>
-			<FormField @model={{@node}} @field="endTime" @type="datetime-local" @min={{@node.startTime}} as |field|>
-				{{#if this.eventDuration}}
-					<output for={{field.id}}>{{@node.name}} will last {{moment-duration this.eventDuration}}</output>
-				{{/if}}
-			</FormField>
-		</fieldset>
+		<details>
+			<summary>Event Timing</summary>
+			<fieldset aria-live="assertive" aria-atomic="true">
+				<legend class="visuallyhidden">Timing Information</legend>
+				<FormField @model={{@node}} @field="startTime" @type="datetime-local" @max={{@node.endTime}}/>
+				<FormField @model={{@node}} @field="endTime" @type="datetime-local" @min={{@node.startTime}} as |field|>
+					{{#if this.eventDuration}}
+						<output for={{field.id}}>{{@node.name}} will last {{moment-duration this.eventDuration}}</output>
+					{{/if}}
+				</FormField>
+			</fieldset>
+		</details>
 	{{/if}}
 </form>

@@ -2,6 +2,11 @@
 	margin 1em
 	padding 1em
 	border 0.1em solid
+	&-editor
+		position relative
+		&:hover
+			.contextual-action
+				opacity 1
 	&-summary
 		margin 0 -1em
 	&:hover
@@ -19,3 +24,14 @@
 	cursor move
 	opacity 0.9
 	transition transform 0.4s ease, opacity 0.2s ease
+.contextual-action
+	transition 0.3s ease opacity
+	position absolute
+	z-index 1
+	bottom 0
+	right 0
+	opacity 0
+.add-after
+	position absolute
+	right -4em
+	top 50%
