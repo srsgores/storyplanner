@@ -1,14 +1,14 @@
 :root
 	--form-padding-vertical 0.3em
-	--form-padding-horizontal 0.6rem
+	--form-padding-horizontal 0
 input, textarea
-	max-width 100%
+	width 100%
 	background-color transparent
 	outline none
 	font-size inherit
-	transition 0.2s ease background-color, 0.2s ease border-color
+	transition 0.2s ease background-color, 0.2s ease border-color, 0.1s ease border-bottom-width
 	border none
-	border-bottom 0.15em solid transparent
+	border-bottom 0.1em solid transparent
 	color inherit
 	box-sizing border-box
 	padding var(--form-padding-vertical) var(--form-padding-horizontal)
@@ -18,7 +18,7 @@ input, textarea
 	&:hover
 		border-bottom-color rgba(255, 255, 255, 0.6)
 	&:focus
-		background-color rgba(17, 17, 17, 0.45)
+		border-bottom-width 0.15em
 		border-bottom-color currentColor
 
 textarea

@@ -1,11 +1,26 @@
+:root
+	--content-editor-padding 1em
+	--content-editor-font-size 1em
+	--content-editor-line-height 1.5
+	--content-editor-toolbar-padding 0.5em 1em
+	--content-editor-toolbar-background-colour #2b2b2b
+	--content-editor-background-colour rgba(43, 43, 43, 0.09)
+.form-field.focused
+	.mobiledoc-toolbar__container
+		opacity 1
+		margin 0
+.form-field.focused
+	.mobiledoc-editor__editor
+		border-color #00000024
+		background-color var(--content-editor-background-colour)
 .mobiledoc-editor__editor
-	line-height 1.5
+	line-height var(--content-editor-line-height)
 	color inherit
 	margin 0
-	padding 1em
+	padding var(--content-editor-padding)
 	box-sizing border-box
-	border 1px solid #00000024
-	background-color rgba(43, 43, 43, 0.09)
+	border 1px solid transparent
+	transition 0.4s ease background-color, 0.2s ease border-color
 	h1
 		font-size 2.3em
 	h2
@@ -52,11 +67,14 @@
 			text-decoration none
 	&__container
 		display flex
+		transition 0.3s ease opacity, 0.3s ease margin
+		margin -1em 0
 		justify-content space-between
 		align-items center
 		padding 0.5em 1em
 		box-sizing border-box
-		background: #2b2b2b;
+		background-color var(--content-editor-toolbar-background-colour)
+		opacity 0
 .__mobiledoc-editor.__has-no-content:after
 	top 1em
 .mobiledoc-editor
