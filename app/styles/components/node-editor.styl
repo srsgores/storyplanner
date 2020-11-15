@@ -1,7 +1,7 @@
+:root
+	--node-background-colour rgba(13, 109, 98, 0.61)
+	--node-padding 1em
 .node
-	margin 1em
-	padding 1em
-	border 0.1em solid
 	&-editor
 		position relative
 		&:hover
@@ -11,14 +11,7 @@
 		margin 0 -1em
 	&:hover
 		opacity 1
-	& + .node
-		margin-left 1.5em
-		position relative
-		&::before
-			content "➡"
-			position absolute
-			right calc(100% + 1em)
-			top 50%
+
 
 .node[draggable]
 	cursor move
@@ -31,7 +24,25 @@
 	bottom 0
 	right 0
 	opacity 0
-.add-after
-	position absolute
-	right -4em
-	top 50%
+.event
+	&-container
+		& + &
+			margin-left 1.5em
+			position relative
+			&::before
+				content "➡"
+				position absolute
+				right calc(100% + 1em)
+				top 50%
+	.node-editor
+		background-color var(--node-background-colour)
+		padding var(--node-padding)
+		box-sizing border-box
+	&-meta-duration
+		text-align center
+		display block
+		border-bottom 0.4em dotted
+		margin 1em 0
+		padding 0.8em
+		opacity 0.8
+		font-size 0.85em
