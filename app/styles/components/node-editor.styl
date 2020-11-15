@@ -6,7 +6,7 @@
 	&-editor
 		position relative
 		&:hover
-			.contextual-action
+			.contextual-actions
 				opacity 1
 	&-summary
 		margin 0 -1em
@@ -18,13 +18,20 @@
 	cursor move
 	opacity 0.9
 	transition transform 0.4s ease, opacity 0.2s ease
-.contextual-action
+.contextual-actions
 	transition 0.3s ease opacity
 	position absolute
 	z-index 1
 	bottom 0
 	right 0
 	opacity 0
+	padding var(--node-padding)
+	button
+		border 0
+		border-radius 0
+		background-color transparent
+.contextual-action
+	display inline-block
 .event
 	display inline-block
 	vertical-align middle
@@ -47,7 +54,7 @@
 		text-align center
 		display block
 		border-bottom 0.4em dotted
-		margin 1em 0
+		margin-bottom 1em
 		padding 0.8em
 		opacity 0.8
 		font-size 0.85em

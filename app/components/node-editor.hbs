@@ -8,9 +8,6 @@
 		<legend class="visuallyhidden">Basic Information</legend>
 		<FormField @model={{@node}} @field="title" class="node-title"/>
 		<FormField @model={{@node}} @field="summary" class="node-summary"/>
-		{{#if this.isEvent}}
-			<LinkTo @route="stories.story.timeline.event" @models={{array @node.timeline.story @node.timeline @node}}>Edit content for this event</LinkTo>
-		{{/if}}
 
 	</fieldset>
 	{{#if this.isEvent}}
