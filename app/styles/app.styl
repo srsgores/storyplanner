@@ -29,7 +29,11 @@ html, body
 
 .link-actions
 	display inline-block
-	vertical-align middle
+	vertical-align initial
+	transition 0.3s ease opacity
+	opacity 0.7
+	&:hover
+		opacity 1
 	.link-action button
 		padding 0
 		border-radius 0
