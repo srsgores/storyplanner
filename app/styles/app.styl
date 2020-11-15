@@ -27,6 +27,14 @@ html, body
 	display inline-block
 	vertical-align middle
 
+.link-actions
+	display inline-block
+	vertical-align middle
+	.link-action button
+		padding 0
+		border-radius 0
+		background-color transparent
+
 a
 	color inherit
 	&:visited
@@ -78,7 +86,11 @@ svg
 	fill currentColor
 	vertical-align middle
 	display inline-block
+	width auto
+	height 100%
 .rotate-90
 	transform rotate(90deg)
+.add-after
+	height 3em
 @import "_forms"
 @import "components/*"
