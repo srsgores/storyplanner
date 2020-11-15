@@ -1,6 +1,7 @@
 :root
 	--node-background-colour rgba(13, 109, 98, 0.61)
 	--node-padding 1em
+	--event-node-subsequent-margin 3em
 .node
 	&-editor
 		position relative
@@ -27,13 +28,15 @@
 .event
 	&-container
 		& + &
-			margin-left 1.5em
+			margin-left var(--event-node-subsequent-margin)
 			position relative
 			&::before
-				content "➡"
+				content ""
 				position absolute
-				right calc(100% + 1em)
+				right 100%
 				top 50%
+				width calc(var(--event-node-subsequent-margin) + 0.2em)
+				border-bottom 0.3em dotted
 	.node-editor
 		background-color var(--node-background-colour)
 		padding var(--node-padding)
