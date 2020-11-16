@@ -1,0 +1,22 @@
+.tab-nav
+	&-item
+		display inline-block
+		text-align center
+		flex 1
+		&-link
+			padding 1em 2.5em
+			box-sizing border-box
+			background-color rgba(0, 0, 0, 0.30)
+			display block
+			text-decoration none
+			transition 0.3s ease opacity, 0.3s background-color
+			opacity 0.8
+			&:hover, &.active
+				opacity 1
+				background-color rgba(0, 0, 0, 0.42)
+			&.active
+				font-weight bold
+	&-items
+		width 100%
+		display flex
+		justify-content space-between

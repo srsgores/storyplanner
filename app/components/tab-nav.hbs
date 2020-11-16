@@ -2,7 +2,7 @@
 	<ul class="tab-nav-items">
 		{{#each @navItems as |navItem|}}
 			<li class="tab-nav-item">
-				<LinkTo @route={{navItem.route}} @model={{navItem.model}}>
+				<LinkTo @route={{navItem.route}} @model={{navItem.model}} class="tab-nav-item-link">
 					{{#if navItem.text.length}}
 						{{navItem.text}}
 					{{/if}}
