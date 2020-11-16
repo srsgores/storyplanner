@@ -1,14 +1,5 @@
 <article class="timeline">
-	<NodeEditor @node={{@timeline}}>
-		<h4>
-			<LinkTo @route="stories.story.timeline" @model={{@timeline}} title="Expand for more">
-				{{#if @timeline.title}}
-					{{@timeline.title}}
-				{{else}}
-					Timeline {{@index}}
-				{{/if}}
-			</LinkTo>
-		</h4>
+	<NodeEditor @node={{@timeline}} class="timeline-edit-form">
 		<ul class="actions">
 			<li class="action">
 				<button type="button" {{on "click" this.addNestedTimeline}}>Add nested timeline {{svg-jar "call_split" class="rotate-90"}}</button>
