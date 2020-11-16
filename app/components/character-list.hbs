@@ -2,7 +2,7 @@
 	<ul class="characters">
 		{{#each @characters as |character|}}
 			<li class="character">
-				<LinkTo @route="stories.story.characters.character" @models={{array @story character}}>
+				<LinkTo @route="stories.story.characters.character" @models={{array @story character}} class="character-link">
 					<strong class="character-name">
 						{{#if character.name.length}}
 							{{character.name}}
