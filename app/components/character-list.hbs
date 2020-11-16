@@ -1,0 +1,24 @@
+{{#if @characters.length}}
+	<ul class="characters">
+		{{#each @characters as |character|}}
+			<li class="character">
+				<LinkTo @route="stories.story.characters.character" @models={{array @story character}}>
+					<strong class="character-name">
+						{{#if character.name.length}}
+							{{character.name}}
+						{{else}}
+							Unnamed Character
+						{{/if}}
+					</strong>
+				</LinkTo>
+				<ul class="character-actions">
+					<li class="action">
+						<button {{on "click" (fn this.removeCharacter character)}}>{{svg-jar "delete"}}</button>
+					</li>
+				</ul>
+			</li>
+		{{/each}}
+	</ul>
+{{/if}}
+
+{{yield}}

@@ -1,0 +1,17 @@
+<nav role="navigation" class="tab-nav">
+	<ul class="tab-nav-items">
+		{{#each @navItems as |navItem|}}
+			<li class="tab-nav-item">
+				<LinkTo @route={{navItem.route}} @model={{navItem.model}}>
+					{{#if navItem.text.length}}
+						{{navItem.text}}
+					{{/if}}
+					{{#if navItem.icon}}
+						{{svg-jar navItem.icon class="nav-item-icon"}}
+					{{/if}}
+				</LinkTo>
+			</li>
+		{{/each}}
+	</ul>
+	{{yield}}
+</nav>

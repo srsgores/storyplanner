@@ -12,6 +12,9 @@ Router.map(function() {
 			this.route("timeline", {path: ":timeline_id"}, function() {
 				this.route("event", {path: ":event_id"});
 			});
+			this.route("characters", function() {
+				this.route("character", {path: ":character_id"});
+			});
 		});
 		this.route("create");
 	});
