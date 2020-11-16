@@ -6,6 +6,6 @@ export default class StoriesStoryCharactersRoute extends Route {
 	}
 	setupController(controller) {
 		super.setupController(...arguments);
-		controller.story = this.modelFor("stories.story");
+		controller.set("story", this.modelFor("stories.story"));
 	}
 }
