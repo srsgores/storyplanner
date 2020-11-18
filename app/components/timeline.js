@@ -8,11 +8,6 @@ export default class TimelineComponent extends Component {
 	@tracked sorting = ["startTime"];
 	@computed.sort("args.timeline.events", "sorting") sortedEvents;
 
-	@action addNestedTimeline() {
-		const createdTimeline = this.store.createRecord("timeline", {parentTimeline: this.args.timeline});
-		return createdTimeline.save().then(() => this.args.timeline.save());
-	}
-
 	@action
 	async addEvent(eventAfter) {
 		const createdEvent = this.store.createRecord("event", {timeline: this.args.timeline});
@@ -31,9 +26,11 @@ export default class TimelineComponent extends Component {
 		return event.destroyRecord();
 	}
 
-	@action addTimelineToEvent(event) {
-		const createdTimeline = this.store.createRecord("timeline", {parentEvent: event});
-		event.nestedTimelines.addObject(createdTimeline);
-		return createdTimeline.save().then(() => event.save());
+	@action async addTimelineToEvent(event) {
+		const defaultStartingEvent = this.store.createRecord("event");
+		const createdTimeline = this.store.createRecord("timeline", {parentEvent: event, events: [defaultStartingEvent]});
+		await createdTimeline.save();
+		await event.save();
+		return await defaultStartingEvent.save();
 	}
 }
