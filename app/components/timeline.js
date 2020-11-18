@@ -8,8 +8,7 @@ export default class TimelineComponent extends Component {
 	@tracked sorting = ["startTime"];
 	@computed.sort("args.timeline.events", "sorting") sortedEvents;
 
-	@action
-	async addEvent(eventAfter) {
+	@action async addEvent(eventAfter) {
 		const createdEvent = this.store.createRecord("event", {timeline: this.args.timeline});
 		if (eventAfter && eventAfter.startTime) {
 			createdEvent.startTime = new Date(eventAfter.startTime.getTime() + 1);
