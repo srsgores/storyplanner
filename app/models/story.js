@@ -5,4 +5,5 @@ export default class StoryModel extends Model {
 	@attr() summary;
 	@hasMany("timeline", {autosave: true}) timelines;
 	@hasMany("character", {autosave: true}) characters;
+	@hasMany("event", {autosave: true}) events;
 }

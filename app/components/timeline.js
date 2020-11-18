@@ -9,7 +9,7 @@ export default class TimelineComponent extends Component {
 	@computed.sort("args.timeline.events", "sorting") sortedEvents;
 
 	@action async addEvent(eventAfter) {
-		const createdEvent = this.store.createRecord("event", {timeline: this.args.timeline});
+		const createdEvent = this.store.createRecord("event", {timeline: this.args.timeline, story: this.args.story});
 		if (eventAfter && eventAfter.startTime) {
 			createdEvent.startTime = new Date(eventAfter.startTime.getTime() + 1);
 		}
@@ -26,7 +26,7 @@ export default class TimelineComponent extends Component {
 	}
 
 	@action async addTimelineToEvent(event) {
-		const defaultStartingEvent = this.store.createRecord("event");
+		const defaultStartingEvent = this.store.createRecord("event", {story: this.args.story});
 		const createdTimeline = this.store.createRecord("timeline", {parentEvent: event, events: [defaultStartingEvent]});
 		await createdTimeline.save();
 		await event.save();

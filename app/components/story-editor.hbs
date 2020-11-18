@@ -1,10 +1,10 @@
-<article class="story-editor-container" class="story-editor-container" ...attributes>
+<article class="story-editor-container" ...attributes>
 	<NodeEditor class="story-editor" @node={{@story}} @onSubmit={{this.save}}/>
 
 	<ol class="timelines">
 		{{#each @story.timelines as |timeline index|}}
 			<li class="timeline-container">
-				<Timeline @timeline={{timeline}} @index={{index}}>
+				<Timeline @timeline={{timeline}} @index={{index}} @story={{@story}}>
 					{{yield}}
 				</Timeline>
 			</li>

@@ -14,6 +14,12 @@ export default class StoriesStoryController extends Controller {
 				model: this.model,
 				text: "Characters",
 				icon: "people_alt"
+			},
+			{
+				route: "stories.story.preview",
+				model: this.model,
+				text: "Preview",
+				icon: "preview"
 			}
 		];
 	}

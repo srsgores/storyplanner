@@ -1,0 +1,10 @@
+<article class="story-preview">
+	{{#if this.hasText}}
+		{{#each this.sortedEvents as |event|}}
+			<section class="story-preview-section">
+				<RenderMobiledoc @mobiledoc={{event.text}}/>
+			</section>
+		{{/each}}
+	{{/if}}
+	{{yield}}
+</article>

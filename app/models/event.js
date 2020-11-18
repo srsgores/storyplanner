@@ -8,4 +8,5 @@ export default class EventModel extends Model {
 	@attr("date", {defaultValue: () => new Date()}) endTime;
 	@belongsTo("timeline", {autosave: true}) timeline;
 	@hasMany("timeline", {autosave: true}) nestedTimelines;
+	@belongsTo("story", {autosave: true}) story;
 }
