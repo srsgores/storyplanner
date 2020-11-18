@@ -1,9 +1,6 @@
 <article class="timeline">
 	<NodeEditor @node={{@timeline}} class="timeline-edit-form">
 		<ul class="actions">
-			<li class="action">
-				<button type="button" {{on "click" this.addEvent}}>Add event {{svg-jar "calendar_today"}}</button>
-			</li>
 			<li class="action contextual-action">
 				<button type="button" {{on "click" this.remove}} title="Remove timeline">{{svg-jar "delete"}}</button>
 			</li>
@@ -11,7 +8,7 @@
 	</NodeEditor>
 
 	<ul class="events">
-		{{#each this.sortedEvents as |event|}}
+		{{#each this.sortedEvents as |event eventIndex|}}
 			<li class="event-container" data-test-id={{event.id}}>
 				<article class="event node">
 					<NodeEditor @node={{event}}>
@@ -19,9 +16,11 @@
 							<li class="action contextual-action">
 								<LinkTo @route="stories.story.timeline.event" @models={{array event.timeline.story event.timeline event}}><span class="visuallyhidden">Edit content for this event</span>{{svg-jar "edit"}}</LinkTo>
 							</li>
-							<li class="action contextual-action">
-								<button type="button" {{on "click" (fn this.removeEvent event)}} title="Remove Event">{{svg-jar "delete"}}</button>
-							</li>
+							{{#if eventIndex}}
+								<li class="action contextual-action">
+									<button type="button" {{on "click" (fn this.removeEvent event)}} title="Remove Event">{{svg-jar "delete"}}</button>
+								</li>
+							{{/if}}
 						</ul>
 					</NodeEditor>
 				</article>
