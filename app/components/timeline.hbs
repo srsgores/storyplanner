@@ -2,9 +2,6 @@
 	<NodeEditor @node={{@timeline}} class="timeline-edit-form">
 		<ul class="actions">
 			<li class="action">
-				<button type="button" {{on "click" this.addNestedTimeline}}>Add nested timeline {{svg-jar "call_split" class="rotate-90"}}</button>
-			</li>
-			<li class="action">
 				<button type="button" {{on "click" this.addEvent}}>Add event {{svg-jar "calendar_today"}}</button>
 			</li>
 			<li class="action contextual-action">
@@ -32,17 +29,22 @@
 					<li class="link-action">
 						<button class="add-after" type="button" {{on "click" (fn this.addEvent event)}} title="Add event after this one">{{svg-jar "add_circle"}}</button>
 					</li>
+					<li class="link-action">
+						<button class="fork-event" type="button" {{on "click" (fn this.addTimelineToEvent event)}}>{{svg-jar "call_split" class="rotate-90"}}</button>
+					</li>
 				</ul>
+				{{#if event.nestedTimelines.length}}
+					{{#each event.nestedTimelines as |nestedTimeline index|}}
+						<ul class="nested-timelines">
+							<li class="nested-timeline">
+								<Timeline @timeline={{nestedTimeline}} @index={{index}}/>
+							</li>
+						</ul>
+					{{/each}}
+				{{/if}}
 			</li>
 		{{/each}}
 	</ul>
-	{{#each @timeline.timelines as |nestedTimeline index|}}
-		<ul class="nested-timelines">
-			<li class="nested-timeline">
-				<Timeline @timeline={{nestedTimeline}} @index={{index}}/>
-			</li>
-		</ul>
-	{{/each}}
 
 	{{yield}}
 </article>

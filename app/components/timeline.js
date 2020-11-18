@@ -7,11 +7,14 @@ export default class TimelineComponent extends Component {
 	@service store;
 	@tracked sorting = ["startTime"];
 	@computed.sort("args.timeline.events", "sorting") sortedEvents;
+
 	@action addNestedTimeline() {
 		const createdTimeline = this.store.createRecord("timeline", {parentTimeline: this.args.timeline});
 		return createdTimeline.save().then(() => this.args.timeline.save());
 	}
-	@action async addEvent(eventAfter) {
+
+	@action
+	async addEvent(eventAfter) {
 		const createdEvent = this.store.createRecord("event", {timeline: this.args.timeline});
 		if (eventAfter && eventAfter.startTime) {
 			createdEvent.startTime = new Date(eventAfter.startTime.getTime() + 1);
@@ -19,10 +22,18 @@ export default class TimelineComponent extends Component {
 		await createdEvent.save();
 		await this.args.timeline.save();
 	}
+
 	@action remove() {
 		return this.args.timeline.destroyRecord();
 	}
+
 	@action removeEvent(event) {
 		return event.destroyRecord();
+	}
+
+	@action addTimelineToEvent(event) {
+		const createdTimeline = this.store.createRecord("timeline", {parentEvent: event});
+		event.nestedTimelines.addObject(createdTimeline);
+		return createdTimeline.save().then(() => event.save());
 	}
 }
