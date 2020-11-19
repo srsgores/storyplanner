@@ -35,6 +35,7 @@ export default class FormFieldComponent extends Component {
 
 	@tracked hasFocus = false;
 	@tracked stagingDocument;
+	@tracked wordCount = 0;
 
 	@computed.equal("type", "checkbox") isCheckbox;
 	@computed.equal("type", "textarea") isTextarea;
@@ -60,6 +61,7 @@ export default class FormFieldComponent extends Component {
 		}
 		if (this.isTextarea) {
 			this.stagingDocument = this.args.model[this.args.field];
+			this.wordCount = this.args.model[this.args.field].wordCount;
 		}
 	}
 
@@ -70,6 +72,7 @@ export default class FormFieldComponent extends Component {
 	}
 
 	@action onUpdateValue(updatedValue) {
+		updatedValue.wordCount = this.wordCount;
 		this.args.model[this.args.field] = updatedValue;
 	}
 
