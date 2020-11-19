@@ -61,7 +61,7 @@ export default class FormFieldComponent extends Component {
 		}
 		if (this.isTextarea) {
 			this.stagingDocument = this.args.model[this.args.field];
-			this.wordCount = this.args.model[this.args.field].wordCount;
+			this.wordCount = this.args.model[this.args.field]?.wordCount;
 		}
 	}
 
