@@ -6,6 +6,7 @@ import {tracked} from "@glimmer/tracking";
 import {isEmpty} from "@ember/utils";
 import guessType from "ember-former/utils/guess-type";
 import {debounce} from "@ember/runloop";
+import {run} from "@ember/runloop";
 
 export const CLASS_NAMES = {
 	FOCUSED_STATE: "focused",
@@ -71,5 +72,17 @@ export default class FormFieldComponent extends Component {
 	@action onContentChange(updatedDocument) {
 		debounce(this, "onUpdateValue", updatedDocument, 100);
 		debounce(this, "autosave", 2000);
+	}
+
+	@action onFocusOut() {
+		run.next(this, function() {
+			this.hasFocus = false;
+		});
+	}
+
+	@action onFocusIn() {
+		run.next(this, function() {
+			this.hasFocus = true;
+		});
 	}
 }

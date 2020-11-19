@@ -10,7 +10,7 @@
 	{{/unless}}
 
 	{{#if this.isTextarea}}
-		<ContentEditor @mobiledoc={{get @model @field}} @on-change={{this.onContentChange}} class={{this.formControlClassName}} @placeholder="{{@field}}..." @spellcheck={{true}} required={{true}} {{on "focusin" (fn (mut this.hasFocus) true)}} {{on "focusout" (fn (mut this.hasFocus) false)}} @autofocus={{false}} as |editor|>
+		<ContentEditor @mobiledoc={{get @model @field}} @on-change={{this.onContentChange}} class={{this.formControlClassName}} @placeholder="{{@field}}..." @spellcheck={{true}} required={{true}} {{on "focusin" this.onFocusIn}} {{on "focusout" this.onFocusOut}} @autofocus={{false}} as |editor|>
 			<nav class="mobiledoc-toolbar__container">
 				<ul class="mobiledoc-toolbar" role="menubar">
 					<li class="mobiledoc-toolbar__control">
@@ -65,7 +65,7 @@
 			{{#if this.isDate}}
 				<Inputs::DateInput @value={{get @model @field}} id={{this.elementId}} @onClose={{this.autosave}} @onChange={{fn (mut (get @model @field))}} @maxDate={{@max}} @minDate={{@min}}/>
 			{{else}}
-				<Input @type={{this.type}} @value={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} @min={{@min}} @max={{@max}} @step={{@step}} @focus-in={{fn (mut this.hasFocus) true}} @focus-out={{fn (mut this.hasFocus) false}} {{on "blur" this.autosave}} @size={{if this.hasValue (get (get @model @field) "length") 5}}/>
+				<Input @type={{this.type}} @value={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} @min={{@min}} @max={{@max}} @step={{@step}} @focus-in={{fn this.onFocusIn}} @focus-out={{fn this.onFocusOut}} {{on "blur" this.autosave}} @size={{if this.hasValue (get (get @model @field) "length") 5}}/>
 			{{/if}}
 		{{/if}}
 	{{/if}}
