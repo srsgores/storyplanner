@@ -34,6 +34,7 @@ export default class FormFieldComponent extends Component {
 	unsavedClassName = CLASS_NAMES.UNSAVED;
 
 	@tracked hasFocus = false;
+	@tracked stagingDocument;
 
 	@computed.equal("type", "checkbox") isCheckbox;
 	@computed.equal("type", "textarea") isTextarea;
@@ -56,6 +57,9 @@ export default class FormFieldComponent extends Component {
 		assert(ERROR_MESSAGES.NO_FIELD_NAME_SUPPLIED_MESSAGE, this.args.field);
 		if (!isEmpty(this.args.fieldId)) {
 			this.elementId = this.args.fieldId;
+		}
+		if (this.isTextarea) {
+			this.stagingDocument = this.args.model[this.args.field];
 		}
 	}
 
