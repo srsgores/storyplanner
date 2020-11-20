@@ -5,7 +5,7 @@ import {action, computed} from "@ember/object";
 import {tracked} from "@glimmer/tracking";
 import {isEmpty} from "@ember/utils";
 import guessType from "ember-former/utils/guess-type";
-import {debounce, once} from "@ember/runloop";
+import {debounce} from "@ember/runloop";
 import {run} from "@ember/runloop";
 
 export const CLASS_NAMES = {
@@ -36,7 +36,6 @@ export default class FormFieldComponent extends Component {
 	@tracked hasFocus = false;
 	@tracked stagingDocument;
 	@tracked wordCount = 0;
-	@tracked loadedAsyncModel;
 
 	@computed.equal("type", "checkbox") isCheckbox;
 	@computed.equal("type", "textarea") isTextarea;
@@ -60,15 +59,11 @@ export default class FormFieldComponent extends Component {
 		if (!isEmpty(this.args.fieldId)) {
 			this.elementId = this.args.fieldId;
 		}
-		this.loadedAsyncModel = this.args.model.isLoading;
 		this.initializeEditor();
 	}
 
 	@action setupRichTextEditor() {
-		if (this.loadedAsyncModel) {
-			this.initializeEditor();
-			this.loadedAsyncModel = false;
-		}
+		this.initializeEditor();
 	}
 
 	initializeEditor() {
