@@ -36,6 +36,7 @@ export default class FormFieldComponent extends Component {
 	@tracked hasFocus = false;
 	@tracked stagingDocument;
 	@tracked wordCount = 0;
+	@tracked loadedAsyncModel;
 
 	@computed.equal("type", "checkbox") isCheckbox;
 	@computed.equal("type", "textarea") isTextarea;
@@ -59,15 +60,21 @@ export default class FormFieldComponent extends Component {
 		if (!isEmpty(this.args.fieldId)) {
 			this.elementId = this.args.fieldId;
 		}
+		this.loadedAsyncModel = this.args.model.isLoading;
+		this.initializeEditor();
 	}
 
 	@action setupRichTextEditor() {
-		if (!this.stagingDocument) {
-			this.stagingDocument = this.args.model[this.args.field];
-			this.wordCount = this.args.model[this.args.field]?.wordCount;
+		if (this.loadedAsyncModel) {
+			this.initializeEditor();
+			this.loadedAsyncModel = false;
 		}
 	}
 
+	initializeEditor() {
+		this.stagingDocument = this.args.model[this.args.field];
+		this.wordCount = this.args.model[this.args.field]?.wordCount;
+	}
 
 	@action autosave() {
 		if (this.args.autosave !== false && this.args.model.save) {
