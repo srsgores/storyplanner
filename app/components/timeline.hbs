@@ -11,18 +11,22 @@
 		{{#each this.sortedEvents as |event eventIndex|}}
 			<li class="event-container" data-test-id={{event.id}}>
 				<article class="event node">
-					<NodeEditor @node={{event}}>
-						<ul class="contextual-actions">
-							<li class="action contextual-action">
-								<LinkTo @route="stories.story.timeline.event" @models={{array event.timeline.story event.timeline event}}><span class="visuallyhidden">Edit content for this event</span>{{svg-jar "edit"}}</LinkTo>
-							</li>
-							{{#if eventIndex}}
+					{{#if event.isLoading}}
+						<progress></progress>
+					{{else}}
+						<NodeEditor @node={{event}}>
+							<ul class="contextual-actions">
 								<li class="action contextual-action">
-									<button type="button" {{on "click" (fn this.removeEvent event)}} title="Remove Event">{{svg-jar "delete"}}</button>
+									<LinkTo @route="stories.story.timeline.event" @models={{array event.timeline.story event.timeline event}}><span class="visuallyhidden">Edit content for this event</span>{{svg-jar "edit"}}</LinkTo>
 								</li>
-							{{/if}}
-						</ul>
-					</NodeEditor>
+								{{#if eventIndex}}
+									<li class="action contextual-action">
+										<button type="button" {{on "click" (fn this.removeEvent event)}} title="Remove Event">{{svg-jar "delete"}}</button>
+									</li>
+								{{/if}}
+							</ul>
+						</NodeEditor>
+					{{/if}}
 				</article>
 				<ul class="link-actions">
 					<li class="link-action">
