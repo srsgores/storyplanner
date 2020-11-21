@@ -7,7 +7,13 @@
 	<fieldset>
 		<legend class="visuallyhidden">Basic Information</legend>
 		<FormField @model={{@node}} @field="title" class="node-title"/>
-		<FormField @model={{@node}} @field="summary" class="node-summary"/>
+		{{#if @node.isLoading}}
+			<progress></progress>
+		{{else}}
+			<FormField @model={{@node}} @field="summary" class="node-summary"/>
+		{{/if}}
+
+
 
 	</fieldset>
 	{{#if this.isEvent}}

@@ -11,22 +11,18 @@
 		{{#each this.sortedEvents as |event eventIndex|}}
 			<li class="event-container" data-test-id={{event.id}} {{draggable ondragstart=(fn (mut this.draggedEvent) event)}} {{droppable ondrop=(fn this.moveEventBefore this.draggedEvent event)}}>
 				<article class="event node">
-					{{#if event.isLoading}}
-						<progress></progress>
-					{{else}}
-						<NodeEditor @node={{event}}>
-							<ul class="contextual-actions">
+					<NodeEditor @node={{event}}>
+						<ul class="contextual-actions">
+							<li class="action contextual-action">
+								<LinkTo @route="stories.story.timelines.event" @models={{array event}}><span class="visuallyhidden">Edit content for this event</span>{{svg-jar "edit"}}</LinkTo>
+							</li>
+							{{#if eventIndex}}
 								<li class="action contextual-action">
-									<LinkTo @route="stories.story.timelines.event" @models={{array event}}><span class="visuallyhidden">Edit content for this event</span>{{svg-jar "edit"}}</LinkTo>
+									<button type="button" {{on "click" (fn this.removeEvent event)}} title="Remove Event">{{svg-jar "delete"}}</button>
 								</li>
-								{{#if eventIndex}}
-									<li class="action contextual-action">
-										<button type="button" {{on "click" (fn this.removeEvent event)}} title="Remove Event">{{svg-jar "delete"}}</button>
-									</li>
-								{{/if}}
-							</ul>
-						</NodeEditor>
-					{{/if}}
+							{{/if}}
+						</ul>
+					</NodeEditor>
 				</article>
 				<ul class="link-actions">
 					<li class="link-action">
