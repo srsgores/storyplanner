@@ -2,11 +2,16 @@ import MobileDocEditorComponent from "ember-mobiledoc-editor/components/mobiledo
 import {action} from "@ember/object";
 import {run, debounce} from "@ember/runloop";
 import {utils as ghostHelperUtils} from "@tryghost/helpers";
-
+import {tracked} from "@glimmer/tracking";
 const {countWords} = ghostHelperUtils;
 
 export default class ContentEditorComponent extends MobileDocEditorComponent {
-
+	@tracked autocompleteText;
+	@tracked showAutocomplete = false;
+	@tracked autocompleteType = "characters";
+	get autocompletePrompt() {
+		return `Search for ${this.autocompleteType}s`;
+	}
 	@action setupEditorShortcuts(editor) {
 		editor.onTextInput({
 			text: "> ",
@@ -30,8 +35,21 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 		});
 	}
 
+	@action setupCharacterMentions(editor) {
+		editor.onTextInput({
+			text: "@",
+			name: "characters",
+			run: (editorInstance) => {
+				console.log(editorInstance.range.head);
+				this.showAutocomplete = true;
+				this.autocompleteType = "character";
+			}
+		});
+	}
+
 	didCreateEditor(editor) {
 		this.setupEditorShortcuts(editor);
+		this.setupCharacterMentions(editor);
 		super.didCreateEditor(...arguments);
 	}
 
