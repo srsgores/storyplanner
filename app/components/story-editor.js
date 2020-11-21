@@ -7,7 +7,7 @@ export default class StoryEditorComponent extends Component {
 
 	@action async addTimeline() {
 		const createdTimeline = this.store.createRecord("timeline", {story: this.args.story});
-		const defaultStaringEvent = this.store.createRecord("event", {timeline: createdTimeline});
+		const defaultStaringEvent = this.store.createRecord("event", {timeline: createdTimeline, story: this.args.story});
 		await defaultStaringEvent.save();
 		await createdTimeline.save();
 		return this.args.story.save();
