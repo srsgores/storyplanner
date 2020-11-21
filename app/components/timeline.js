@@ -6,6 +6,7 @@ import {inject as service} from "@ember/service";
 export default class TimelineComponent extends Component {
 	@service store;
 	@tracked sorting = ["startTime"];
+	@tracked draggedEvent;
 	@computed.sort("args.timeline.events", "sorting") sortedEvents;
 
 	@action async addEvent(eventAfter) {
@@ -31,5 +32,13 @@ export default class TimelineComponent extends Component {
 		await createdTimeline.save();
 		await event.save();
 		return await defaultStartingEvent.save();
+	}
+
+	@action moveEventBefore(droppedEvent, targetEvent) {
+		if (droppedEvent !== targetEvent && targetEvent.startTime) {
+			const oneMinuteBeforeStartTime = new Date(targetEvent.startTime.getTime() - 1 * 60000);
+			droppedEvent.startTime = oneMinuteBeforeStartTime;
+			return droppedEvent.save();
+		}
 	}
 }

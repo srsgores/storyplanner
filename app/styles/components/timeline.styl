@@ -19,3 +19,11 @@
 		margin-top 0.5em
 		.fork-event
 			padding 0.5em
+.event-container
+	&[draggable]
+		cursor move
+		transition 0.3s ease opacity, 0.3s ease transform
+		opacity 1
+	&.dragging
+		opacity 0.4
+		transform scale(0.8) rotate(3deg)

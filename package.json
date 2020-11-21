@@ -49,6 +49,7 @@
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-mobiledoc-dom-renderer": "^0.7.0",
     "ember-mobiledoc-editor": "git://github.com/srsgores/ember-mobiledoc-editor",
+    "ember-modifier": "^2.1.1",
     "ember-moment": "^8.0.1",
     "ember-qunit": "^4.6.0",
     "ember-resolver": "^8.0.0",

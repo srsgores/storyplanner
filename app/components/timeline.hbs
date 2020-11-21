@@ -9,7 +9,7 @@
 
 	<ul class="events">
 		{{#each this.sortedEvents as |event eventIndex|}}
-			<li class="event-container" data-test-id={{event.id}}>
+			<li class="event-container" data-test-id={{event.id}} {{draggable ondragstart=(fn (mut this.draggedEvent) event)}} {{droppable ondrop=(fn this.moveEventBefore this.draggedEvent event)}}>
 				<article class="event node">
 					{{#if event.isLoading}}
 						<progress></progress>
