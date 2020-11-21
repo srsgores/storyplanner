@@ -11,7 +11,7 @@
 
 	{{#if this.isTextarea}}
 		<div class="rich-text-editor-container" {{did-update this.setupRichTextEditor (get (get @model @field) "id")}}>
-			<ContentEditor @mobiledoc={{this.stagingDocument}} @on-change={{this.onContentChange}} class={{this.formControlClassName}} @placeholder="{{@field}}..." @spellcheck={{true}} required={{true}} {{on "focusin" this.onFocusIn}} {{on "focusout" this.onFocusOut}} @autofocus={{false}} @onWordCountChange={{fn (mut this.wordCount)}} as |editor|>
+			<ContentEditor @mobiledoc={{this.stagingDocument}} @on-change={{this.onContentChange}} class={{this.formControlClassName}} @placeholder="{{@field}}..." @spellcheck={{true}} required={{true}} {{on "focusin" this.onFocusIn}} {{on "focusout" this.onFocusOut}} @autofocus={{@autofocus}} @onWordCountChange={{fn (mut this.wordCount)}} as |editor|>
 				<nav class="mobiledoc-toolbar__container">
 					<ul class="mobiledoc-toolbar" role="menubar">
 						<li class="mobiledoc-toolbar__control">
