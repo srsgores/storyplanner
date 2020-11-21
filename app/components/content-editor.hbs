@@ -15,7 +15,7 @@
 
 <div class="mobiledoc-editor__editor-wrapper">
 	{{#if this.showAutocomplete}}
-		<FormField @model={{this}} @field="autocompleteText" list="{{this.elementId}}-options" @autofocus={{true}} @type="search"/>
+		<FormField @model={{this}} @field="autocompleteText" list="{{this.elementId}}-options" @autofocus={{true}} @type="search" @labelText={{this.autocompletePrompt}}/>
 		{{#if this.autocompleteOptions.length}}
 			<datalist id="{{this.elementId}}-options">
 				{{#each this.autocompleteOptions as |option|}}
