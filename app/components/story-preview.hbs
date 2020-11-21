@@ -1,10 +1,16 @@
-<article class="story-preview">
+<form class="story-preview">
 	{{#if this.hasText}}
 		{{#each this.sortedEvents as |event|}}
-			<section class="story-preview-section">
-				<RenderMobiledoc @mobiledoc={{event.text}}/>
-			</section>
+			<fieldset class="story-preview-section">
+				{{#if event.title.length}}
+					<legend>{{event.title}}</legend>
+				{{/if}}
+				<div class="story-preview-section-content">
+					<FormField @model={{event}} @field="summary" @type="textarea" class="summary-container"/>
+					<FormField @model={{event}} @field="text" @type="textarea" class="content-container"/>
+				</div>
+			</fieldset>
 		{{/each}}
 	{{/if}}
 	{{yield}}
-</article>
+</form>

@@ -1,0 +1,24 @@
+.story-preview
+	&-section
+		&-content
+			display flex
+			align-items center
+	.summary-container
+		flex 0
+		min-width 20em
+		background-color #231d1d69
+		transition 0.5s ease-out opacity, 0.2s ease filter, 0.3s ease background-color
+		&.focused
+			background-color rgba(35, 29, 29, 0.52)
+			.mobiledoc-toolbar__container
+				margin -2em 0
+		.mobiledoc-toolbar__container
+			position absolute
+			top 0
+		.mobiledoc-toolbar
+			white-space nowrap
+	.content-container
+		flex 1
+	.content-container, .summary-container
+		padding 1rem
+		box-sizing border-box
