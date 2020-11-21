@@ -47,8 +47,6 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 		if (this.onWordCountChange) {
 			debounce(this, "updateWordCount", editor, 500);
 		}
-		if (this["on-change"]) {
-			this["on-change"](this.editor.mobiledoc);
-		}
+		super.postDidChange(...arguments);
 	}
 }
