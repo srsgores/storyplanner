@@ -17,7 +17,7 @@
 						<NodeEditor @node={{event}}>
 							<ul class="contextual-actions">
 								<li class="action contextual-action">
-									<LinkTo @route="stories.story.timeline.event" @models={{array event.timeline.story event.timeline event}}><span class="visuallyhidden">Edit content for this event</span>{{svg-jar "edit"}}</LinkTo>
+									<LinkTo @route="stories.story.timelines.event" @models={{array event}}><span class="visuallyhidden">Edit content for this event</span>{{svg-jar "edit"}}</LinkTo>
 								</li>
 								{{#if eventIndex}}
 									<li class="action contextual-action">

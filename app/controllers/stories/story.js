@@ -4,7 +4,7 @@ export default class StoriesStoryController extends Controller {
 	get navItems() {
 		return [
 			{
-				route: "stories.story.index",
+				route: "stories.story.timelines",
 				model: this.model,
 				text: "Timelines",
 				icon: "linear_scale"

@@ -1,0 +1,25 @@
+:root
+	--modal-background-colour #101d1bfa
+.modal
+	animation slideInBottom 0.2s ease-out
+	position fixed
+	top 0
+	left 0
+	z-index 4
+	width 100%
+	height 100%
+	overflow-y auto
+	background-color var(--modal-background-colour)
+	color inherit
+	border 0
+	padding var(--box-spacing)
+	box-sizing border-box
+	&-action
+		display block
+	&-actions
+		text-align right
+@keyframes slideInBottom
+	0%
+		transform translateY(100%)
+	100%
+		transform translateY(0)
