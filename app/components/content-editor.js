@@ -17,6 +17,17 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 				});
 			}
 		});
+
+		// borrowed from https://github.com/bustle/mobiledoc-kit/blob/master/src/js/editor/text-input-handlers.ts#L84
+		editor.onTextInput({
+			match: /^(#{1,6}) $/,
+			name: "heading",
+			run(editor, matches) {
+				const capture = matches[1];
+				const headingTag = "h" + capture.length;
+				editor.replaceWithHeaderSection(editor, headingTag);
+			}
+		});
 	}
 
 	didCreateEditor(editor) {
