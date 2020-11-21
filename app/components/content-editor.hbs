@@ -1,0 +1,69 @@
+{{yield (hash
+				editor=editor
+				activeMarkupTagNames=activeMarkupTagNames
+				activeSectionTagNames=activeSectionTagNames
+				activeSectionAttributes=activeSectionAttributes
+				toggleMarkup=(action "toggleMarkup")
+				toggleLink=(action "toggleLink")
+				addCard=(action "addCard")
+				addAtom=(action "addAtom")
+				addCardInEditMode=(action "addCardInEditMode")
+				toggleSection=(action "toggleSection")
+				setAttribute=(action "setAttribute")
+				isDefaultAttributeValue=(action "isDefaultAttributeValue")
+		)}}
+
+<div class="mobiledoc-editor__editor-wrapper">
+	{{#if this.showAutocomplete}}
+		<FormField @model={{this}} @field="autocompleteText" list="{{this.elementId}}-options" @autofocus={{true}} @type="search"/>
+		{{#if this.autocompleteOptions.length}}
+			<datalist id="{{this.elementId}}-options">
+				{{#each this.autocompleteOptions as |option|}}
+					<option value={{option.id}}>{{option.name}}</option>
+				{{/each}}
+			</datalist>
+		{{/if}}
+	{{/if}}
+	<div class="mobiledoc-editor__editor"></div>
+</div>
+
+{{#if linkOffsets}}
+	{{#tether-to-selection}}
+		{{mobiledoc-link-prompt
+				on-submit=(action "completeLink")
+				on-cancel=(action "cancelLink")}}
+	{{/tether-to-selection}}
+{{/if}}
+
+{{#each componentCards as |card|}}
+	{{#ember-wormhole to=card.destinationElementId}}
+	{{! LEGACY: Payload is passed as the legacy "data" attr below. This
+		is deprecated and should be removed before 1.0 }}
+		{{component card.cardName
+					editor=editor
+					postModel=card.postModel
+					cardName=card.cardName
+					payload=card.payload
+					data=card.payload
+					env=card.env
+					options=card.options
+					editCard=(action card.env.edit)
+					saveCard=(action card.env.save)
+					cancelCard=(action card.env.cancel)
+					removeCard=(action card.env.remove)}}
+	{{/ember-wormhole}}
+{{/each}}
+
+{{#each componentAtoms as |atom|}}
+	{{#ember-wormhole to=atom.destinationElementId}}
+		{{component atom.atomName
+					editor=editor
+					postModel=atom.postModel
+					atomName=atom.atomName
+					payload=atom.payload
+					value=atom.value
+					options=atom.options
+					saveAtom=(action atom.callbacks.save)
+		}}
+	{{/ember-wormhole}}
+{{/each}}
