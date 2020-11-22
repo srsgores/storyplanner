@@ -98,4 +98,10 @@ export default class FormFieldComponent extends Component {
 			this.hasFocus = true;
 		});
 	}
+
+	@action onKeyDown() {
+		if (this.args.onKeyDown) {
+			this.args.onKeyDown(...arguments);
+		}
+	}
 }

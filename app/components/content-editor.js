@@ -8,9 +8,11 @@ const {countWords} = ghostHelperUtils;
 export default class ContentEditorComponent extends MobileDocEditorComponent {
 	@tracked autocompleteText;
 	@tracked showAutocomplete = false;
-	@tracked autocompleteType = "characters";
+	@tracked modelName = "character";
+	@tracked previousCursorPosition;
+
 	get autocompletePrompt() {
-		return `Search for ${this.autocompleteType}s`;
+		return `Search for ${this.modelName}s`;
 	}
 	@action setupEditorShortcuts(editor) {
 		editor.onTextInput({
@@ -42,7 +44,8 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 			run: (editorInstance) => {
 				console.log(editorInstance.range.head);
 				this.showAutocomplete = true;
-				this.autocompleteType = "character";
+				this.modelName = "character";
+				this.previousCursorPosiiton = editorInstance.position;
 			}
 		});
 	}
