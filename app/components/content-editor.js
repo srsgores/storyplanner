@@ -1,8 +1,9 @@
 import MobileDocEditorComponent from "ember-mobiledoc-editor/components/mobiledoc-editor/component";
 import {action} from "@ember/object";
-import {run, debounce} from "@ember/runloop";
+import {debounce} from "@ember/runloop";
 import {utils as ghostHelperUtils} from "@tryghost/helpers";
 import {tracked} from "@glimmer/tracking";
+
 const {countWords} = ghostHelperUtils;
 
 export default class ContentEditorComponent extends MobileDocEditorComponent {
@@ -14,14 +15,26 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 	get autocompletePrompt() {
 		return `Search for ${this.modelName}s`;
 	}
+
 	@action setupEditorShortcuts(editor) {
 		editor.onTextInput({
-			text: "> ",
 			name: "content-editor",
-			run(editorInstance) {
-				run.next(this, function() {
-					editorInstance.toggleSection("blockquote");
-				});
+			match: /^> /,
+			run(editor, matches) {
+				let {range} = editor;
+				let {head, head: {section}} = range;
+				let text = section.textUntil(head);
+
+				// ensure cursor is at the end of the matched text so we don't convert text the users wants to start with `> ` and that we're not already on a blockquote section
+				if (text === matches[0] && section.tagName !== "blockquote") {
+					editor.run((postEditor) => {
+						range = range.extend(-(matches[0].length));
+						let position = postEditor.deleteRange(range);
+						postEditor.setRange(position);
+
+						postEditor.toggleSection("blockquote");
+					});
+				}
 			}
 		});
 
