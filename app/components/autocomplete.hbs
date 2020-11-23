@@ -1,12 +1,12 @@
-<form action="" role="search">
+<form action="" role="search" {{did-update this.fetchMatches @modelName}}>
 	<label for="{{this.elementId}}-autocomplete">{{this.autocompletePrompt}}</label>
 	<input type="search" id="{{this.elementId}}-autocomplete" autocomplete required list="{{this.elementId}}-options" {{auto-focus}}/>
 </form>
 
 {{#if this.options.length}}
 	<datalist id="{{this.elementId}}-options">
-		{{#each this.options as |option|}}
-			<option>{{option.name}}</option>
+		{{#each this.options as |autocompleteOption|}}
+			<option>{{autocompleteOption.name}}</option>
 		{{/each}}
 	</datalist>
 {{/if}}

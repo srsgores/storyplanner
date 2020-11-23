@@ -23,6 +23,10 @@ export default class AutocompleteComponent extends Component {
 			this.isLoading = false;
 		});
 	}
+	constructor() {
+		super(...arguments);
+		this.fetchMatches();
+	}
 
 	@action fetchMatches() {
 		this.isLoading = true;
