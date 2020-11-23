@@ -1,5 +1,5 @@
 <article class="timeline" ...attributes>
-	<NodeEditor @node={{@timeline}} class="timeline-edit-form">
+	<NodeEditor @node={{@timeline}} @story={{@timeline.story}} class="timeline-edit-form">
 		<ul class="contextual-actions">
 			<li class="action contextual-action">
 				<button type="button" {{on "click" this.remove}} title="Remove timeline">{{svg-jar "delete"}}</button>
@@ -11,7 +11,7 @@
 		{{#each this.sortedEvents as |event eventIndex|}}
 			<li class="event-container" data-test-id={{event.id}} {{draggable ondragstart=(fn (mut this.draggedEvent) event)}} {{droppable ondrop=(fn this.moveEventBefore this.draggedEvent event)}}>
 				<article class="event node">
-					<NodeEditor @node={{event}}>
+					<NodeEditor @node={{event}} @story={{@timeline.story}}>
 						<ul class="contextual-actions">
 							<li class="action contextual-action">
 								<LinkTo @route="stories.story.timelines.event" @models={{array event}}><span class="visuallyhidden">Edit content for this event</span>{{svg-jar "edit"}}</LinkTo>

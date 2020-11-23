@@ -1,12 +1,14 @@
 import MobileDocEditorComponent from "ember-mobiledoc-editor/components/mobiledoc-editor/component";
 import {action} from "@ember/object";
-import {debounce, run} from "@ember/runloop";
+import {debounce} from "@ember/runloop";
 import {utils as ghostHelperUtils} from "@tryghost/helpers";
 import {tracked} from "@glimmer/tracking";
 import createComponentCard from "ember-mobiledoc-editor/utils/create-component-card";
+import createComponentAtom from "ember-mobiledoc-editor/utils/create-component-atom";
 const {countWords} = ghostHelperUtils;
 
 export const SUPPORTED_CARDS = ["divider"];
+export const SUPPORTED_ATOMS = ["character-mention"];
 
 export default class ContentEditorComponent extends MobileDocEditorComponent {
 	@tracked autocompleteText;
@@ -17,7 +19,9 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 	constructor() {
 		super(...arguments);
 		this.cards = SUPPORTED_CARDS.map((cardName) => createComponentCard(cardName));
+		this.atoms = SUPPORTED_ATOMS.map((atomName) => createComponentAtom(atomName));
 	}
+
 	get autocompletePrompt() {
 		return `Search for ${this.modelName}s`;
 	}
@@ -105,6 +109,19 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 				postEditor.setRange(nextSection.headPosition());
 			}
 		});
+	}
+
+	@action onSelectOption(model) {
+		this.editor.insertAtom(`${this.modelName}-mention`, model.name, {
+			character: {
+				id: model.id,
+				name: model.name
+			},
+			story: {
+				id: this.story.id
+			}
+		});
+		this.showAutocomplete = false;
 	}
 
 	didCreateEditor(editor) {

@@ -10,7 +10,7 @@
 		{{#if @node.isLoading}}
 			<progress></progress>
 		{{else}}
-			<FormField @model={{@node}} @field="summary" class="node-summary"/>
+			<FormField @model={{@node}} @story={{@story}} @field="summary" class="node-summary"/>
 		{{/if}}
 
 
