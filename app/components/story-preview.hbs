@@ -6,8 +6,8 @@
 					<legend class="visuallyhidden">{{event.title}}</legend>
 				{{/if}}
 				<div class="story-preview-section-content">
-					<FormField @model={{event}} @story={{@story}} @field="summary" @type="textarea" class="summary-container"/>
-					<FormField @model={{event}} @story={{@story}} @field="text" @type="textarea" class="content-container"/>
+					<FormField @model={{event}} @field="summary" @type="textarea" class="summary-container"/>
+					<FormField @model={{event}} @field="text" @type="textarea" class="content-container"/>
 				</div>
 			</fieldset>
 		{{/each}}

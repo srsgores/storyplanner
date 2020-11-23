@@ -12,8 +12,8 @@
 	</fieldset>
 	<fieldset>
 		<legend>Background, Notes & Details</legend>
-		<FormField @story={{@story}} @model={{@character}} @field="background" @type="textarea"/>
-		<FormField @story={{@story}} @model={{@character}} @field="notes" @type="textarea"/>
+		<FormField @model={{@character}} @field="background" @type="textarea"/>
+		<FormField @model={{@character}} @field="notes" @type="textarea"/>
 	</fieldset>
 	{{yield}}
 </form>

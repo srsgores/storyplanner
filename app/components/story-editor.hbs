@@ -1,5 +1,5 @@
 <article class="story-editor-container" ...attributes>
-	<NodeEditor class="story-editor" @node={{@story}} @story={{@story}} @onSubmit={{this.save}}/>
+	<NodeEditor class="story-editor" @node={{@story}} @onSubmit={{this.save}}/>
 
 	<ol class="timelines">
 		{{#each @story.timelines as |timeline index|}}
