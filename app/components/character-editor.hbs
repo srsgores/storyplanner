@@ -11,6 +11,11 @@
 		<FormField @model={{@character}} @field="sexuality"/>
 	</fieldset>
 	<fieldset>
+		<legend>Personality</legend>
+		<FormField @model={{@character}} @field="firstImpression" @type="textarea"/>
+		<FormField @model={{@character}} @field="corePersonality" @type="textarea"/>
+	</fieldset>
+	<fieldset>
 		<legend>Background, Notes & Details</legend>
 		<FormField @model={{@character}} @field="background" @type="textarea"/>
 		<FormField @model={{@character}} @field="notes" @type="textarea"/>
