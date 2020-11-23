@@ -11,10 +11,8 @@ export const SUPPORTED_CARDS = ["divider"];
 export const SUPPORTED_ATOMS = ["character-mention"];
 
 export default class ContentEditorComponent extends MobileDocEditorComponent {
-	@tracked autocompleteText;
 	@tracked showAutocomplete = false;
 	@tracked modelName = "character";
-	@tracked previousCursorPosition;
 
 	constructor() {
 		super(...arguments);
@@ -79,10 +77,9 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 			text: "@",
 			name: "characters",
 			run: (editorInstance) => {
-				console.log(editorInstance.range.head);
+				console.log(editorInstance.range);
 				this.showAutocomplete = true;
 				this.modelName = "character";
-				this.previousCursorPosiiton = editorInstance.position;
 			}
 		});
 	}

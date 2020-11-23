@@ -4,6 +4,8 @@ import {guidFor} from "@ember/object/internals";
 import {action, set} from "@ember/object";
 import {debounce, run} from "@ember/runloop";
 import {inject as service} from "@ember/service";
+import {isEmpty} from "@ember/utils";
+import Range from "mobiledoc-kit/utils/cursor/range";
 
 export default class AutocompleteComponent extends Component {
 	elementId = guidFor(this);
@@ -11,13 +13,16 @@ export default class AutocompleteComponent extends Component {
 	@tracked selectedOptionIndex = 0;
 	@tracked isLoading = false;
 	@service store;
+	@tracked openRange;
 
 	get selectedOption() {
 		return this.options[this.selectedOptionIndex];
 	}
 
 	updateMatchResults() {
-		this.store.findAll(this.args.modelName).then((matches) => {
+		const queryString = this.openRange.head.section.text.substring(this.openRange.head.offset, this.args.editor.range.head.offset);
+		const query = isEmpty(queryString) ? {} : {filter: {name: new RegExp(queryString)}};
+		this.store.query(this.args.modelName, query).then((matches) => {
 			this.options = matches.map((model, index) => {
 				return {
 					model,
@@ -34,6 +39,14 @@ export default class AutocompleteComponent extends Component {
 	constructor() {
 		super(...arguments);
 		this.registerKeyboardHandlers();
+		this.openRange = this.args.editor.range;
+		this.args.editor.onTextInput({
+			name: "autocomplete-menu",
+			match: /(\w)/,
+			run: () => {
+				this.fetchMatches();
+			}
+		})
 		this.fetchMatches();
 	}
 
@@ -93,12 +106,14 @@ export default class AutocompleteComponent extends Component {
 
 	@action fetchMatches() {
 		this.isLoading = true;
-		debounce(this, "updateMatchResults", 500);
+		debounce(this, "updateMatchResults", 300);
 	}
 
 	@action selectOption() {
 		if (this.selectedOption && this.selectedOption.model) {
 			let {model} = this.selectedOption;
+			const rangeToRemove = new Range(this.openRange.head, this.args.editor.range.tail).extend(-1);
+			this.args.editor.deleteRange(rangeToRemove);
 			if (this.args.onSelectOption) {
 				this.args.onSelectOption(model);
 			}
