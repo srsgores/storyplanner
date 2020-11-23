@@ -1,0 +1,18 @@
+:root
+	--editor-autocomplete-bottom-offset var(--content-editor-padding)
+	--editor-autocomplete-right-offset var(--content-editor-padding)
+[role="listbox"]
+	padding 1em
+	position absolute
+	top var(--editor-autocomplete-bottom-offest)
+	right var(--editor-autocomplete-right-offset)
+[role="option"]
+	opacity 0.8
+	border 0.1em solid
+	border-color transparent
+	transition 0.2s ease opacity, 0.2s ease border-color
+
+[role="option"][aria-selected="true"]
+	opacity 1
+	font-weight bold
+	border-color currentColor

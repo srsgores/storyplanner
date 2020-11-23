@@ -1,14 +1,15 @@
-<form action="" role="search" {{did-update this.fetchMatches @modelName}}>
-	<label for="{{this.elementId}}-autocomplete">{{this.autocompletePrompt}}</label>
-	<input type="search" id="{{this.elementId}}-autocomplete" autocomplete required list="{{this.elementId}}-options" {{auto-focus}}/>
-</form>
-
 {{#if this.options.length}}
-	<datalist id="{{this.elementId}}-options">
+	<ul id="{{this.elementId}}-options" role="listbox" aria-live="assertive">
 		{{#each this.options as |autocompleteOption|}}
-			<option>{{autocompleteOption.name}}</option>
+			<li
+				role="option"
+				aria-selected="{{if autocompleteOption.isSelected "true" "false"}}"
+				aria-setsize={{this.options.length}}
+				{{on "click" (fn this.selectOption autocompleteOption)}}>
+				{{autocompleteOption.name}}
+			</li>
 		{{/each}}
-	</datalist>
+	</ul>
 {{/if}}
 
 {{yield}}
