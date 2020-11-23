@@ -5,6 +5,8 @@ import {utils as ghostHelperUtils} from "@tryghost/helpers";
 import {tracked} from "@glimmer/tracking";
 import createComponentCard from "ember-mobiledoc-editor/utils/create-component-card";
 import createComponentAtom from "ember-mobiledoc-editor/utils/create-component-atom";
+import {get} from "@ember/object";
+
 const {countWords} = ghostHelperUtils;
 
 export const SUPPORTED_CARDS = ["divider"];
@@ -115,7 +117,7 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 				name: model.name
 			},
 			story: {
-				id: this.story.id
+				id: get(this.story, "id")
 			}
 		});
 		this.showAutocomplete = false;
