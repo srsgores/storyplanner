@@ -8,5 +8,5 @@ export default class CharacterModel extends Model {
 	@attr("number") age;
 	@attr() background;
 	@attr() notes;
-	@belongsTo("story", {autosave: true}) story;
+	@belongsTo("story", {autosave: true, inverse: "characters"}) story;
 }

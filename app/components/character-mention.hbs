@@ -1,2 +1,2 @@
-<LinkTo @route="stories.story.characters.character" @models={{array @payload.story.id @payload.character.id}}>@{{@payload.character.name}}</LinkTo>
+<LinkTo @route="stories.story.characters.character" @models={{array @payload.character.story.id @payload.character.id}}>@{{@payload.character.name}}</LinkTo>
 {{yield}}

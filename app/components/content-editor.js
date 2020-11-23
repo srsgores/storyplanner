@@ -113,11 +113,11 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 	@action onSelectOption(model) {
 		this.editor.insertAtom(`${this.modelName}-mention`, model.name, {
 			character: {
-				id: model.id,
-				name: model.name
-			},
-			story: {
-				id: get(this.story, "id")
+				id: get(model, "id"),
+				name: get(model, "name"),
+				story: {
+					id: get(model, "story.id")
+				}
 			}
 		});
 		this.showAutocomplete = false;
