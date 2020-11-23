@@ -15,7 +15,7 @@
 
 <div class="mobiledoc-editor__editor-wrapper">
 	{{#if this.showAutocomplete}}
-		<Autocomplete @autofocus={{true}} @onSelectValue={{fn (mut this.showAutocomplete) false}} @labelText={{this.autocompletePrompt}} @modelName={{this.modelName}} @editor={{this.editor}} @onClose={{fn (mut this.showAutocomplete) false}}/>
+		<Autocomplete @autofocus={{true}} @onSelectOption={{fn (mut this.showAutocomplete) false}} @labelText={{this.autocompletePrompt}} @modelName={{this.modelName}} @editor={{this.editor}} @onClose={{fn (mut this.showAutocomplete) false}}/>
 	{{/if}}
 	<div class="mobiledoc-editor__editor"></div>
 </div>

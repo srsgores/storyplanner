@@ -33,6 +33,16 @@ export default class AutocompleteComponent extends Component {
 
 	constructor() {
 		super(...arguments);
+		this.registerKeyboardHandlers();
+		this.fetchMatches();
+	}
+
+	willDestroy() {
+		super.willDestroy();
+		this.unregisterKeyboardHandlers();
+	}
+
+	registerKeyboardHandlers() {
 		const {editor} = this.args;
 		if (editor) {
 			editor.registerKeyCommand({
@@ -48,7 +58,7 @@ export default class AutocompleteComponent extends Component {
 			editor.registerKeyCommand({
 				str: "ENTER",
 				name: "autocomplete-menu",
-				run: run.bind(this, this.selectOption, this.selectedOption)
+				run: run.bind(this, this.selectOption)
 			});
 
 			editor.registerKeyCommand({
@@ -75,7 +85,10 @@ export default class AutocompleteComponent extends Component {
 				run: run.bind(this, this.moveSelection, "RIGHT")
 			});
 		}
-		this.fetchMatches();
+	}
+
+	unregisterKeyboardHandlers() {
+		this.args.editor.unregisterKeyCommands("autocomplete-menu");
 	}
 
 	@action fetchMatches() {
@@ -83,13 +96,14 @@ export default class AutocompleteComponent extends Component {
 		debounce(this, "updateMatchResults", 500);
 	}
 
-	@action selectOption(option) {
-		if (option && option.model) {
-			let {model} = option;
+	@action selectOption() {
+		if (this.selectedOption && this.selectedOption.model) {
+			let {model} = this.selectedOption;
 			if (this.args.onSelectOption) {
 				this.args.onSelectOption(model);
 			}
-			option.isSelected = false;
+			set(this.selectedOption, "isSelected", false);
+			this.selectedOptionIndex = 0;
 		}
 	}
 
