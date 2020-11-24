@@ -1,0 +1,11 @@
+<form action="">
+	<fieldset>
+		<legend>Basic Location Information</legend>
+		<FormField @model={{this.model}} @field="name"/>
+	</fieldset>
+	<fieldset>
+		<legend>Description & Notes</legend>
+		<FormField @model={{this.model}} @field="description"/>
+	</fieldset>
+	{{outlet}}
+</form>

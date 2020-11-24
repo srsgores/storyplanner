@@ -16,6 +16,12 @@ export default class StoriesStoryController extends Controller {
 				icon: "people_alt"
 			},
 			{
+				route: "stories.story.locations",
+				model: this.model,
+				text: "Locations",
+				icon: "location_city"
+			},
+			{
 				route: "stories.story.preview",
 				model: this.model,
 				text: "Preview",

@@ -16,6 +16,9 @@ Router.map(function() {
 				this.route("character", {path: ":character_id"});
 			});
 			this.route("preview");
+			this.route("locations", function() {
+				this.route("location", {path: ":location_id"});
+			});
 		});
 		this.route("create");
 	});
