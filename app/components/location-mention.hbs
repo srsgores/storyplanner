@@ -1,0 +1,8 @@
+<LinkTo @route="stories.story.locations.location" @models={{array @payload.model.story @payload.model}}>
+	{{#if @payload.model.name.length}}
+		{{@payload.model.name}}
+	{{else}}
+		Unnamed location
+	{{/if}}
+	{{yield}}
+</LinkTo>

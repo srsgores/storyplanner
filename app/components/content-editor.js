@@ -10,7 +10,7 @@ import {get} from "@ember/object";
 const {countWords} = ghostHelperUtils;
 
 export const SUPPORTED_CARDS = ["divider"];
-export const SUPPORTED_ATOMS = ["character-mention"];
+export const SUPPORTED_ATOMS = ["character-mention", "location-mention"];
 
 export default class ContentEditorComponent extends MobileDocEditorComponent {
 	@tracked showAutocomplete = false;
@@ -86,6 +86,18 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 		});
 	}
 
+	@action setupLocationMentions(editor) {
+		editor.onTextInput({
+			text: "#",
+			name: "locations",
+			run: (editorInstance) => {
+				console.log(editorInstance);
+				this.showAutocomplete = true;
+				this.modelName = "location";
+			}
+		})
+	}
+
 	@action replaceWithCardSection(cardName, range, payload) {
 		const editor = this.editor;
 		const {head: {section}} = range;
@@ -112,7 +124,7 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 
 	@action onSelectOption(model) {
 		this.editor.insertAtom(`${this.modelName}-mention`, model.name, {
-			character: {
+			model: {
 				id: get(model, "id"),
 				name: get(model, "name"),
 				story: {
@@ -126,6 +138,7 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 	didCreateEditor(editor) {
 		this.setupEditorShortcuts(editor);
 		this.setupCharacterMentions(editor);
+		this.setupLocationMentions(editor);
 		super.didCreateEditor(...arguments);
 	}
 
