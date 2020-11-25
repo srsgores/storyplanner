@@ -3,7 +3,7 @@
 	{{#if this.showAutocomplete}}
 		<Autocomplete @autofocus={{true}} @onSelectOption={{this.onSelectOption}} @labelText={{this.autocompletePrompt}} @modelName={{this.modelName}} @editor={{this.editor}} @onClose={{fn (mut this.showAutocomplete) false}}/>
 	{{/if}}
-	<div class="mobiledoc-editor__editor"></div>
+	<div class="mobiledoc-editor__editor" aria-multiline="true" role="textbox" aria-label={{this.placeholder}}></div>
 </div>
 
 {{#if linkOffsets}}
