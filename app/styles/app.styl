@@ -106,7 +106,11 @@ header[role="banner"]
 main[role="main"]
 	height inherit
 	flex 1
-
+.padded
+	padding var(--box-spacing)
+	box-sizing border-box
+.nav-item
+	display inline-block
 .nav-item-link
 	display block
 	padding 0.5em 1em
@@ -144,8 +148,6 @@ svg
 	box-sizing border-box
 .character-editor
 	flex 1
-	padding var(--box-spacing)
-	box-sizing border-box
 .character
 	display flex
 	justify-content space-between

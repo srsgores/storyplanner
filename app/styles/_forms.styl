@@ -20,13 +20,17 @@ input, textarea
 	&:focus
 		border-bottom-width 0.15em
 		border-bottom-color currentColor
-
+form
+	p
+		& + *
+			margin-top 1em
 textarea
 	width 100%
 
 legend
-	font-size 1.2em
+	font-size 1.4em
 	font-weight bold
+	margin-bottom 1rem
 .primary-button
 	transition 0.2s ease background-color
 	background-color #8bc34a82
