@@ -1,7 +1,7 @@
 import Component from "@glimmer/component";
 import {assert} from "@ember/debug";
 import {guidFor} from "@ember/object/internals";
-import {action, computed} from "@ember/object";
+import {action, computed, get} from "@ember/object";
 import {tracked} from "@glimmer/tracking";
 import {isEmpty} from "@ember/utils";
 import guessType from "ember-former/utils/guess-type";
@@ -49,7 +49,7 @@ export default class FormFieldComponent extends Component {
 	}
 
 	get hasValue() {
-		return !isEmpty(this.args.model[this.args.field]);
+		return !isEmpty(get(this.args.model, this.args.field));
 	}
 
 	constructor() {
@@ -59,7 +59,9 @@ export default class FormFieldComponent extends Component {
 		if (!isEmpty(this.args.fieldId)) {
 			this.elementId = this.args.fieldId;
 		}
-		this.initializeEditor();
+		if (this.isTextarea) {
+			this.initializeEditor();
+		}
 	}
 
 	@action setupRichTextEditor() {
