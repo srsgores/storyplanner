@@ -6,6 +6,6 @@ export default class ApplicationRoute extends Route {
 	}
 	setupController(controller) {
 		super.afterModel();
-		controller.set("navItems", [{route: "stories", text: "Stories"}]);
+		controller.set("navItems", [{route: "stories", text: "Stories"}, {route: "settings", text: "Settings"}]);
 	}
 }

@@ -1,0 +1,20 @@
+<form action="" class="padded">
+	<fieldset>
+		<legend>General Settings</legend>
+		<FormField @model={{this.settings.settings}} @field="maxWordCount" @type="number" min="1"/>
+	</fieldset>
+	<fieldset>
+		<legend>Export Data</legend>
+		<p>Export all of the stories and their content to a <code>.json</code> file for importing into another machine.</p>
+		<button type="button" {{on "click" this.exportData}}>Export Stories to .json file {{svg-jar "file_download"}}</button>
+	</fieldset>
+	<fieldset>
+		<legend>Import Data</legend>
+		<p>Import any or stories, events, or characters.</p>
+		<p><strong>Warning!  Will overwrite all data</strong>.</p>
+		<label for="import-settings">JSON file to import</label>
+		<Input type="file" @value={{this.uploadedSettingsFile}} {{on "change" this.importData}} id="import-settings"/>
+	</fieldset>
+</form>
+
+{{outlet}}
