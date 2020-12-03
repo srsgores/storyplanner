@@ -17,12 +17,14 @@
 
 	</fieldset>
 	{{#if this.isEvent}}
-		<details>
+		<details {{on "toggle" this.toggleEditEventTimings}}>
 			<summary><span class="visuallyhidden">Event Timing</span>{{svg-jar "access_time"}}</summary>
 			<fieldset aria-live="assertive" aria-atomic="true">
 				<legend class="visuallyhidden">Timing Information</legend>
-				<FormField @model={{@node}} @field="startTime" @type="datetime-local" @max={{@node.endTime}} @fieldId="{{this.elementId}}-start-time"/>
-				<FormField @model={{@node}} @field="endTime" @type="datetime-local" @min={{@node.startTime}} @fieldId="{{this.elementId}}-end-time"/>
+				{{#if this.eventTimingsToggled}}
+					<FormField @model={{@node}} @field="startTime" @type="datetime-local" @max={{@node.endTime}} @fieldId="{{this.elementId}}-start-time"/>
+					<FormField @model={{@node}} @field="endTime" @type="datetime-local" @min={{@node.startTime}} @fieldId="{{this.elementId}}-end-time"/>
+				{{/if}}
 			</fieldset>
 		</details>
 	{{/if}}
