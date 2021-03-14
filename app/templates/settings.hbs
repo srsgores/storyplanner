@@ -4,6 +4,10 @@
 		<FormField class="gridded" @model={{this.settings.settings}} @field="maxWordCount" @type="number" min="1"/>
 	</fieldset>
 	<fieldset class="form-group">
+		<legend>Event Settings</legend>
+		<FormField class="gridded" @model={{this.settings.settings}} @field="defaultDuration" @type="duration"/>
+	</fieldset>
+	<fieldset class="form-group">
 		<legend>Export Data</legend>
 		<p>Export all of the stories and their content to a <code>.json</code> file for importing into another machine.</p>
 		<button type="button" {{on "click" this.exportData}}>Export Stories to .json file {{svg-jar "file_download"}}</button>
