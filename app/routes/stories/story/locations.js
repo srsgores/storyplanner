@@ -7,8 +7,9 @@ export default class StoriesStoryLocationsRoute extends Route {
 			filter: {
 				story: story.id
 			}
-		})
+		});
 	}
+
 	setupController(controller) {
 		super.setupController(...arguments);
 		controller.set("story", this.modelFor("stories.story"));

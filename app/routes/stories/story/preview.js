@@ -12,7 +12,7 @@ export default class StoriesStoryPreviewRoute extends Route {
 			return {
 				events,
 				story: activeStory
-			}
+			};
 		});
 	}
 }
