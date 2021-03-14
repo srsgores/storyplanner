@@ -1,0 +1,15 @@
+<article class="login-form-container" ...attributes>
+	<form action="" method="POST" class="login-form padded" aria-labelledby="form-title" {{on "submit" this.onSubmit}}>
+		{{#if @title.length}}
+			<h1 class="form-title" id="form-title">{{@title}}</h1>
+		{{/if}}
+		{{outlet}}
+		<FormField @model={{this}} @field="email"/>
+		<FormField @model={{this}} @field="password"/>
+		{{#if @submitText.length}}
+			<footer class="form-actions">
+				<button type="submit">{{@submitText}}</button>
+			</footer>
+		{{/if}}
+	</form>
+</article>

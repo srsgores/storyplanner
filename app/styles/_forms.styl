@@ -8,7 +8,7 @@ input, textarea
 	font-size inherit
 	transition 0.2s ease background-color, 0.2s ease border-color, 0.1s ease border-bottom-width
 	border none
-	border-bottom 0.1em solid transparent
+	border-bottom 0.1em solid rgba(255, 255, 255, 0.5)
 	color inherit
 	box-sizing border-box
 	padding var(--form-padding-vertical) var(--form-padding-horizontal)
@@ -16,7 +16,7 @@ input, textarea
 	font-weight inherit
 	text-align inherit
 	&:hover
-		border-bottom-color rgba(255, 255, 255, 0.6)
+		border-bottom-color rgba(255, 255, 255, 0.7)
 	&:focus
 		border-bottom-width 0.15em
 		border-bottom-color currentColor
@@ -54,3 +54,32 @@ legend
 		margin-top 1.5em
 .settings-form
 	background-color #3c3c3c69
+
+.form-actions
+	margin-top 2.5em
+	button[type="submit"]
+		display block
+		width 100%
+		font-size 1.1em
+		background-color #1497d299
+		&:hover, &:active
+			background-color #1475d2
+.form-title
+	font-size 2em
+	font-weight bold
+	margin-bottom 1em
+.form-help
+	line-height 1.5
+	margin 1em 0
+	& + &
+		marign-top 0
+.login-form
+	margin 0 15%
+	&-container
+		height inherit
+	background-color rgba(0, 0, 0, 0.29)
+	&-container
+		display flex
+		align-items center
+		justify-content center
+	flex-grow 0
