@@ -4,6 +4,7 @@ export default class EventModel extends Model {
 	@attr("string") title;
 	@attr() summary;
 	@attr() text;
+	@attr("number") duration;
 	@attr("date", {defaultValue: () => new Date()}) startTime;
 	@attr("date", {defaultValue: () => new Date(Date.now() + 300000)}) endTime;
 	@belongsTo("timeline", {autosave: true}) timeline;
