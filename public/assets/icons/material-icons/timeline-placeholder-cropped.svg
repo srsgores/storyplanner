@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="9 4 320 42" enable-background="new 9 4 320 42" xml:space="preserve">
+<title>Loading...</title>
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="9" y="4" width="320" height="22"/>
+	</defs>
+	<defs>
+		<rect id="SVGID_2_" x="18" y="14" width="303" height="6"/>
+	</defs>
+	<defs>
+		<rect id="SVGID_3_" x="11" y="33" width="108" height="13"/>
+	</defs>
+	<defs>
+		<rect id="SVGID_4_" x="129" y="33" width="60" height="13"/>
+	</defs>
+	<defs>
+		<rect id="SVGID_5_" x="196" y="33" width="60" height="13"/>
+	</defs>
+	<clipPath id="SVGID_6_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<clipPath id="SVGID_7_" clip-path="url(#SVGID_6_)">
+		<use xlink:href="#SVGID_2_"  overflow="visible"/>
+	</clipPath>
+	<clipPath id="SVGID_8_" clip-path="url(#SVGID_7_)">
+		<use xlink:href="#SVGID_3_"  overflow="visible"/>
+	</clipPath>
+	<clipPath id="SVGID_9_" clip-path="url(#SVGID_8_)">
+		<use xlink:href="#SVGID_4_"  overflow="visible"/>
+	</clipPath>
+	<clipPath id="SVGID_10_" clip-path="url(#SVGID_9_)">
+		<use xlink:href="#SVGID_5_"  overflow="visible"/>
+	</clipPath>
+	
+		<linearGradient id="SVGID_11_" gradientUnits="userSpaceOnUse" x1="-759.4012" y1="1054.9436" x2="-758.4012" y2="1054.9436" gradientTransform="matrix(476 0 0 -124 361475 130875)">
+		<stop  offset="0.6" style="stop-color:#F3F3F3"/>
+		<stop  offset="1" style="stop-color:#ECEBEB"/>
+		<stop  offset="1" style="stop-color:#F3F3F3"/>
+	</linearGradient>
+	<rect clip-path="url(#SVGID_10_)" fill="url(#SVGID_11_)" width="476" height="124"/>
+</g>
+</svg>
