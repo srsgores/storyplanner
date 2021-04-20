@@ -42,10 +42,11 @@
 	&-label + &-control
 		margin-top 1em
 	&.gridded
-		display grid
-		align-items center
-		grid-template-columns 1fr 1fr
-		margin 0
-		.form-field-label
-			line-height 1
-			transform none
+		@media screen and (min-width: $breakpointDesktop)
+			display grid
+			align-items center
+			grid-template-columns 1fr 1fr
+			margin 0
+			.form-field-label
+				line-height 1
+				transform none
