@@ -9,7 +9,12 @@ export const themeableOptions = [
 	"bodyBackgroundColour",
 	"bodyBackgroundPrimaryColour",
 	"bodyBackgroundOffsetColour",
-	"bodyBackgroundGradientDirection"
+	"bodyBackgroundGradientDirection",
+	"headingBackgroundColour",
+	"timelineBackgroundColour",
+	"eventBackgroundColour",
+	"headerFontSize",
+	"headerVerticalPadding"
 ];
 
 export default class SettingsStorage extends StorageObject {

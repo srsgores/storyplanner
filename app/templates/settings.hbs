@@ -9,13 +9,24 @@
 	</fieldset>
 	<fieldset class="form-group">
 		<legend>Theme</legend>
-		<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundColour"/>
-		<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundPrimaryColour"/>
-		<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundOffsetColour"/>
-		<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundGradientDirection" @type="text"/>
-		<FormField class="gridded" @model={{this.settings.theme}} @field="bodyTextColour"/>
-		<FormField class="gridded" @model={{this.settings.theme}} @field="boxSpacing" @type="text"/>
-		<FormField class="gridded" @model={{this.settings.theme}} @field="bodyFontFamily" @type="text"/>
+		<fieldset>
+			<legend>Body</legend>
+			<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundColour"/>
+			<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundPrimaryColour"/>
+			<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundOffsetColour"/>
+			<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundGradientDirection" @type="text"/>
+			<FormField class="gridded" @model={{this.settings.theme}} @field="bodyTextColour"/>
+			<FormField class="gridded" @model={{this.settings.theme}} @field="boxSpacing" @type="text"/>
+			<FormField class="gridded" @model={{this.settings.theme}} @field="bodyFontFamily" @type="text"/>
+		</fieldset>
+		<fieldset>
+			<legend>Timeline</legend>
+			<FormField class="gridded" @model={{this.settings.theme}} @field="headerBackgroundColour"/>
+			<FormField class="gridded" @model={{this.settings.theme}} @field="headerFontSize" @type="text"/>
+			<FormField class="gridded" @model={{this.settings.theme}} @field="headerVerticalPadding" @type="text"/>
+			<FormField class="gridded" @model={{this.settings.theme}} @field="timelineBackgroundColour" @type="color"/>
+			<FormField class="gridded" @model={{this.settings.theme}} @field="eventBackgroundColour"/>
+		</fieldset>
 	</fieldset>
 	<fieldset class="form-group">
 		<legend>Export Data</legend>
