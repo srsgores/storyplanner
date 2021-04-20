@@ -3,5 +3,6 @@
 module.exports = {
 	useTabs: true,
 	tabWidth: 4,
-	trailingComma: "none"
+	trailingComma: "none",
+	bracketSpacing: false
 };

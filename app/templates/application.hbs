@@ -1,21 +1,23 @@
-<header role="banner" aria-label="Main banner">
-	<h1><LinkTo @route="index">Story Planner</LinkTo></h1>
-	<nav role="navigation">
-		<ul class="nav">
-			{{#each this.navItems as |navItem|}}
+<div class="theme-container" {{theme this.settings}}>
+	<header role="banner" aria-label="Main banner">
+		<h1><LinkTo @route="index">Story Planner</LinkTo></h1>
+		<nav role="navigation">
+			<ul class="nav">
+				{{#each this.navItems as |navItem|}}
+					<li class="nav-item">
+						<LinkTo @route={{navItem.route}} class="nav-item-link">{{navItem.text}}</LinkTo>
+					</li>
+				{{/each}}
+			</ul>
+			<ul class="actions">
 				<li class="nav-item">
-					<LinkTo @route={{navItem.route}} class="nav-item-link">{{navItem.text}}</LinkTo>
+					<LinkTo @route="stories.create" class="nav-item-link primary-button">Create Story</LinkTo>
 				</li>
-			{{/each}}
-		</ul>
-		<ul class="actions">
-			<li class="nav-item">
-				<LinkTo @route="stories.create" class="nav-item-link primary-button">Create Story</LinkTo>
-			</li>
-		</ul>
-	</nav>
-</header>
+			</ul>
+		</nav>
+	</header>
 
-<main role="main" id="main-content">
-	{{outlet}}
-</main>
+	<main role="main" id="main-content">
+		{{outlet}}
+	</main>
+</div>

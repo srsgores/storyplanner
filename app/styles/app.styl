@@ -1,6 +1,12 @@
 :root
 	--sidebar-width 20.5em
 	--box-spacing calc(1.5em + 1.5%)
+	--body-text-colour #fff
+	--body-background-colour #1f4037
+	--body-background-primary-colour #426f65
+	--body-background-offset-colour #41695e
+	--body-background-gradient-direction to right
+	--body-font-family "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
 
 $baseElementStyles
 	h1
@@ -46,10 +52,13 @@ $baseElementStyles
 body
 	margin 0
 	padding 0
-	font-family "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
-	background #1f4037
-	background linear-gradient(to right, #426f65, #41695e)
+	font-family var(--body-font-family)
+	background var(--body-background-colour)
+	background linear-gradient(var(--body-background-gradient-direction), var(--body-background-primary-colour), var(--body-background-offset-colour))
 	color #fff
+
+.theme-container
+	height inherit
 	display flex
 	flex-direction column
 
