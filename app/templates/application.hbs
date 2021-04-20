@@ -1,4 +1,4 @@
-<div class="theme-container" {{theme this.settings}}>
+<ThemeProvider>
 	<header role="banner" aria-label="Main banner">
 		<h1><LinkTo @route="index">Story Planner</LinkTo></h1>
 		<nav role="navigation">
@@ -20,4 +20,4 @@
 	<main role="main" id="main-content">
 		{{outlet}}
 	</main>
-</div>
+</ThemeProvider>

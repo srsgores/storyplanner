@@ -10,8 +10,11 @@
 	<fieldset>
 		<legend>Theme</legend>
 		<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundColour"/>
-		<FormField class="gridded" @model={{this.settings.theme}} @field="boxSpacing" @type="text"/>
+		<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundPrimaryColour"/>
+		<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundOffsetColour"/>
+		<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundGradientDirection" @type="text"/>
 		<FormField class="gridded" @model={{this.settings.theme}} @field="bodyTextColour"/>
+		<FormField class="gridded" @model={{this.settings.theme}} @field="boxSpacing" @type="text"/>
 		<FormField class="gridded" @model={{this.settings.theme}} @field="bodyFontFamily" @type="text"/>
 	</fieldset>
 	<fieldset class="form-group">
