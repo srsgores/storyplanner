@@ -1,47 +1,49 @@
-<form action="" class="settings-form padded">
-	<fieldset class="form-group">
-		<legend>General Settings</legend>
-		<FormField class="gridded" @model={{this.settings.settings}} @field="maxWordCount" @type="number" min="1"/>
-	</fieldset>
-	<fieldset class="form-group">
-		<legend>Event Settings</legend>
-		<FormField class="gridded" @model={{this.settings.settings}} @field="defaultDuration" @type="duration"/>
-	</fieldset>
-	<fieldset class="form-group">
-		<legend>Theme</legend>
-		<fieldset>
-			<legend>Body</legend>
-			<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundColour"/>
-			<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundPrimaryColour"/>
-			<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundOffsetColour"/>
-			<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundGradientDirection" @type="text"/>
-			<FormField class="gridded" @model={{this.settings.theme}} @field="bodyTextColour"/>
-			<FormField class="gridded" @model={{this.settings.theme}} @field="boxSpacing" @type="text"/>
-			<FormField class="gridded" @model={{this.settings.theme}} @field="bodyFontFamily" @type="text"/>
+<div class="settings-form-container">
+	<form action="" class="settings-form padded">
+		<fieldset class="form-group">
+			<legend>General Settings</legend>
+			<FormField class="gridded" @model={{this.settings.settings}} @field="maxWordCount" @type="number" min="1"/>
 		</fieldset>
-		<fieldset>
-			<legend>Timeline</legend>
-			<FormField class="gridded" @model={{this.settings.theme}} @field="headerBackgroundColour"/>
-			<FormField class="gridded" @model={{this.settings.theme}} @field="headerFontSize" @type="text"/>
-			<FormField class="gridded" @model={{this.settings.theme}} @field="headerVerticalPadding" @type="text"/>
-			<FormField class="gridded" @model={{this.settings.theme}} @field="timelineBackgroundColour" @type="color"/>
-			<FormField class="gridded" @model={{this.settings.theme}} @field="eventBackgroundColour"/>
+		<fieldset class="form-group">
+			<legend>Event Settings</legend>
+			<FormField class="gridded" @model={{this.settings.settings}} @field="defaultDuration" @type="duration"/>
 		</fieldset>
-	</fieldset>
-	<fieldset class="form-group">
-		<legend>Export Data</legend>
-		<p>Export all of the stories and their content to a <code>.json</code> file for importing into another machine.</p>
-		<button type="button" {{on "click" this.exportData}}>Export Stories to .json file {{svg-jar "file_download"}}</button>
-	</fieldset>
-	<fieldset class="form-group">
-		<legend>Import Data</legend>
-		<p>Import any or stories, events, or characters.</p>
-		<p><strong>Warning!  Will overwrite all data</strong>.</p>
-		<div class="form-field gridded">
-			<label for="import-settings" class="form-field-label">JSON file to import</label>
-			<Input type="file" class="form-control" @value={{this.uploadedSettingsFile}} {{on "change" this.importData}} id="import-settings"/>
-		</div>
-	</fieldset>
-</form>
+		<fieldset class="form-group">
+			<legend>Theme</legend>
+			<fieldset class="form-group">
+				<legend>Body</legend>
+				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundColour"/>
+				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundPrimaryColour"/>
+				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundOffsetColour"/>
+				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundGradientDirection" @type="text"/>
+				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyTextColour"/>
+				<FormField class="gridded" @model={{this.settings.theme}} @field="boxSpacing" @type="text"/>
+				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyFontFamily" @type="text"/>
+			</fieldset>
+			<fieldset class="form-group">
+				<legend>Timeline</legend>
+				<FormField class="gridded" @model={{this.settings.theme}} @field="headerBackgroundColour"/>
+				<FormField class="gridded" @model={{this.settings.theme}} @field="headerFontSize" @type="text"/>
+				<FormField class="gridded" @model={{this.settings.theme}} @field="headerVerticalPadding" @type="text"/>
+				<FormField class="gridded" @model={{this.settings.theme}} @field="timelineBackgroundColour" @type="color"/>
+				<FormField class="gridded" @model={{this.settings.theme}} @field="eventBackgroundColour"/>
+			</fieldset>
+		</fieldset>
+		<fieldset class="form-group">
+			<legend>Export Data</legend>
+			<p>Export all of the stories and their content to a <code>.json</code> file for importing into another machine.</p>
+			<button type="button" {{on "click" this.exportData}}>Export Stories to .json file {{svg-jar "file_download"}}</button>
+		</fieldset>
+		<fieldset class="form-group">
+			<legend>Import Data</legend>
+			<p>Import any or stories, events, or characters.</p>
+			<p><strong>Warning!  Will overwrite all data</strong>.</p>
+			<div class="form-field gridded">
+				<label for="import-settings" class="form-field-label">JSON file to import</label>
+				<Input type="file" class="form-control" @value={{this.uploadedSettingsFile}} {{on "change" this.importData}} id="import-settings"/>
+			</div>
+		</fieldset>
+	</form>
+</div>
 
 {{outlet}}

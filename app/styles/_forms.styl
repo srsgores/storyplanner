@@ -54,9 +54,20 @@ legend
 	padding 0
 .form-group
 	padding 1em
+	& &
+		--form-margin 3em
+		padding 0 2em 1.5em 2em
+		background-color rgba(black, 0.10)
+		legend
+			font-size 1.1em
 	& + &
-		margin-top 1.5em
+		margin-top var(--form-margin)
 .settings-form
+	margin 0 0 4em 0
+	&-container
+		display flex
+		align-items center
+		justify-content center
 	background-color #3c3c3c69
 
 .form-actions
