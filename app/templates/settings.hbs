@@ -1,17 +1,17 @@
 <div class="settings-form-container">
 	<form action="" class="settings-form padded">
 		<fieldset class="form-group">
-			<legend>General Settings</legend>
+			<legend>{{t "settings.sections.general.title"}}</legend>
 			<FormField class="gridded" @model={{this.settings.settings}} @field="maxWordCount" @type="number" min="1"/>
 		</fieldset>
 		<fieldset class="form-group">
-			<legend>Event Settings</legend>
+			<legend>{{t "settings.sections.event.title"}}</legend>
 			<FormField class="gridded" @model={{this.settings.settings}} @field="defaultDuration" @type="duration"/>
 		</fieldset>
 		<fieldset class="form-group">
-			<legend>Theme</legend>
+			<legend>{{t "settings.sections.event.title"}}</legend>
 			<fieldset class="form-group">
-				<legend>Body</legend>
+				<legend>{{t "settings.sections.theme.title"}}.</legend>
 				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundColour"/>
 				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundPrimaryColour"/>
 				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundOffsetColour"/>
@@ -21,7 +21,7 @@
 				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyFontFamily" @type="text"/>
 			</fieldset>
 			<fieldset class="form-group">
-				<legend>Timeline</legend>
+				<legend>{{t "settings.sections.theme.timeline.title"}}</legend>
 				<FormField class="gridded" @model={{this.settings.theme}} @field="headerBackgroundColour"/>
 				<FormField class="gridded" @model={{this.settings.theme}} @field="headerFontSize" @type="text"/>
 				<FormField class="gridded" @model={{this.settings.theme}} @field="headerVerticalPadding" @type="text"/>
@@ -30,17 +30,17 @@
 			</fieldset>
 		</fieldset>
 		<fieldset class="form-group">
-			<legend>Export Data</legend>
-			<p>Export all of the stories and their content to a <code>.json</code> file for importing into another machine.</p>
-			<button type="button" {{on "click" this.exportData}}>Export Stories to .json file {{svg-jar "file_download"}}</button>
+			<legend>{{t "settings.sections.export.title"}}</legend>
+			<p>{{t "settings.sections.export.description" htmlSafe=true}}</p>
+			<button type="button" {{on "click" this.exportData}}>{{t "settings.actions.export" htmlSafe=true}} {{svg-jar "file_download"}}</button>
 		</fieldset>
 		<fieldset class="form-group">
-			<legend>Import Data</legend>
-			<p>Import any or stories, events, or characters.</p>
-			<p><strong>Warning!  Will overwrite all data</strong>.</p>
+			<legend>{{t "settings.sections.import.title"}}</legend>
+			<p>{{t "settings.sections.import.description"}}</p>
+			<p><strong>{{t "settings.sections.import.warning"}}</strong>.</p>
 			<div class="form-field gridded">
-				<label for="import-settings" class="form-field-label">JSON file to import</label>
-				<Input type="file" class="form-control" @value={{this.uploadedSettingsFile}} {{on "change" this.importData}} id="import-settings"/>
+				<label for="import-settings" class="form-field-label">{{t "settings.import.label"}}</label>
+				<Input @type="file" class="form-control" @value={{this.uploadedSettingsFile}} {{on "change" this.importData}} id="import-settings"/>
 			</div>
 		</fieldset>
 	</form>

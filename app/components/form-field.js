@@ -7,6 +7,7 @@ import {isEmpty} from "@ember/utils";
 import guessType from "ember-former/utils/guess-type";
 import {debounce} from "@ember/runloop";
 import {run} from "@ember/runloop";
+import {inject as service} from "@ember/service";
 
 export const CLASS_NAMES = {
 	FOCUSED_STATE: "focused",
@@ -33,6 +34,8 @@ export default class FormFieldComponent extends Component {
 	savingClassName = CLASS_NAMES.SAVING;
 	unsavedClassName = CLASS_NAMES.UNSAVED;
 
+	@service intl;
+
 	@tracked hasFocus = false;
 	@tracked stagingDocument;
 	@tracked wordCount = 0;
@@ -50,6 +53,14 @@ export default class FormFieldComponent extends Component {
 
 	get hasValue() {
 		return !isEmpty(get(this.args.model, this.args.field));
+	}
+
+	get labelText() {
+		let labelText = this.args.labelText;
+		if (!labelText) {
+			labelText = this.intl.t(`${this.args.model?._internalModel?.modelName}.${this.args.field}.label`);
+		}
+		return labelText;
 	}
 
 	constructor() {

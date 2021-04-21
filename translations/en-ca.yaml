@@ -1,0 +1,120 @@
+app:
+    title: "StoryPlanner"
+nav:
+    stories: "Stories"
+    settings: "Settings"
+    timelines: "Timelines"
+    characters: "Characters"
+    locations: "Locations"
+    preview: "Preview"
+story:
+    title:
+        label: "Title"
+timeline:
+    title:
+        label: "Title"
+    actions:
+        add: "Add Timeline"
+        remove: "Remove Timeline"
+characterEditor:
+    basicInformation: "Basic Information"
+    genderSexuality: "Gender and Sexuality"
+    personality:  "Personality"
+    backgroundNotesDetails: "Background, Notes & Details"
+character:
+    name:
+        label: "Name"
+    title:
+        label: "Title"
+        helpText: "Mr., Mrs., Ms., Sir, Madame, etc."
+    age:
+        label: "Age"
+    gender:
+        label: "Gender"
+    sexuality:
+        label: "Sexuality"
+    firstImpression:
+        label: "First impression"
+        helpText: "What other characters immediately see from meeting the character"
+    corePersonality:
+        label: "Core Personality"
+        helpText: "Core behaviours exhibited by the character (arrogant, calm, open-minded, pessimistic, determined, etc.)"
+    background:
+        label: "Background"
+        helpText: "Backstory of the character.  Key events in past that helped shape the character's ambitions"
+    notes:
+        label: "Notes"
+        helpText: "Any other notes"
+    actions:
+        add: "Add Character"
+        remove: "Remove Character"
+location:
+    actions:
+        add: "Add Location"
+        remove: "Remove Location"
+event:
+    title:
+        label: "Title"
+    startTime:
+        label: "Start time"
+    endTime:
+        label: "End time"
+    actions:
+        addAfter: "Add subsequent event"
+        addNested: "Add branched timeline (split into a new timeline)"
+        edit: "Edit content for event"
+        toggleDuration: "Toggle duration, start, and end times"
+actions:
+    createStory: "Create Story"
+settings:
+    sections:
+        general:
+            title: "General Settings"
+        event:
+            title: "Event Settings"
+        theme:
+            title: "Theme Settings"
+            body:
+                title: "Body Settings"
+            timeline:
+                title: "Timeline"
+        export:
+            title: "Export Stories"
+            description: "Export all of the stories and their content to a <code>.json</code> file for importing into another machine."
+        import:
+            title: "Import Stories"
+            description: "Import any or stories, events, or characters."
+            warning: "Warning!  Will overwrite all data."
+    maxWordCount:
+        label: "Max Word Count"
+    defaultDuration:
+        label: "Default Event Duration"
+    theme:
+        bodyBackgroundColour:
+            label: "Fallback Background Colour"
+        bodyBackgroundPrimaryColour:
+            label: "Background Gradient Colour 1"
+        bodyBackgroundOffsetColour:
+            label: "Background Gradient Colour 2"
+        bodyBackgroundGradientDirection:
+            label: "Background Gradient Direction"
+        bodyTextColour:
+            label: "Text Colour"
+        boxSpacing:
+            label: "Spacing"
+        bodyFontFamily:
+            label: "Font"
+        headerBackgroundColour:
+            label: "Header Background Colour"
+        headerFontSize:
+            label: "Header Font Size"
+        headerVerticalPadding:
+            label: "Header Vertical Padding"
+        timelineBackgroundColour:
+            label: "Timeline Background Colour"
+        eventBackgroundColour:
+            label: "Event Background Colour"
+    import:
+        label: "JSON File to Import"
+    actions:
+        export: "Export Stories to <code>.json</code> file"

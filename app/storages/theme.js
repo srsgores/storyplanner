@@ -18,6 +18,10 @@ export const themeableOptions = [
 ];
 
 export default class SettingsStorage extends StorageObject {
+	_internalModel = {
+		modelName: "settings.theme"
+	};
+
 	initialState() {
 		let initialState = {};
 		if (document?.documentElement) {
