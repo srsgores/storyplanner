@@ -1,7 +1,7 @@
 <div class="grid">
-	<article class="character-list-container">
-		<button {{on "click" this.addCharacter}} type="button">Add Character {{svg-jar "add"}}</button>
+	<article class="character-list-container padded">
 		<CharacterList @characters={{this.model}} @story={{this.story}}/>
+		<button {{on "click" this.addCharacter}} type="button">Add Character {{svg-jar "add"}}</button>
 	</article>
 	{{outlet}}
 </div>
