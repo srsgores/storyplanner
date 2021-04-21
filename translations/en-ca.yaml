@@ -11,9 +11,9 @@ nav:
     preview: "Preview"
 story:
     summary:
-        label: "Summary"
+        label: "Story Summary"
     title:
-        label: "Title"
+        label: "Story Title"
 timeline:
     summary:
         label: "Summary"
@@ -55,12 +55,18 @@ character:
         add: "Add Character"
         remove: "Remove Character"
 location:
+    name:
+        label: "Name"
+    description:
+        label: "Description"
     actions:
         add: "Add Location"
         remove: "Remove Location"
 event:
+    text:
+        label: "Event Text"
     title:
-        label: "Title"
+        label: "Event Title"
     summary:
         label: "Event Summary"
     startTime:
