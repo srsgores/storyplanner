@@ -5,7 +5,7 @@
 			<ul class="nav">
 				{{#each this.navItems as |navItem|}}
 					<li class="nav-item">
-						<LinkTo @route={{navItem.route}} class="nav-item-link">{{t (concat "nav." navItem)}}</LinkTo>
+						<LinkTo @route={{navItem}} class="nav-item-link">{{t (concat "nav." navItem)}}</LinkTo>
 					</li>
 				{{/each}}
 			</ul>
