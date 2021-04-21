@@ -1,5 +1,7 @@
 app:
     title: "StoryPlanner"
+landmarks:
+    banner: "Main Banner"
 nav:
     stories: "Stories"
     settings: "Settings"

@@ -1,17 +1,17 @@
 <ThemeProvider>
-	<header role="banner" aria-label="Main banner">
-		<h1><LinkTo @route="index">Story Planner</LinkTo></h1>
+	<header role="banner" aria-label={{t "landmarks.banner"}}>
+		<h1><LinkTo @route="index">{{t "app.title"}}</LinkTo></h1>
 		<nav role="navigation">
 			<ul class="nav">
 				{{#each this.navItems as |navItem|}}
 					<li class="nav-item">
-						<LinkTo @route={{navItem.route}} class="nav-item-link">{{navItem.text}}</LinkTo>
+						<LinkTo @route={{navItem.route}} class="nav-item-link">{{t (concat "nav." navItem)}}</LinkTo>
 					</li>
 				{{/each}}
 			</ul>
 			<ul class="actions">
 				<li class="nav-item">
-					<LinkTo @route="stories.create" class="nav-item-link primary-button">Create Story</LinkTo>
+					<LinkTo @route="stories.create" class="nav-item-link primary-button">{{t "actions.createStory"}}</LinkTo>
 				</li>
 			</ul>
 		</nav>
