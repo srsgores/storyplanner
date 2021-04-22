@@ -1,7 +1,7 @@
 import Route from "@ember/routing/route";
 
 export default class StoriesStoryIndexRoute extends Route {
-	model() {
-		return this.modelFor("stories.story");
+	beforeModel() {
+		return this.transitionTo("stories.story.timelines");
 	}
 }

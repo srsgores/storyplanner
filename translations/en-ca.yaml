@@ -10,6 +10,9 @@ nav:
     locations: "Locations"
     preview: "Preview"
 story:
+    defaultTitle: "Untitled Story"
+    characters:
+        label: "Characters"
     summary:
         label: "Story Summary"
     title:

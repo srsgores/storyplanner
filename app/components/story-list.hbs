@@ -8,16 +8,16 @@
 							{{#if story.title}}
 								{{story.title}}
 							{{else}}
-								Untitled story
+								{{t "story.defaultTitle"}}
 							{{/if}}
 						</strong>
 						<dl class="story-meta">
 							{{#if story.summary}}
-								<dt>Summary</dt>
+								<dt>{{t "story.summary.label"}}</dt>
 								<dd><RenderMobiledoc @mobiledoc={{story.summary}} @atomNames={{this.atomNames}} @cardNames={{this.cardNames}}/></dd>
 							{{/if}}
 							{{#if story.characters.length}}
-								<dt>Characters</dt>
+								<dt>{{t "story.characters.label"}}</dt>
 								<dd>{{story.characters.length}}</dd>
 							{{/if}}
 						</dl>

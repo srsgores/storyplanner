@@ -15,6 +15,8 @@ $breakpointDesktop ?= 55em
 	--timeline-background-colour rgba(black, 0.10)
 	--event-background-colour rgba(#040203, 0.43)
 	--form-margin 1.5em
+	--tab-nav-background-colour #5252526e
+	--modal-background-colour rgba(black, 0.975)
 
 $baseElementStyles
 	h1
@@ -150,6 +152,9 @@ main[role="main"]
 nav[role="navigation"]
 	display flex
 	justify-content space-between
+
+.tab-nav
+	background-color var(--tab-nav-background-colour)
 svg
 	fill currentColor
 	vertical-align middle
