@@ -1,8 +1,9 @@
 .story-preview
 	&-section
 		&-content
-			display flex
-			align-items center
+			@media screen and (min-width: $breakpointDesktop)
+				display flex
+				align-items center
 			position relative
 	.event-summary-meta
 		font-size 80%
@@ -26,8 +27,11 @@
 		min-width 20em
 		top 1em
 		position sticky
-	.content-container
-		flex 1
-	.content-container, .summary-container
 		padding 1rem
+	.content-container
+		.mobiledoc-editor__editor
+			font-size var(--content-editor-font-size)
+		flex 1
+		padding 1rem 5%
+	.content-container, .summary-container
 		box-sizing border-box
