@@ -1,0 +1,16 @@
+{{#if @event.title.length}}
+	<legend class="visuallyhidden">{{@event.title}}</legend>
+{{/if}}
+<div class="story-preview-section-content">
+	<div class="summary-container">
+		<FormField @model={{@event}} @field="summary" @type="textarea" class="summary-content"/>
+		<dl class="event-summary-meta">
+			{{#if this.eventDuration}}
+				<dt>Duration</dt>
+				<dd>{{moment-duration this.eventDuration}}</dd>
+			{{/if}}
+		</dl>
+	</div>
+	<FormField @model={{@event}} @field="text" @type="textarea" class="content-container"/>
+</div>
+{{yield}}

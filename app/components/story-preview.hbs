@@ -2,13 +2,7 @@
 	{{#if this.hasText}}
 		{{#each this.sortedEvents as |event|}}
 			<fieldset class="story-preview-section">
-				{{#if event.title.length}}
-					<legend class="visuallyhidden">{{event.title}}</legend>
-				{{/if}}
-				<div class="story-preview-section-content">
-					<FormField @model={{event}} @field="summary" @type="textarea" class="summary-container"/>
-					<FormField @model={{event}} @field="text" @type="textarea" class="content-container"/>
-				</div>
+				<EventPreview @event={{event}}/>
 			</fieldset>
 		{{/each}}
 	{{/if}}
