@@ -131,6 +131,10 @@ settings:
             label: "Timeline Background Colour"
         eventBackgroundColour:
             label: "Event Background Colour"
+        nestedTimelineBackgroundColour:
+            label: "Nested Timeline Background Colour"
+        nestedTimelineFontSize:
+            label: "Nested Timeline Font Size"
     import:
         label: "JSON File to Import"
     actions:

@@ -14,7 +14,9 @@ export const themeableOptions = [
 	"timelineBackgroundColour",
 	"eventBackgroundColour",
 	"headerFontSize",
-	"headerVerticalPadding"
+	"headerVerticalPadding",
+	"nestedTimelineFontSize",
+	"nestedTimelineBackgroundColour"
 ];
 
 export default class SettingsStorage extends StorageObject {

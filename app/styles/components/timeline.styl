@@ -1,3 +1,7 @@
+:root
+	--nested-timeline-font-size 95%
+	--nested-timeline-background-color transparentify(black, 0.2)
+
 .action
 	display inline-block
 .timeline-container
@@ -11,6 +15,10 @@
 		font-size 1.5em
 		font-weight bold
 .nested-timeline
+	font-size var(--nested-timeline-font-size)
+	background-color var(--nested-timeline-background-colour)
+	padding 0 2em 2em 3em
+	margin 2.4em 0 0 3em
 	.events
 		padding-bottom initial
 		overflow-x initial
