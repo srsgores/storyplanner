@@ -9,6 +9,29 @@ module.exports = function(environment) {
 		"ember-local-storage": {
 			fileExport: true
 		},
+		"ember-cloud-firestore-adapter": {
+			firebaseConfig: {
+				apiKey: "AIzaSyDowk7lO3Quiafs_ndr9EHkbo4oSBKXCG0",
+				authDomain: "storyplanner-55f21.firebaseapp.com",
+				projectId: "storyplanner-55f21",
+				storageBucket: "storyplanner-55f21.appspot.com",
+				messagingSenderId: "342684434838"
+			},
+
+			firestore: {
+				emulator: {
+					hostname: "localhost",
+					port: 8080
+				}
+			},
+
+			auth: {
+				emulator: {
+					hostname: "localhost",
+					port: 9099
+				}
+			}
+		},
 		EmberENV: {
 			FEATURES: {
 				// Here you can enable experimental features on an ember canary build
