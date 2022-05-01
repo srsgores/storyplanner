@@ -1,0 +1,77 @@
+<div class="{{this.className}} {{if this.hasFocus this.focusedClassName}} {{if this.hasValue this.hasValueClassName}} {{if @model.isSaving this.savingClassName}} {{if @model.hasDirtyAttributes this.unsavedClassName}} {{if this.isTextfield "is-textfield"}}" ...attributes>
+	{{#unless this.isTextarea}}
+		<label for={{this.elementId}} class={{this.labelClassName}}>
+			{{this.labelText}}
+		</label>
+	{{/unless}}
+
+	{{#if this.isTextarea}}
+		<div class="rich-text-editor-container" {{did-update this.setupRichTextEditor @model}}>
+			<ContentEditor @mobiledoc={{this.stagingDocument}} @on-change={{this.onContentChange}} class={{this.formControlClassName}} @placeholder="{{this.labelText}}..." @spellcheck={{true}} required={{true}} {{on "focusin" this.onFocusIn}} {{on "focusout" this.onFocusOut}} @autofocus={{@autofocus}} @onWordCountChange={{fn (mut this.wordCount)}} @story={{@story}} as |editor|>
+				<nav class="mobiledoc-toolbar__container">
+					<ul class="mobiledoc-toolbar" role="menubar">
+						<li class="mobiledoc-toolbar__control">
+							<MobiledocMarkupButton @editor={{editor}} @for="strong">
+								{{svg-jar "format_bold"}}
+							</MobiledocMarkupButton>
+						</li>
+						<li class="mobiledoc-toolbar__control">
+							<MobiledocMarkupButton @editor={{editor}} @for="em">
+								{{svg-jar "format_italic"}}
+							</MobiledocMarkupButton>
+						</li>
+						<li class="mobiledoc-toolbar__control">
+							<MobiledocLinkButton @editor={{editor}}>
+								{{svg-jar "add_link"}}
+							</MobiledocLinkButton>
+						</li>
+					</ul>
+					<ul class="mobiledoc-toolbar heading-buttons" role="menubar">
+						<li class="mobiledoc-toolbar__control">
+							<MobiledocSectionButton @editor={{editor}} @for="h1">
+								<abbr title="Heading 1">H1</abbr>
+							</MobiledocSectionButton>
+						</li>
+						<li class="mobiledoc-toolbar__control">
+							<MobiledocSectionButton @editor={{editor}} @for="h2">
+								<abbr title="Heading 2">H2</abbr>
+							</MobiledocSectionButton>
+						</li>
+						<li class="mobiledoc-toolbar__control">
+							<MobiledocSectionButton @editor={{editor}} @for="blockquote">
+								{{svg-jar "format_quote"}}
+							</MobiledocSectionButton>
+						</li>
+						<li class="mobiledoc-toolbar__control">
+							<MobiledocSectionButton @editor={{editor}} @for="ol">
+								{{svg-jar "format_list_numbered"}}
+							</MobiledocSectionButton>
+						</li>
+						<li class="mobiledoc-toolbar__control">
+							<MobiledocSectionButton @editor={{editor}} @for="ul">
+								{{svg-jar "format_list_bulleted"}}
+							</MobiledocSectionButton>
+						</li>
+					</ul>
+					<dl class="content-meta">
+						{{#if this.wordCount}}
+							<dt class="visuallyhidden">Words</dt>
+							<dd aria-live="polite">{{this.wordCount}} words</dd>
+						{{/if}}
+					</dl>
+				</nav>
+			</ContentEditor>
+		</div>
+	{{else}}
+		{{#if this.isCheckbox}}
+			<Input @type={{this.type}} @checked={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} @change={{this.autosave}} @value={{@value}} @name={{@name}}/>
+		{{else}}
+			{{#if this.isDate}}
+				<Inputs::DateInput @value={{get @model @field}} id={{this.elementId}} @onClose={{this.autosave}} @onChange={{fn (mut (get @model @field))}} @maxDate={{@max}} @minDate={{@min}}/>
+			{{else}}
+				<Input @type={{this.type}} @value={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} @min={{@min}} @max={{@max}} @step={{@step}} @focus-in={{fn this.onFocusIn}} @focus-out={{fn this.onFocusOut}} {{on "blur" this.autosave}} @size={{if this.hasValue (get (get @model @field) "length") 5}} @key-down={{this.onKeyDown}} @name={{@name}}/>
+			{{/if}}
+		{{/if}}
+	{{/if}}
+	{{yield}}
+</div>
