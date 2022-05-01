@@ -1,1 +1,5 @@
-export {default} from "ember-local-storage/adapters/local";
+import CloudFirestoreAdapter from "ember-cloud-firestore-adapter/adapters/cloud-firestore-modular";
+
+export default class ApplicationAdapter extends CloudFirestoreAdapter {
+	referenceKeyName = "storyplanner";
+}
