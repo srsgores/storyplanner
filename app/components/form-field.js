@@ -101,13 +101,13 @@ export default class FormFieldComponent extends Component {
 	}
 
 	@action onFocusOut() {
-		run.next(this, function() {
+		run.next(this, function () {
 			this.hasFocus = false;
 		});
 	}
 
 	@action onFocusIn() {
-		run.next(this, function() {
+		run.next(this, function () {
 			this.hasFocus = true;
 		});
 	}

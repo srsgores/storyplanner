@@ -1,0 +1,28 @@
+{{page-title (t "nav.locations")}}
+
+<div class="grid">
+	<article class="location-list-container">
+		<button type="button" {{on "click" this.addLocation}}>Add Location {{svg-jar "add"}}</button>
+		{{#if this.model.length}}
+			<ul class="locations">
+				{{#each this.model as |location|}}
+					<li class="location">
+						<LinkTo @route="stories.story.locations.location" @model={{location}}>
+							{{#if location.name.length}}
+								{{location.name}}
+							{{else}}
+								Unnamed location
+							{{/if}}
+						</LinkTo>
+						<ul class="location-actions">
+							<li class="action">
+								<button type="button" {{on "click" (fn this.removeLocation location)}}>{{svg-jar "delete"}}</button>
+							</li>
+						</ul>
+					</li>
+				{{/each}}
+			</ul>
+		{{/if}}
+	</article>
+	{{outlet}}
+</div>

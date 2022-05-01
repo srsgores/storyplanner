@@ -22,18 +22,21 @@ export default class AutocompleteComponent extends Component {
 	updateMatchResults() {
 		const queryString = this.openRange.head.section.text.substring(this.openRange.head.offset, this.args.editor.range.head.offset);
 		const query = isEmpty(queryString) ? {} : {filter: {name: new RegExp(queryString)}};
-		this.store.query(this.args.modelName, query).then((matches) => {
-			this.options = matches.map((model, index) => {
-				return {
-					model,
-					index,
-					name: model.title || model.name,
-					isSelected: false
-				};
+		this.store
+			.query(this.args.modelName, query)
+			.then((matches) => {
+				this.options = matches.map((model, index) => {
+					return {
+						model,
+						index,
+						name: model.title || model.name,
+						isSelected: false
+					};
+				});
+			})
+			.finally(() => {
+				this.isLoading = false;
 			});
-		}).finally(() => {
-			this.isLoading = false;
-		});
 	}
 
 	constructor() {
@@ -46,7 +49,7 @@ export default class AutocompleteComponent extends Component {
 			run: () => {
 				this.fetchMatches();
 			}
-		})
+		});
 		this.fetchMatches();
 	}
 
@@ -135,20 +138,15 @@ export default class AutocompleteComponent extends Component {
 		if (direction === "UP" || direction === "LEFT") {
 			if (selectedOption === this.options[0]) {
 				this.focusOption(this.options[this.options.length - 1]);
-			}
-			else {
+			} else {
 				this.focusOption(this.options[selectedOption.index - 1]);
 			}
-		}
-		else if (direction === "DOWN" || direction === "RIGHT") {
+		} else if (direction === "DOWN" || direction === "RIGHT") {
 			if (selectedOption === this.options[this.options.length - 1]) {
 				this.focusOption(this.options[0]);
-			}
-			else {
+			} else {
 				this.focusOption(this.options[selectedOption.index + 1]);
 			}
 		}
-
 	}
 }
-

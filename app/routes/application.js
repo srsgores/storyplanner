@@ -8,8 +8,4 @@ export default class ApplicationRoute extends Route {
 		super.beforeModel(...arguments);
 		this.intl.setLocale(["en-ca"]);
 	}
-	setupController(controller) {
-		super.afterModel();
-		controller.navItems = ["stories", "settings"];
-	}
 }

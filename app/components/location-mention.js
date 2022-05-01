@@ -1,4 +1,3 @@
 import Component from "@glimmer/component";
 
-export default class LocationMentionComponent extends Component {
-}
+export default class LocationMentionComponent extends Component {}

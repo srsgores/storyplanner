@@ -1,0 +1,9 @@
+{{page-title (t "nav.characters")}}
+
+<div class="grid">
+	<article class="character-list-container padded">
+		<CharacterList @characters={{this.model}} @story={{this.story}}/>
+		<button {{on "click" this.addCharacter}} type="button">{{t "character.actions.add"}} {{svg-jar "add"}}</button>
+	</article>
+	{{outlet}}
+</div>

@@ -2,7 +2,7 @@ import Route from "@ember/routing/route";
 
 export default class StoriesStoryLocationsRoute extends Route {
 	model() {
-		const story = this.modelFor("stories.story");
+		const story = this.modelFor("authenticated.stories.story");
 		return this.store.query("location", {
 			filter: {
 				story: story.id
@@ -12,6 +12,6 @@ export default class StoriesStoryLocationsRoute extends Route {
 
 	setupController(controller) {
 		super.setupController(...arguments);
-		controller.set("story", this.modelFor("stories.story"));
+		controller.set("story", this.modelFor("authenticated.stories.story"));
 	}
 }

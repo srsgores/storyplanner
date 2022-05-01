@@ -10,7 +10,7 @@ export default class SettingsController extends Controller {
 	readFile(file) {
 		const reader = new FileReader();
 		return new Promise((resolve) => {
-			reader.onload = function(event) {
+			reader.onload = function (event) {
 				resolve({
 					file: file.name,
 					type: file.type,
@@ -23,10 +23,7 @@ export default class SettingsController extends Controller {
 	}
 
 	@action exportData() {
-		return this.store.exportData(
-			["stories", "characters", "timelines", "events", "locations"],
-			{download: true, filename: `${Date.now()}-stories-backup`}
-		);
+		return this.store.exportData(["stories", "characters", "timelines", "events", "locations"], {download: true, filename: `${Date.now()}-stories-backup`});
 	}
 
 	@action importData(event) {
