@@ -25,6 +25,7 @@ Router.map(function () {
 		});
 		this.route("settings");
 	});
+	this.route("index");
 	this.route("login");
 	this.route("register");
 	this.route("logout");

@@ -1,4 +1,4 @@
 <Forms::User::Authentication @onSubmit={{this.register}} @submitText="Register" @title="Register">
 	<p class="form-help">Registering lets you <strong>persist your stories</strong> to the cloud.</p>
-	<p class="form-help">Don't want to save your writing to the cloud?  Use <LinkTo @route="stories.create">the app anonymously</LinkTo> and store the data only on this machine.</p>
+	<p class="form-help">Don't want to save your writing to the cloud?  Use <LinkTo @route="authenticated.stories.create">the app anonymously</LinkTo> and store the data only on this machine.</p>
 </Forms::User::Authentication>
