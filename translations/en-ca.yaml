@@ -11,6 +11,8 @@ nav:
     characters: "Characters"
     locations: "Locations"
     preview: "Preview"
+    register: "Register"
+    login: "Log In"
     logout: "Log Out"
 story:
     defaultTitle: "Untitled Story"
