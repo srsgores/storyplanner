@@ -45,6 +45,7 @@
     "ember-cli-stylus": "^1.0.7",
     "ember-cli-terser": "^4.0.2",
     "ember-click-outside": "^4.0.0",
+    "ember-cloud-firestore-adapter": "^2.2.2",
     "ember-data": "~4.2.0",
     "ember-export-application-global": "^2.0.1",
     "ember-fetch": "^8.1.1",
