@@ -54,8 +54,8 @@
     "ember-load-initializers": "^2.1.2",
     "ember-local-storage": "^2.0.4",
     "ember-maybe-import-regenerator": "^0.1.6",
-    "ember-mobiledoc-dom-renderer": "^0.7.0",
-    "ember-mobiledoc-editor": "git://github.com/srsgores/ember-mobiledoc-editor",
+    "ember-mobiledoc-dom-renderer": "^0.8.1",
+    "ember-mobiledoc-editor": "^0.7.0",
     "ember-modifier": "^2.1.1",
     "ember-moment": "^10.0.0",
     "ember-page-title": "^7.0.0",
@@ -80,5 +80,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "webpack": "^5.75.0"
   }
 }
