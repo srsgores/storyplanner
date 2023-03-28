@@ -18,12 +18,8 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 
 	constructor() {
 		super(...arguments);
-		this.cards = SUPPORTED_CARDS.map((cardName) =>
-			createComponentCard(cardName)
-		);
-		this.atoms = SUPPORTED_ATOMS.map((atomName) =>
-			createComponentAtom(atomName)
-		);
+		this.cards = SUPPORTED_CARDS.map(createComponentCard);
+		this.atoms = SUPPORTED_ATOMS.map(createComponentAtom);
 	}
 
 	get autocompletePrompt() {
