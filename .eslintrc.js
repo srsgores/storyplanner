@@ -21,7 +21,7 @@ module.exports = {
 	},
 	rules: {
 		"comma-dangle": ["error", "never"],
-		"quotes": ["error", "double"]
+		quotes: ["error", "double"]
 	},
 	overrides: [
 		// node files

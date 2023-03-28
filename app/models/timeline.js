@@ -5,5 +5,6 @@ export default class TimelineModel extends Model {
 	@attr() summary;
 	@belongsTo("story", {autosave: true}) story;
 	@hasMany("event", {autosave: true, inverse: "timeline"}) events;
-	@belongsTo("event", {autosave: true, inverse: "nestedTimelines"}) parentEvent;
+	@belongsTo("event", {autosave: true, inverse: "nestedTimelines"})
+	parentEvent;
 }

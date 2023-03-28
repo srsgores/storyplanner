@@ -2,15 +2,13 @@
 
 const EmberApp = require("ember-cli/lib/broccoli/ember-app");
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
 	let app = new EmberApp(defaults, {
 		flatpickr: {
 			theme: "dark"
 		},
 		svgJar: {
-			sourceDirs: [
-				"public/assets/icons"
-			]
+			sourceDirs: ["public/assets/icons"]
 		}
 	});
 

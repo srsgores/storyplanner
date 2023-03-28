@@ -29,7 +29,9 @@ export default class SettingsStorage extends StorageObject {
 		if (document?.documentElement) {
 			const computedStyles = getComputedStyle(document.documentElement);
 			for (let option of themeableOptions) {
-				initialState[option] = computedStyles.getPropertyValue(`--${dasherize(option)}`);
+				initialState[option] = computedStyles.getPropertyValue(
+					`--${dasherize(option)}`
+				);
 			}
 		}
 		return initialState;

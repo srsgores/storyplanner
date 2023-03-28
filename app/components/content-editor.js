@@ -18,8 +18,12 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 
 	constructor() {
 		super(...arguments);
-		this.cards = SUPPORTED_CARDS.map((cardName) => createComponentCard(cardName));
-		this.atoms = SUPPORTED_ATOMS.map((atomName) => createComponentAtom(atomName));
+		this.cards = SUPPORTED_CARDS.map((cardName) =>
+			createComponentCard(cardName)
+		);
+		this.atoms = SUPPORTED_ATOMS.map((atomName) =>
+			createComponentAtom(atomName)
+		);
 	}
 
 	get autocompletePrompt() {
@@ -32,13 +36,16 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 			match: /^> /,
 			run(editor, matches) {
 				let {range} = editor;
-				const {head, head: {section}} = range;
+				const {
+					head,
+					head: {section}
+				} = range;
 				const text = section.textUntil(head);
 
 				// ensure cursor is at the end of the matched text so we don't convert text the users wants to start with `> ` and that we're not already on a blockquote section
 				if (text === matches[0] && section.tagName !== "blockquote") {
 					editor.run((postEditor) => {
-						range = range.extend(-(matches[0].length));
+						range = range.extend(-matches[0].length);
 						const position = postEditor.deleteRange(range);
 						postEditor.setRange(position);
 
@@ -63,12 +70,21 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 			name: "md_hr",
 			match: /^---$/,
 			run: (postEditor) => {
-				const {range: {head, head: {section}}} = postEditor;
+				const {
+					range: {
+						head,
+						head: {section}
+					}
+				} = postEditor;
 				const payload = {};
 
 				// Skip if cursor is not at end of section
 				if (head.isTail() && !section.isListItem) {
-					this.replaceWithCardSection("divider", section.toRange(), payload);
+					this.replaceWithCardSection(
+						"divider",
+						section.toRange(),
+						payload
+					);
 				}
 			}
 		});
@@ -95,12 +111,14 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 				this.showAutocomplete = true;
 				this.modelName = "location";
 			}
-		})
+		});
 	}
 
 	@action replaceWithCardSection(cardName, range, payload) {
 		const editor = this.editor;
-		const {head: {section}} = range;
+		const {
+			head: {section}
+		} = range;
 
 		editor.run((postEditor) => {
 			const {builder} = postEditor;
@@ -115,8 +133,7 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 				const newSection = postEditor.builder.createMarkupSection("p");
 				postEditor.insertSectionAtEnd(newSection);
 				postEditor.setRange(newSection.tailPosition());
-			}
-			else {
+			} else {
 				postEditor.setRange(nextSection.headPosition());
 			}
 		});
@@ -125,8 +142,8 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 	@action onSelectOption(model) {
 		this.editor.insertAtom(`${this.modelName}-mention`, model.name, {
 			model: {
-				id: get(model, "id"),
-				name: get(model, "name"),
+				id: model.id,
+				name: model.name,
 				story: {
 					id: get(model, "story.id")
 				}

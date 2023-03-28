@@ -10,7 +10,7 @@ export default class SettingsController extends Controller {
 	readFile(file) {
 		const reader = new FileReader();
 		return new Promise((resolve) => {
-			reader.onload = function(event) {
+			reader.onload = function (event) {
 				resolve({
 					file: file.name,
 					type: file.type,

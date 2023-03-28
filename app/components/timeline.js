@@ -10,9 +10,14 @@ export default class TimelineComponent extends Component {
 	@computed.sort("args.timeline.events", "sorting") sortedEvents;
 
 	@action async addEvent(eventAfter) {
-		const createdEvent = this.store.createRecord("event", {timeline: this.args.timeline, story: this.args.story});
+		const createdEvent = this.store.createRecord("event", {
+			timeline: this.args.timeline,
+			story: this.args.story
+		});
 		if (eventAfter && eventAfter.startTime) {
-			createdEvent.startTime = new Date(eventAfter.startTime.getTime() + 1);
+			createdEvent.startTime = new Date(
+				eventAfter.startTime.getTime() + 1
+			);
 		}
 		await createdEvent.save();
 		await this.args.timeline.save();
@@ -27,8 +32,13 @@ export default class TimelineComponent extends Component {
 	}
 
 	@action async addTimelineToEvent(event) {
-		const defaultStartingEvent = this.store.createRecord("event", {story: this.args.story});
-		const createdTimeline = this.store.createRecord("timeline", {parentEvent: event, events: [defaultStartingEvent]});
+		const defaultStartingEvent = this.store.createRecord("event", {
+			story: this.args.story
+		});
+		const createdTimeline = this.store.createRecord("timeline", {
+			parentEvent: event,
+			events: [defaultStartingEvent]
+		});
 		await createdTimeline.save();
 		await event.save();
 		return await defaultStartingEvent.save();
@@ -36,7 +46,9 @@ export default class TimelineComponent extends Component {
 
 	@action moveEventBefore(droppedEvent, targetEvent) {
 		if (droppedEvent !== targetEvent && targetEvent.startTime) {
-			const oneMinuteBeforeStartTime = new Date(targetEvent.startTime.getTime() - 1 * 60000);
+			const oneMinuteBeforeStartTime = new Date(
+				targetEvent.startTime.getTime() - 1 * 60000
+			);
 			droppedEvent.startTime = oneMinuteBeforeStartTime;
 			return droppedEvent.save();
 		}
