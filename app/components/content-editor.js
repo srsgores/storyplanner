@@ -6,6 +6,7 @@ import {tracked} from "@glimmer/tracking";
 import createComponentCard from "ember-mobiledoc-editor/utils/create-component-card";
 import createComponentAtom from "ember-mobiledoc-editor/utils/create-component-atom";
 import {get} from "@ember/object";
+import {inject as service} from "@ember/service";
 
 const {countWords} = ghostHelperUtils;
 
@@ -16,6 +17,7 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 	@tracked showAutocomplete = false;
 	@tracked modelName = "character";
 
+	@service autocomplete;
 	constructor() {
 		super(...arguments);
 		this.cards = SUPPORTED_CARDS.map(createComponentCard);
@@ -163,9 +165,16 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 		return this.onWordCountChange(wordCount);
 	}
 
+	async autosuggest(editor) {
+		const {element} = editor;
+		const text = element.innerText;
+		const suggestedText = await this.autocomplete.suggest(text);
+		editor.insertText(suggestedText);
+	}
 	postDidChange(editor) {
 		if (this.onWordCountChange) {
 			debounce(this, "updateWordCount", editor, 500);
+			debounce(this, "autosuggest", editor, 500);
 		}
 		super.postDidChange(...arguments);
 	}
