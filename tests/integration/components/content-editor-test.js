@@ -7,9 +7,7 @@ module("Integration | Component | content-editor", function (hooks) {
 	setupRenderingTest(hooks);
 
 	test("it renders", async function (assert) {
-		// Set any properties with this.set('myProperty', 'value');
-		// Handle any actions with this.set('myAction', function(val) { ... });
-
+		this.templateBlockText = "template block text";
 		await render(hbs`<ContentEditor/>`);
 
 		assert.equal(this.element.textContent.trim(), "");
@@ -17,10 +15,10 @@ module("Integration | Component | content-editor", function (hooks) {
 		// Template block usage:
 		await render(hbs`
 			<ContentEditor>
-				template block text
+				{{this.templateBlockText}}
 			</ContentEditor>
 		`);
 
-		assert.equal(this.element.textContent.trim(), "template block text");
+		assert.equal(this.element.textContent.trim(), this.templateBlockText);
 	});
 });
