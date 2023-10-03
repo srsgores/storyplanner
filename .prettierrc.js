@@ -4,5 +4,6 @@ module.exports = {
 	useTabs: true,
 	tabWidth: 4,
 	trailingComma: "none",
-	bracketSpacing: false
+	bracketSpacing: false,
+	endOfLine: "crlf"
 };
