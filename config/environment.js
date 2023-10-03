@@ -10,7 +10,8 @@ module.exports = function (environment) {
 			fileExport: true
 		},
 		OPENAI: {
-			API_KEY: process.env.OPEN_AI_SECRET_KEY
+			API_KEY: process.env.OPEN_AI_SECRET_KEY,
+			MODEL: process.env.OPEN_AI_MODEL
 		},
 		EmberENV: {
 			FEATURES: {

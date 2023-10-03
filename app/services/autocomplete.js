@@ -4,10 +4,14 @@ import {assert} from "@ember/debug";
 import ENV from "ember-get-config";
 import fetch from "fetch";
 import EmberError from "@ember/error";
+
+export const TEXT_MISSING_ERROR_MESSAGE = "text must not be empty";
+
+export const AUTOCOMPLETE_API_URL = "https://api.openai.com/v1/completions";
 export default class AutocompleteService extends Service {
-	autocompleteURL = "https://api.openai.com/v1/completions";
+	autocompleteURL = AUTOCOMPLETE_API_URL;
 	config = {
-		model: "text-davinci-003",
+		model: ENV.OPENAI.MODEL,
 		n: 1,
 		stop: ["\n"]
 	};
