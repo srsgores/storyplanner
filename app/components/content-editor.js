@@ -92,8 +92,7 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 		editor.onTextInput({
 			text: "@",
 			name: "characters",
-			run: (editorInstance) => {
-				console.log(editorInstance.range);
+			run: () => {
 				this.showAutocomplete = true;
 				this.modelName = "character";
 			}
@@ -104,8 +103,7 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 		editor.onTextInput({
 			text: "#",
 			name: "locations",
-			run: (editorInstance) => {
-				console.log(editorInstance);
+			run: () => {
 				this.showAutocomplete = true;
 				this.modelName = "location";
 			}
