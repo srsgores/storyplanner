@@ -4,9 +4,8 @@ import {inject as service} from "@ember/service";
 
 export default class CharacterListComponent extends Component {
 	@service router;
-	@action removeCharacter(character) {
-		return character
-			.destroyRecord()
-			.then(() => this.router.transitionTo("stories.story.characters"));
+	@action async removeCharacter(character) {
+		await character.destroyRecord();
+		return this.router.transitionTo("stories.story.characters");
 	}
 }

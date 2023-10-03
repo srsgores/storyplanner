@@ -1,12 +1,9 @@
 import Route from "@ember/routing/route";
 
 export default class StoriesCreateRoute extends Route {
-	beforeModel() {
-		return this.store
-			.createRecord("story")
-			.save()
-			.then((createdStory) =>
-				this.transitionTo("stories.story.timelines", createdStory)
-			);
+	async beforeModel() {
+		const createdStory = this.store.createRecord("story");
+		const savedStory = await createdStory.save();
+		this.transitionTo("stories.story.timelines", savedStory);
 	}
 }
