@@ -1,23 +1,7 @@
 import StorageObject from "ember-local-storage/local/object";
 import {dasherize} from "@ember/string";
 
-export const themeableOptions = [
-	"sidebarWidth",
-	"bodyFontFamily",
-	"boxSpacing",
-	"bodyTextColour",
-	"bodyBackgroundColour",
-	"bodyBackgroundPrimaryColour",
-	"bodyBackgroundOffsetColour",
-	"bodyBackgroundGradientDirection",
-	"headingBackgroundColour",
-	"timelineBackgroundColour",
-	"eventBackgroundColour",
-	"headerFontSize",
-	"headerVerticalPadding",
-	"nestedTimelineFontSize",
-	"nestedTimelineBackgroundColour"
-];
+export const themeableOptions = ["sidebarWidth", "bodyFontFamily", "boxSpacing", "bodyTextColour", "bodyBackgroundColour", "bodyBackgroundPrimaryColour", "bodyBackgroundOffsetColour", "bodyBackgroundGradientDirection", "headingBackgroundColour", "timelineBackgroundColour", "eventBackgroundColour", "headerFontSize", "headerVerticalPadding", "nestedTimelineFontSize", "nestedTimelineBackgroundColour"];
 
 export default class SettingsStorage extends StorageObject {
 	_internalModel = {
@@ -29,9 +13,7 @@ export default class SettingsStorage extends StorageObject {
 		if (document?.documentElement) {
 			const computedStyles = getComputedStyle(document.documentElement);
 			for (let option of themeableOptions) {
-				initialState[option] = computedStyles.getPropertyValue(
-					`--${dasherize(option)}`
-				);
+				initialState[option] = computedStyles.getPropertyValue(`--${dasherize(option)}`);
 			}
 		}
 		return initialState;

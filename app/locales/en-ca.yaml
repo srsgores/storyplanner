@@ -1,0 +1,28 @@
+sync:
+    status:
+        online: "Online"
+        offline: "Offline"
+        syncing: "Syncing..."
+        syncNow: "Sync Now"
+        lastSynced: "Last synced:"
+        autoSync: "Auto-sync"
+    icon:
+        online: "✓"
+        offline: "✗"
+    auth:
+        login: "Login"
+        logout: "Logout"
+    error:
+        connection: "Connection error"
+        authentication: "Authentication error"
+        login: "Login failed"
+        logout: "Logout failed"
+        sync: "Sync failed"
+    action:
+        syncing: "Syncing..."
+        sync: "Sync Now"
+    aria:
+        login: "Sign in to enable sync across devices"
+        logout: "Sign out from your account"
+        syncNow: "Manually trigger data synchronization"
+        autoSync: "Toggle automatic synchronization"

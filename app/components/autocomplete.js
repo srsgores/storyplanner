@@ -20,13 +20,8 @@ export default class AutocompleteComponent extends Component {
 	}
 
 	updateMatchResults() {
-		const queryString = this.openRange.head.section.text.substring(
-			this.openRange.head.offset,
-			this.args.editor.range.head.offset
-		);
-		const query = isEmpty(queryString)
-			? {}
-			: {filter: {name: new RegExp(queryString)}};
+		const queryString = this.openRange.head.section.text.substring(this.openRange.head.offset, this.args.editor.range.head.offset);
+		const query = isEmpty(queryString) ? {} : {filter: {name: new RegExp(queryString)}};
 		this.store
 			.query(this.args.modelName, query)
 			.then((matches) => {
@@ -120,10 +115,7 @@ export default class AutocompleteComponent extends Component {
 	@action selectOption() {
 		if (this.selectedOption && this.selectedOption.model) {
 			let {model} = this.selectedOption;
-			const rangeToRemove = new Range(
-				this.openRange.head,
-				this.args.editor.range.tail
-			).extend(-1);
+			const rangeToRemove = new Range(this.openRange.head, this.args.editor.range.tail).extend(-1);
 			this.args.editor.deleteRange(rangeToRemove);
 			if (this.args.onSelectOption) {
 				this.args.onSelectOption(model);

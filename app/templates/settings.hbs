@@ -4,33 +4,33 @@
 	<form action="" class="settings-form padded block-form">
 		<fieldset class="form-group">
 			<legend>{{t "settings.sections.general.title"}}</legend>
-			<FormField class="gridded" @model={{this.settings.settings}} @field="maxWordCount" @type="number" min="1"/>
+			<FormField class="gridded" @model={{this.settings.settings}} @field="maxWordCount" @type="number" min="1" />
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>{{t "settings.sections.event.title"}}</legend>
-			<FormField class="gridded" @model={{this.settings.settings}} @field="defaultDuration" @type="duration"/>
+			<FormField class="gridded" @model={{this.settings.settings}} @field="defaultDuration" @type="duration" />
 		</fieldset>
 		<fieldset class="form-group">
 			<legend>{{t "settings.sections.event.title"}}</legend>
 			<fieldset class="form-group">
 				<legend>{{t "settings.sections.theme.title"}}.</legend>
-				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundColour"/>
-				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundPrimaryColour"/>
-				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundOffsetColour"/>
-				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundGradientDirection" @type="text"/>
-				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyTextColour"/>
-				<FormField class="gridded" @model={{this.settings.theme}} @field="boxSpacing" @type="text"/>
-				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyFontFamily" @type="text"/>
+				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundColour" />
+				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundPrimaryColour" />
+				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundOffsetColour" />
+				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyBackgroundGradientDirection" @type="text" />
+				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyTextColour" />
+				<FormField class="gridded" @model={{this.settings.theme}} @field="boxSpacing" @type="text" />
+				<FormField class="gridded" @model={{this.settings.theme}} @field="bodyFontFamily" @type="text" />
 			</fieldset>
 			<fieldset class="form-group">
 				<legend>{{t "settings.sections.theme.timeline.title"}}</legend>
-				<FormField class="gridded" @model={{this.settings.theme}} @field="headerBackgroundColour"/>
-				<FormField class="gridded" @model={{this.settings.theme}} @field="headerFontSize" @type="text"/>
-				<FormField class="gridded" @model={{this.settings.theme}} @field="headerVerticalPadding" @type="text"/>
-				<FormField class="gridded" @model={{this.settings.theme}} @field="timelineBackgroundColour" @type="color"/>
-				<FormField class="gridded" @model={{this.settings.theme}} @field="eventBackgroundColour"/>
-				<FormField class="gridded" @model={{this.settings.theme}} @field="nestedTimelineFontSize" @type="text"/>
-				<FormField class="gridded" @model={{this.settings.theme}} @field="nestedTimelineBackgroundColour" @type="color"/>
+				<FormField class="gridded" @model={{this.settings.theme}} @field="headerBackgroundColour" />
+				<FormField class="gridded" @model={{this.settings.theme}} @field="headerFontSize" @type="text" />
+				<FormField class="gridded" @model={{this.settings.theme}} @field="headerVerticalPadding" @type="text" />
+				<FormField class="gridded" @model={{this.settings.theme}} @field="timelineBackgroundColour" @type="color" />
+				<FormField class="gridded" @model={{this.settings.theme}} @field="eventBackgroundColour" />
+				<FormField class="gridded" @model={{this.settings.theme}} @field="nestedTimelineFontSize" @type="text" />
+				<FormField class="gridded" @model={{this.settings.theme}} @field="nestedTimelineBackgroundColour" @type="color" />
 			</fieldset>
 		</fieldset>
 		<fieldset class="form-group">
@@ -44,7 +44,7 @@
 			<p><strong>{{t "settings.sections.import.warning"}}</strong></p>
 			<div class="form-field gridded">
 				<label for="import-settings" class="form-field-label">{{t "settings.import.label"}}</label>
-				<Input @type="file" class="form-control" @value={{this.uploadedSettingsFile}} {{on "change" this.importData}} id="import-settings"/>
+				<Input @type="file" class="form-control" @value={{this.uploadedSettingsFile}} {{on "change" this.importData}} id="import-settings" />
 			</div>
 		</fieldset>
 	</form>

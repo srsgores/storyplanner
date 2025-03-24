@@ -4,8 +4,8 @@
 			<h1 class="form-title" id="form-title">{{@title}}</h1>
 		{{/if}}
 		{{outlet}}
-		<FormField @model={{this}} @field="email"/>
-		<FormField @model={{this}} @field="password"/>
+		<FormField @model={{this}} @field="email" />
+		<FormField @model={{this}} @field="password" />
 		{{#if @submitText.length}}
 			<footer class="form-actions">
 				<button type="submit">{{@submitText}}</button>

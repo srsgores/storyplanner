@@ -2,14 +2,11 @@ import {module, test} from "qunit";
 import {setupRenderingTest} from "ember-qunit";
 import {render} from "@ember/test-helpers";
 import {hbs} from "ember-cli-htmlbars";
-import {
-	HOUR_THRESHOLD,
-	DAY_THRESHOLD
-} from "storyplanner-octane/components/duration-editor";
+import {HOUR_THRESHOLD, DAY_THRESHOLD} from "storyplanner-octane/components/duration-editor";
 
 const SELECTORS = {
-	DURATION_INPUT: "[name=\"duration\"]",
-	UNIT_SELECT: "[name=\"unit\"]"
+	DURATION_INPUT: '[name="duration"]',
+	UNIT_SELECT: '[name="unit"]'
 };
 
 module("Integration | Component | duration-editor", function (hooks) {

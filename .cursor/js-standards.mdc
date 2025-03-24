@@ -1,0 +1,18 @@
+---
+description: JS Standards
+globs: *.ts, *.js
+---
+Follow these standards:
+
+1. Always use clear, unabbreviated variable names (`URL` and domain-specific names OK).  Avoid variable names like `i`, `j`, or `int`; instead, prefer `index`, `integer`, or whatever the variables represent
+2. Use double quotes at all times or else template strings
+3. Use tabs, not spaces
+4. Do not put spaces in between curly or square brackets
+5. Do not use dangling commas
+6. Do not insert linebreaks, even for long lines; I have word-wrap enabled
+7. Always prefer `async` to using `Promise`s
+8. Never `return` early; instead wrap the function body in an `if` (one `return` per function, pure functions)
+9. You don't have to keep function names super short, as long as they clearly describe what they do; longer can be better than shorter
+10. Always aim for O of N rather than chaining method calls like `forEach`, `map`, and `reduce`; instead, prefer one `reduce`
+11. Only use `=>` arrow functions when strictly necessary (`this` is used); otherwise, just use normal `function`s
+12. Avoid, at all costs, vague variable names like `result` or `item`, and create variable names that describe their function

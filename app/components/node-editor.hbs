@@ -6,14 +6,12 @@
 	{{yield}}
 	<fieldset>
 		<legend class="visuallyhidden">Basic Information</legend>
-		<FormField @model={{@node}} @field="title" class="node-title"/>
+		<FormField @model={{@node}} @field="title" class="node-title" />
 		{{#if @node.isLoading}}
 			<progress></progress>
 		{{else}}
-			<FormField @model={{@node}} @field="summary" class="node-summary"/>
+			<FormField @model={{@node}} @field="summary" class="node-summary" />
 		{{/if}}
-
-
 
 	</fieldset>
 	{{#if this.isEvent}}
@@ -22,8 +20,8 @@
 			<fieldset aria-live="assertive" aria-atomic="true">
 				<legend class="visuallyhidden">Timing Information</legend>
 				{{#if this.eventTimingsToggled}}
-					<FormField @model={{@node}} @field="startTime" @type="datetime-local" @max={{@node.endTime}} @fieldId="{{this.elementId}}-start-time"/>
-					<FormField @model={{@node}} @field="endTime" @type="datetime-local" @min={{@node.startTime}} @fieldId="{{this.elementId}}-end-time"/>
+					<FormField @model={{@node}} @field="startTime" @type="datetime-local" @max={{@node.endTime}} @fieldId="{{this.elementId}}-start-time" />
+					<FormField @model={{@node}} @field="endTime" @type="datetime-local" @min={{@node.startTime}} @fieldId="{{this.elementId}}-end-time" />
 				{{/if}}
 			</fieldset>
 		</details>

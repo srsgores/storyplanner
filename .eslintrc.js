@@ -11,11 +11,7 @@ module.exports = {
 		}
 	},
 	plugins: ["ember"],
-	extends: [
-		"eslint:recommended",
-		"plugin:ember/recommended",
-		"plugin:prettier/recommended"
-	],
+	extends: ["eslint:recommended", "plugin:ember/recommended", "plugin:prettier/recommended"],
 	env: {
 		browser: true
 	},
@@ -26,17 +22,7 @@ module.exports = {
 	overrides: [
 		// node files
 		{
-			files: [
-				".eslintrc.js",
-				".prettierrc.js",
-				".template-lintrc.js",
-				"ember-cli-build.js",
-				"testem.js",
-				"blueprints/*/index.js",
-				"config/**/*.js",
-				"lib/*/index.js",
-				"server/**/*.js"
-			],
+			files: [".eslintrc.js", ".prettierrc.js", ".template-lintrc.js", "ember-cli-build.js", "testem.js", "blueprints/*/index.js", "config/**/*.js", "lib/*/index.js", "server/**/*.js"],
 			parserOptions: {
 				sourceType: "script"
 			},

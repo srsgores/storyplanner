@@ -15,9 +15,7 @@ export default class TimelineComponent extends Component {
 			story: this.args.story
 		});
 		if (eventAfter && eventAfter.startTime) {
-			createdEvent.startTime = new Date(
-				eventAfter.startTime.getTime() + 1
-			);
+			createdEvent.startTime = new Date(eventAfter.startTime.getTime() + 1);
 		}
 		await createdEvent.save();
 		await this.args.timeline.save();
@@ -46,9 +44,7 @@ export default class TimelineComponent extends Component {
 
 	@action moveEventBefore(droppedEvent, targetEvent) {
 		if (droppedEvent !== targetEvent && targetEvent.startTime) {
-			const oneMinuteBeforeStartTime = new Date(
-				targetEvent.startTime.getTime() - 1 * 60000
-			);
+			const oneMinuteBeforeStartTime = new Date(targetEvent.startTime.getTime() - 1 * 60000);
 			droppedEvent.startTime = oneMinuteBeforeStartTime;
 			return droppedEvent.save();
 		}

@@ -1,0 +1,56 @@
+<div class="sync-status" role="status" aria-live="polite" ...attributes>
+	{{! Connection Status }}
+	<div class="sync-status__connection">
+		{{#if this.dataSync.isOnline}}
+			<span class="sync-status__icon sync-status__icon--online" aria-hidden="true">{{t "sync.icon.online"}}</span>
+			<span class="sync-status__text">{{t "sync.status.online"}}</span>
+		{{else}}
+			<span class="sync-status__icon sync-status__icon--offline" aria-hidden="true">{{t "sync.icon.offline"}}</span>
+			<span class="sync-status__text">{{t "sync.status.offline"}}</span>
+		{{/if}}
+	</div>
+
+	{{! Authentication Status }}
+	<div class="sync-status__auth">
+		{{#if this.session.isAuthenticated}}
+			<span class="sync-status__user">{{this.dataSync.user.email}}</span>
+			<button type="button" class="sync-status__button" {{on "click" this.dataSync.logout}} aria-label={{t "sync.aria.logout"}}>
+				{{t "sync.auth.logout"}}
+			</button>
+		{{else}}
+			<button type="button" class="sync-status__button" {{on "click" this.dataSync.login}} aria-label={{t "sync.aria.login"}}>
+				{{t "sync.auth.login"}}
+			</button>
+		{{/if}}
+	</div>
+
+	{{! Sync Status and Controls }}
+	<div class="sync-status__sync">
+		{{#if this.dataSync.lastSyncedAt}}
+			<span class="sync-status__text">
+				{{t "sync.status.lastSynced"}}
+				{{format-date this.dataSync.lastSyncedAt}}
+			</span>
+		{{/if}}
+
+		{{! Auto-sync toggle }}
+		<div class="sync-status__auto">
+			<label class="sync-status__auto-label" for="auto-sync-checkbox">
+				{{t "sync.status.autoSync"}}
+			</label>
+			<input id="auto-sync-checkbox" type="checkbox" checked={{this.dataSync.autoSyncEnabled}} {{on "change" this.dataSync.toggleAutoSync}} />
+		</div>
+
+		{{! Manual sync button }}
+		<button type="button" class="sync-status__button sync-status__button--secondary" {{on "click" this.dataSync.sync}} disabled={{this.dataSync.disableSyncButton}} aria-label={{t "sync.aria.syncNow"}}>
+			{{t this.dataSync.syncButtonText}}
+		</button>
+	</div>
+
+	{{! Error Display }}
+	{{#if this.dataSync.error}}
+		<div class="sync-status__error" aria-live="assertive" role="alert">
+			{{this.dataSync.error}}
+		</div>
+	{{/if}}
+</div>

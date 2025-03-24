@@ -78,11 +78,7 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 
 				// Skip if cursor is not at end of section
 				if (head.isTail() && !section.isListItem) {
-					this.replaceWithCardSection(
-						"divider",
-						section.toRange(),
-						payload
-					);
+					this.replaceWithCardSection("divider", section.toRange(), payload);
 				}
 			}
 		});

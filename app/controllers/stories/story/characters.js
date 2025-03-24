@@ -7,9 +7,6 @@ export default class StoriesStoryCharactersController extends Controller {
 			story: this.story
 		});
 		const savedCharacter = await createdCharacter.save();
-		return this.transitionToRoute(
-			"stories.story.characters.character",
-			savedCharacter
-		);
+		return this.transitionToRoute("stories.story.characters.character", savedCharacter);
 	}
 }

@@ -20,10 +20,8 @@ export const CLASS_NAMES = {
 };
 
 export const ERROR_MESSAGES = {
-	NO_MODEL_SUPPLIED_MESSAGE:
-		"No @model argument was supplied.  <FormField> requires a model so it can bind to the model",
-	NO_FIELD_NAME_SUPPLIED_MESSAGE:
-		"No @field name argument was supplied.  <FormField> requires a field name so it can bind to the model's attribute"
+	NO_MODEL_SUPPLIED_MESSAGE: "No @model argument was supplied.  <FormField> requires a model so it can bind to the model",
+	NO_FIELD_NAME_SUPPLIED_MESSAGE: "No @field name argument was supplied.  <FormField> requires a field name so it can bind to the model's attribute"
 };
 
 export default class FormFieldComponent extends Component {
@@ -50,10 +48,7 @@ export default class FormFieldComponent extends Component {
 	@computed.match("args.type", /date/i) isDate;
 
 	get type() {
-		return (
-			this.args.type ||
-			guessType(this.args.model, {attributeName: this.args.field})
-		);
+		return this.args.type || guessType(this.args.model, {attributeName: this.args.field});
 	}
 
 	get hasValue() {
@@ -63,9 +58,7 @@ export default class FormFieldComponent extends Component {
 	get labelText() {
 		let labelText = this.args.labelText;
 		if (!labelText) {
-			labelText = this.intl.t(
-				`${this.args.model?._internalModel?.modelName}.${this.args.field}.label`
-			);
+			labelText = this.intl.t(`${this.args.model?._internalModel?.modelName}.${this.args.field}.label`);
 		}
 		return labelText;
 	}

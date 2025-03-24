@@ -1,14 +1,14 @@
-<FormField @model={{@model}} @field="duration" @type="number" @min="1" step="1" @name="duration"/>
+<FormField @model={{@model}} @field="duration" @type="number" @min="1" step="1" @name="duration" />
 
 <ul class="duration-options">
 	<li class="duration-option">
-		<FormField @model={{this}} @field="unit" @type="radio" name="{{this.elementId}}-unit" @value="minutes"/>
+		<FormField @model={{this}} @field="unit" @type="radio" name="{{this.elementId}}-unit" @value="minutes" />
 	</li>
 	<li class="duration-option">
-		<FormField @model={{this}} @field="unit" @type="radio" name="{{this.elementId}}-unit" @value="hours"/>
+		<FormField @model={{this}} @field="unit" @type="radio" name="{{this.elementId}}-unit" @value="hours" />
 	</li>
 	<li class="duration-option">
-		<FormField @model={{this}} @field="unit" @type="radio" name="{{this.elementId}}-unit" @value="days"/>
+		<FormField @model={{this}} @field="unit" @type="radio" name="{{this.elementId}}-unit" @value="days" />
 	</li>
 </ul>
 

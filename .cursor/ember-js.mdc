@@ -1,0 +1,14 @@
+---
+description: Ember JS Standards
+globs: *.js, *.ts
+---
+## Ember Data
+Always aim to use native ember data when possible.
+
+1. If we have access to an ember data model, we don't ever use `set`; we set the value directly.  If we previously used `set` within a component, and the ember data record is an argument (`this.args`), then we should consider moving the logic to an `action` that delegates to a service instead that mutates the record(s)
+2. We should always use `async` functions when dealing with retrieving or saving records
+
+## Ember
+1. Put decorators on the same line as `function` names like `@action` and `@attr`
+2. Use Ember Octane format, refactoring legacy code as necessary
+3. Refactor `classNameBindings` to the corresponding template file

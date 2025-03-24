@@ -1,7 +1,6 @@
-
 <div class="mobiledoc-editor__editor-wrapper">
 	{{#if this.showAutocomplete}}
-		<Autocomplete @autofocus={{true}} @onSelectOption={{this.onSelectOption}} @labelText={{this.autocompletePrompt}} @modelName={{this.modelName}} @editor={{this.editor}} @onClose={{fn (mut this.showAutocomplete) false}}/>
+		<Autocomplete @autofocus={{true}} @onSelectOption={{this.onSelectOption}} @labelText={{this.autocompletePrompt}} @modelName={{this.modelName}} @editor={{this.editor}} @onClose={{fn (mut this.showAutocomplete) false}} />
 	{{/if}}
 	<div class="mobiledoc-editor__editor" aria-multiline="true" role="textbox" aria-label={{this.placeholder}}></div>
 </div>
@@ -14,46 +13,14 @@
 
 {{#each componentCards as |card|}}
 	{{#ember-wormhole to=card.destinationElementId}}
-	{{! LEGACY: Payload is passed as the legacy "data" attr below. This is deprecated and should be removed before 1.0 }}
-		{{component card.cardName
-			editor=editor
-			postModel=card.postModel
-			cardName=card.cardName
-			payload=card.payload
-			data=card.payload
-			env=card.env
-			options=card.options
-			editCard=(action card.env.edit)
-			saveCard=(action card.env.save)
-			cancelCard=(action card.env.cancel)
-			removeCard=(action card.env.remove)}}
+		{{! LEGACY: Payload is passed as the legacy "data" attr below. This is deprecated and should be removed before 1.0 }}
+		{{component card.cardName editor=editor postModel=card.postModel cardName=card.cardName payload=card.payload data=card.payload env=card.env options=card.options editCard=(action card.env.edit) saveCard=(action card.env.save) cancelCard=(action card.env.cancel) removeCard=(action card.env.remove)}}
 	{{/ember-wormhole}}
 {{/each}}
 
 {{#each componentAtoms as |atom|}}
 	{{#ember-wormhole to=atom.destinationElementId}}
-		{{component atom.atomName
-					editor=editor
-					postModel=atom.postModel
-					atomName=atom.atomName
-					payload=atom.payload
-					value=atom.value
-					options=atom.options
-					saveAtom=(action atom.callbacks.save)
-		}}
+		{{component atom.atomName editor=editor postModel=atom.postModel atomName=atom.atomName payload=atom.payload value=atom.value options=atom.options saveAtom=(action atom.callbacks.save)}}
 	{{/ember-wormhole}}
 {{/each}}
-{{yield (hash
-	editor=editor
-	activeMarkupTagNames=activeMarkupTagNames
-	activeSectionTagNames=activeSectionTagNames
-	activeSectionAttributes=activeSectionAttributes
-	toggleMarkup=(action "toggleMarkup")
-	toggleLink=(action "toggleLink")
-	addCard=(action "addCard")
-	addAtom=(action "addAtom")
-	addCardInEditMode=(action "addCardInEditMode")
-	toggleSection=(action "toggleSection")
-	setAttribute=(action "setAttribute")
-	isDefaultAttributeValue=(action "isDefaultAttributeValue")
-)}}
+{{yield (hash editor=editor activeMarkupTagNames=activeMarkupTagNames activeSectionTagNames=activeSectionTagNames activeSectionAttributes=activeSectionAttributes toggleMarkup=(action "toggleMarkup") toggleLink=(action "toggleLink") addCard=(action "addCard") addAtom=(action "addAtom") addCardInEditMode=(action "addCardInEditMode") toggleSection=(action "toggleSection") setAttribute=(action "setAttribute") isDefaultAttributeValue=(action "isDefaultAttributeValue"))}}

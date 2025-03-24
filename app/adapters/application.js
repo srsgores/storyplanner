@@ -1,1 +1,3 @@
-export {default} from "ember-local-storage/adapters/local";
+import FireproofAdapter from "./fireproof";
+
+export default class ApplicationAdapter extends FireproofAdapter {}

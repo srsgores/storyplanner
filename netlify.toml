@@ -1,0 +1,21 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[dev]
+  command = "npm run start"
+  targetPort = 4200
+  port = 8888
+  publish = "dist"
+  autoLaunch = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[template.environment]
+  NETLIFY_SITE_ID = "Your Netlify Site ID"
+
+[functions]
+  directory = "functions" 

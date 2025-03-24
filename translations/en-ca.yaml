@@ -28,7 +28,7 @@ timeline:
 characterEditor:
     basicInformation: "Basic Information"
     genderSexuality: "Gender and Sexuality"
-    personality:  "Personality"
+    personality: "Personality"
     backgroundNotesDetails: "Background, Notes & Details"
 character:
     name:
@@ -139,3 +139,19 @@ settings:
         label: "JSON File to Import"
     actions:
         export: "Export Stories to <code>.json</code> file"
+sync:
+    status:
+        online: "Online"
+        offline: "Offline"
+        syncing: "Syncing..."
+        syncNow: "Sync Now"
+        lastSynced: "Last synced:"
+    icon:
+        online: "✓"
+        offline: "✗"
+    auth:
+        login: "Login"
+        logout: "Logout"
+    error:
+        connection: "Connection error"
+        authentication: "Authentication error"

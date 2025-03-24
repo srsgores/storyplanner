@@ -3,7 +3,7 @@
 {{/if}}
 <div class="story-preview-section-content">
 	<div class="summary-container">
-		<FormField @model={{@event}} @field="summary" @type="textarea" class="summary-content"/>
+		<FormField @model={{@event}} @field="summary" @type="textarea" class="summary-content" />
 		<dl class="event-summary-meta">
 			{{#if this.eventDuration}}
 				<dt>Duration</dt>
@@ -11,6 +11,6 @@
 			{{/if}}
 		</dl>
 	</div>
-	<FormField @model={{@event}} @field="text" @type="textarea" class="content-container"/>
+	<FormField @model={{@event}} @field="text" @type="textarea" class="content-container" />
 </div>
 {{yield}}

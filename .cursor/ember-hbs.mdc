@@ -1,0 +1,18 @@
+---
+description: HTML standards
+globs: *.hbs, *.html
+alwaysApply: false
+---
+Follow these rules:
+
+1. Do **not** include spaces before `/>` self-closing tags
+2. Do **not** create new line `\n` characters to break up long lines of HTML
+3. Always use double quotes `"`
+4. Do not inline any logic and favour putting logic in controllers or components instead of templates
+5. Use tabs for indentation
+
+## Ember Handlebars
+Remember: in Ember, we do "data up, actions down", meaning templates should have minimal logic and focus on content rather than on logic.
+
+1. Place `/>` closing tags on the same line
+2. Keep **ALL** attributes and arg assignments for components on the same line as the component itself

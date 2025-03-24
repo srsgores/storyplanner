@@ -23,10 +23,7 @@ export default class SettingsController extends Controller {
 	}
 
 	@action exportData() {
-		return this.store.exportData(
-			["stories", "characters", "timelines", "events", "locations"],
-			{download: true, filename: `${Date.now()}-stories-backup`}
-		);
+		return this.store.exportData(["stories", "characters", "timelines", "events", "locations"], {download: true, filename: `${Date.now()}-stories-backup`});
 	}
 
 	@action importData(event) {

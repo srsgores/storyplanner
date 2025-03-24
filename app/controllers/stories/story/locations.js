@@ -9,10 +9,7 @@ export default class StoriesStoryLocationsController extends Controller {
 			story: this.story
 		});
 		const savedLocation = await createdLocation.save();
-		this.transitionToRoute(
-			"stories.story.locations.location",
-			savedLocation
-		);
+		this.transitionToRoute("stories.story.locations.location", savedLocation);
 		return this.model.update();
 	}
 	@action async removeLocation(location) {
