@@ -29,12 +29,12 @@
 					<ul class="mobiledoc-toolbar heading-buttons" role="menubar">
 						<li class="mobiledoc-toolbar__control">
 							<MobiledocSectionButton @editor={{editor}} @for="h1">
-								<abbr title="Heading 1">H1</abbr>
+								<abbr title={{t "heading1.title"}}>{{t "heading1.label"}}</abbr>
 							</MobiledocSectionButton>
 						</li>
 						<li class="mobiledoc-toolbar__control">
 							<MobiledocSectionButton @editor={{editor}} @for="h2">
-								<abbr title="Heading 2">H2</abbr>
+								<abbr title={{t "heading2.title"}}>{{t "heading2.label"}}</abbr>
 							</MobiledocSectionButton>
 						</li>
 						<li class="mobiledoc-toolbar__control">
@@ -55,8 +55,8 @@
 					</ul>
 					<dl class="content-meta">
 						{{#if this.wordCount}}
-							<dt class="visuallyhidden">Words</dt>
-							<dd aria-live="polite">{{this.wordCount}} words</dd>
+							<dt class="visuallyhidden">{{t "word_count.label"}}</dt>
+							<dd aria-live="polite">{{t "word_count.value" count=this.wordCount}}</dd>
 						{{/if}}
 					</dl>
 				</nav>
@@ -64,12 +64,12 @@
 		</div>
 	{{else}}
 		{{#if this.isCheckbox}}
-			<Input @type={{this.type}} @checked={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} @change={{this.autosave}} @value={{@value}} @name={{@name}} />
+			<Input @type={{this.type}} @checked={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} {{on "change" this.autosave}} name={{@name}} />
 		{{else}}
 			{{#if this.isDate}}
 				<Inputs::DateInput @value={{get @model @field}} id={{this.elementId}} @onClose={{this.autosave}} @onChange={{fn (mut (get @model @field))}} @maxDate={{@max}} @minDate={{@min}} />
 			{{else}}
-				<Input @type={{this.type}} @value={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} @min={{@min}} @max={{@max}} @step={{@step}} @focus-in={{fn this.onFocusIn}} @focus-out={{fn this.onFocusOut}} {{on "blur" this.autosave}} @size={{if this.hasValue (get (get @model @field) "length") 5}} @key-down={{this.onKeyDown}} @name={{@name}} />
+				<Input @type={{this.type}} @value={{get @model @field}} class={{this.formControlClassName}} id={{this.elementId}} required={{this.isRequired}} min={{@min}} max={{@max}} step={{@step}} {{on "focusin" this.onFocusIn}} {{on "focusout" this.onFocusOut}} {{on "blur" this.autosave}} size={{if this.hasValue (get (get @model @field) "length") 5}} {{on "keyup" this.onKeyDown}} name={{@name}} />
 			{{/if}}
 		{{/if}}
 	{{/if}}

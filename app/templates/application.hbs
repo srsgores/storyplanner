@@ -1,8 +1,8 @@
 {{page-title (t "app.title")}}
 <ThemeProvider>
-	<header role="banner" aria-label={{t "landmarks.banner"}}>
+	<header aria-label={{t "landmarks.banner"}}>
 		<h1><LinkTo @route="index">{{t "app.title"}}</LinkTo></h1>
-		<nav role="navigation">
+		<nav>
 			<ul class="nav">
 				{{#each this.navItems as |navItem|}}
 					<li class="nav-item">
@@ -16,9 +16,14 @@
 				</li>
 			</ul>
 		</nav>
+
+		{{! Sync Status Component }}
+		<div class="sync-status-container">
+			<SyncStatus />
+		</div>
 	</header>
 
-	<main role="main" id="main-content">
+	<main id="main-content">
 		{{outlet}}
 	</main>
 </ThemeProvider>

@@ -9,7 +9,7 @@ export default class SettingsController extends Controller {
 
 	readFile(file) {
 		const reader = new FileReader();
-		return new Promise((resolve) => {
+		return new Promise(resolve => {
 			reader.onload = function (event) {
 				resolve({
 					file: file.name,
@@ -27,7 +27,7 @@ export default class SettingsController extends Controller {
 	}
 
 	@action importData(event) {
-		this.readFile(event.target.files[0]).then((file) => {
+		this.readFile(event.target.files[0]).then(file => {
 			this.store.importData(file.data);
 			alert(`File ${file.file} imported: ${file.size} bytes`);
 			this.uploadedSettingsFile = "";

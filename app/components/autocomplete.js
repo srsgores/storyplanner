@@ -24,7 +24,7 @@ export default class AutocompleteComponent extends Component {
 		const query = isEmpty(queryString) ? {} : {filter: {name: new RegExp(queryString)}};
 		this.store
 			.query(this.args.modelName, query)
-			.then((matches) => {
+			.then(matches => {
 				this.options = matches.map((model, index) => {
 					return {
 						model,

@@ -1,6 +1,7 @@
 ---
 description: Ember JS Standards
-globs: *.js, *.ts
+globs: *.js
+alwaysApply: false
 ---
 ## Ember Data
 Always aim to use native ember data when possible.

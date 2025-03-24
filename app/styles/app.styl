@@ -176,3 +176,18 @@ svg
 		display block
 @import "_forms"
 @import "components/*"
+
+// Sync status container in header
+header .sync-status-container
+	margin-top 1rem
+	width 100%
+	display flex
+	justify-content flex-end
+	
+	.sync-status
+		max-width 300px
+		margin-left auto
+		box-shadow 0 1px 3px rgba(0, 0, 0, 0.2)
+		
+		@media (max-width: $breakpointDesktop)
+			max-width 100%

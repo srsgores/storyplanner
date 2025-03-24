@@ -44,7 +44,7 @@ export default class NetlifyAuthenticator extends Base {
 		}
 
 		return new Promise((resolve, reject) => {
-			const successCallback = (user) => {
+			const successCallback = user => {
 				netlifyIdentity.off("login", successCallback);
 				netlifyIdentity.off("error", errorCallback);
 
@@ -58,7 +58,7 @@ export default class NetlifyAuthenticator extends Base {
 				}
 			};
 
-			const errorCallback = (error) => {
+			const errorCallback = error => {
 				netlifyIdentity.off("login", successCallback);
 				netlifyIdentity.off("error", errorCallback);
 				reject(error);
@@ -79,7 +79,7 @@ export default class NetlifyAuthenticator extends Base {
 			return resolve();
 		}
 
-		return new Promise((resolve) => {
+		return new Promise(resolve => {
 			const logoutCallback = () => {
 				netlifyIdentity.off("logout", logoutCallback);
 				resolve();

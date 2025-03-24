@@ -1,6 +1,7 @@
 ---
 description: JS Standards
-globs: *.ts, *.js
+globs: *.ts,*.js
+alwaysApply: false
 ---
 Follow these standards:
 

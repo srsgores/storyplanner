@@ -42,7 +42,7 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 
 				// ensure cursor is at the end of the matched text so we don't convert text the users wants to start with `> ` and that we're not already on a blockquote section
 				if (text === matches[0] && section.tagName !== "blockquote") {
-					editor.run((postEditor) => {
+					editor.run(postEditor => {
 						range = range.extend(-matches[0].length);
 						const position = postEditor.deleteRange(range);
 						postEditor.setRange(position);
@@ -67,7 +67,7 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 		editor.onTextInput({
 			name: "md_hr",
 			match: /^---$/,
-			run: (postEditor) => {
+			run: postEditor => {
 				const {
 					range: {
 						head,
@@ -112,7 +112,7 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 			head: {section}
 		} = range;
 
-		editor.run((postEditor) => {
+		editor.run(postEditor => {
 			const {builder} = postEditor;
 			const card = builder.createCardSection(cardName, payload);
 			const nextSection = section.next;
@@ -153,7 +153,7 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 
 	updateWordCount(editor) {
 		let wordCount = 0;
-		editor.post.walkAllLeafSections((section) => {
+		editor.post.walkAllLeafSections(section => {
 			wordCount += countWords(section.text);
 		});
 		return this.onWordCountChange(wordCount);

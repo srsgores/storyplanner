@@ -23,7 +23,7 @@ export default class FireproofAdapter extends JSONAPIAdapter {
 
 			// If db not yet available in the service, wait for it
 			if (!this.db) {
-				await new Promise((resolve) => {
+				await new Promise(resolve => {
 					const checkDb = () => {
 						if (this.dataSync.db) {
 							this.db = this.dataSync.db;
@@ -69,7 +69,7 @@ export default class FireproofAdapter extends JSONAPIAdapter {
 		try {
 			const docs = await this.db.allDocs();
 			return {
-				data: docs.rows.filter((row) => row.doc && row.doc.type === type.modelName).map((row) => this._docToJsonApiRecord(row.doc, type.modelName))
+				data: docs.rows.filter(row => row.doc && row.doc.type === type.modelName).map(row => this._docToJsonApiRecord(row.doc, type.modelName))
 			};
 		} catch (error) {
 			console.error(`Error finding all records for ${type.modelName}`, error);
@@ -89,10 +89,10 @@ export default class FireproofAdapter extends JSONAPIAdapter {
 		};
 
 		// Handle relationships
-		Object.keys(data.relationships || {}).forEach((key) => {
+		Object.keys(data.relationships || {}).forEach(key => {
 			const relationshipData = data.relationships[key].data;
 			if (Array.isArray(relationshipData)) {
-				doc.relationships[key] = relationshipData.map((item) => item.id);
+				doc.relationships[key] = relationshipData.map(item => item.id);
 			} else if (relationshipData) {
 				doc.relationships[key] = relationshipData.id;
 			}
@@ -123,10 +123,10 @@ export default class FireproofAdapter extends JSONAPIAdapter {
 
 			// Update relationships
 			updatedDoc.relationships = updatedDoc.relationships || {};
-			Object.keys(data.relationships || {}).forEach((key) => {
+			Object.keys(data.relationships || {}).forEach(key => {
 				const relationshipData = data.relationships[key].data;
 				if (Array.isArray(relationshipData)) {
-					updatedDoc.relationships[key] = relationshipData.map((item) => item.id);
+					updatedDoc.relationships[key] = relationshipData.map(item => item.id);
 				} else if (relationshipData) {
 					updatedDoc.relationships[key] = relationshipData.id;
 				}
@@ -173,12 +173,12 @@ export default class FireproofAdapter extends JSONAPIAdapter {
 		if (relationships) {
 			jsonApiDoc.relationships = {};
 
-			Object.keys(relationships).forEach((key) => {
+			Object.keys(relationships).forEach(key => {
 				const relValue = relationships[key];
 
 				if (Array.isArray(relValue)) {
 					jsonApiDoc.relationships[key] = {
-						data: relValue.map((id) => ({
+						data: relValue.map(id => ({
 							id,
 							type: key.slice(0, -1) // Remove 's' from plural relationship name
 						}))
