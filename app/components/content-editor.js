@@ -172,7 +172,9 @@ export default class ContentEditorComponent extends MobileDocEditorComponent {
 	postDidChange(editor) {
 		if (this.onWordCountChange) {
 			debounce(this, "updateWordCount", editor, 500);
-			debounce(this, "autosuggest", editor, 500);
+			if (this.autocompleteEnabled) {
+				debounce(this, "autosuggest", editor, 500);
+			}
 		}
 		super.postDidChange(...arguments);
 	}
