@@ -2,7 +2,7 @@
 	<NodeEditor @node={{@timeline}} class="timeline-edit-form">
 		<ul class="contextual-actions">
 			<li class="action contextual-action">
-				<button type="button" {{on "click" this.remove}} title="Remove timeline">{{svg-jar "delete"}}</button>
+				<button type="button" {{on "click" this.remove}} title={{t "timeline.actions.remove"}}>{{svg-jar "delete"}}</button>
 			</li>
 		</ul>
 	</NodeEditor>
@@ -14,11 +14,11 @@
 					<NodeEditor @node={{event}}>
 						<ul class="contextual-actions">
 							<li class="action contextual-action">
-								<LinkTo @route="stories.story.timelines.event" @models={{array event}}><span class="visuallyhidden">Edit content for this event</span>{{svg-jar "edit"}}</LinkTo>
+								<LinkTo @route="stories.story.timelines.event" @models={{array event}}><span class="visuallyhidden">{{t "timeline.actions.editContent"}}</span>{{svg-jar "edit"}}</LinkTo>
 							</li>
 							{{#if eventIndex}}
 								<li class="action contextual-action">
-									<button type="button" {{on "click" (fn this.removeEvent event)}} title="Remove Event">{{svg-jar "delete"}}</button>
+									<button type="button" {{on "click" (fn this.removeEvent event)}} title={{t "timeline.actions.removeEvent"}}>{{svg-jar "delete"}}</button>
 								</li>
 							{{/if}}
 						</ul>
@@ -26,7 +26,7 @@
 				</article>
 				<ul class="link-actions">
 					<li class="link-action">
-						<button class="add-after" type="button" {{on "click" (fn this.addEvent event)}} title="Add event after this one">{{svg-jar "add_circle"}}</button>
+						<button class="add-after" type="button" {{on "click" (fn this.addEvent event)}} title={{t "timeline.actions.addEventAfter"}}>{{svg-jar "add_circle"}}</button>
 					</li>
 					<li class="link-action">
 						<button class="fork-event" type="button" {{on "click" (fn this.addTimelineToEvent event)}}>{{svg-jar "call_split" class="rotate-90"}}</button>

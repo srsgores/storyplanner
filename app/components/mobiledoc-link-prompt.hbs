@@ -1,9 +1,9 @@
 <dialog aria-live="assertive" open aria-labelledby="{{this.elementId}}-form-heading" class="mobiledoc-editor__link-prompt">
 	<form action="" {{on "submit" (fn @on-submit this.url)}}>
-		<FormField @model={{this}} @field="url" @labelText="URL" />
+		<FormField @model={{this}} @field="url" @labelText={{t "form.url"}} />
 		<footer class="form-actions">
-			<button type="button" {{on "click" @on-cancel}} class="close-button">Cancel</button>
-			<button type="submit">Create link</button>
+			<button type="button" {{on "click" @on-cancel}} class="close-button">{{t "actions.cancel"}}</button>
+			<button type="submit">{{t "actions.createLink"}}</button>
 		</footer>
 		{{yield}}
 	</form>

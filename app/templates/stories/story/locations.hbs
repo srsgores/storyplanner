@@ -2,7 +2,7 @@
 
 <div class="grid">
 	<article class="location-list-container">
-		<button type="button" {{on "click" this.addLocation}}>Add Location {{svg-jar "add"}}</button>
+		<button type="button" {{on "click" this.addLocation}}>{{t "location.actions.add"}} {{svg-jar "add"}}</button>
 		{{#if this.model.length}}
 			<ul class="locations">
 				{{#each this.model as |location|}}
@@ -11,7 +11,7 @@
 							{{#if location.name.length}}
 								{{location.name}}
 							{{else}}
-								Unnamed location
+								{{t "location.unnamed"}}
 							{{/if}}
 						</LinkTo>
 						<ul class="location-actions">

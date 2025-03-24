@@ -17,6 +17,10 @@ story:
         label: "Story Summary"
     title:
         label: "Story Title"
+    actions:
+        remove: "Remove"
+        create: "Create a story"
+    noStoriesFound: "No stories found"
 timeline:
     summary:
         label: "Summary"
@@ -25,12 +29,24 @@ timeline:
     actions:
         add: "Add Timeline"
         remove: "Remove Timeline"
+        removeEvent: "Remove Event"
+        editContent: "Edit content for this event"
+        addEventAfter: "Add event after this one"
+    noTimelinesMessage: "No timelines here"
+    addButton: "Add timeline"
 characterEditor:
     basicInformation: "Basic Information"
+    basicCharacterInformation: "Basic Character Information"
     genderSexuality: "Gender and Sexuality"
     personality: "Personality"
     backgroundNotesDetails: "Background, Notes & Details"
+duration:
+    unit:
+        minutes: "Minutes"
+        hours: "Hours"
+        days: "Days"
 character:
+    unnamed: "Unnamed Character"
     name:
         label: "Name"
     title:
@@ -58,6 +74,9 @@ character:
         add: "Add Character"
         remove: "Remove Character"
 location:
+    unnamed: "Unnamed location"
+    basicInformation: "Basic Location Information"
+    descriptionNotes: "Description & Notes"
     name:
         label: "Name"
     description:
@@ -81,8 +100,16 @@ event:
         addNested: "Add branched timeline (split into a new timeline)"
         edit: "Edit content for event"
         toggleDuration: "Toggle duration, start, and end times"
+    timing: "Event Timing"
+    duration: "{name} will last "
+    timingInfo: "Timing Information"
+    durationLabel: "Duration"
 actions:
     createStory: "Create Story"
+    cancel: "Cancel"
+    createLink: "Create link"
+node:
+    basicInfo: "Basic Information"
 settings:
     sections:
         general:
@@ -139,6 +166,8 @@ settings:
         label: "JSON File to Import"
     actions:
         export: "Export Stories to <code>.json</code> file"
+form:
+    url: "URL"
 sync:
     status:
         online: "Online"
@@ -152,6 +181,31 @@ sync:
     auth:
         login: "Login"
         logout: "Logout"
+    aria:
+        login: "Log in"
+        logout: "Log out"
+        syncNow: "Sync now"
     error:
         connection: "Connection error"
         authentication: "Authentication error"
+login:
+    title: "Log in"
+    submitText: "Login"
+    help:
+        persist: "Signing in lets you <strong>persist your stories</strong> to the cloud."
+        anonymous: "Don't want to save your writing to the cloud? Use the app anonymously and store the data only on this machine."
+register:
+    title: "Register"
+    submitText: "Register"
+    help:
+        persist: "Registering lets you <strong>persist your stories</strong> to the cloud."
+        anonymous: "Don't want to save your writing to the cloud? Use the app anonymously and store the data only on this machine."
+word_count:
+    label: "Word count"
+    value: "{count} words"
+heading1:
+    label: "H1"
+    title: "Heading 1"
+heading2:
+    label: "H2"
+    title: "Heading 2"

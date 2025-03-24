@@ -1,23 +1,23 @@
 <div class="character-editor-container">
 	<form action="" method="POST" class="character-editor padded block-form" ...attributes>
 		<fieldset class="form-group">
-			<legend>Basic Character Information</legend>
+			<legend>{{t "characterEditor.basicCharacterInformation"}}</legend>
 			<FormField @model={{@character}} @field="name" class="character-name-field" />
 			<FormField @model={{@character}} @field="title" />
 			<FormField @model={{@character}} @field="age" @type="number" @min="1" />
 		</fieldset>
 		<fieldset class="form-group">
-			<legend>Gender and Sexuality</legend>
+			<legend>{{t "characterEditor.genderSexuality"}}</legend>
 			<FormField @model={{@character}} @field="gender" />
 			<FormField @model={{@character}} @field="sexuality" />
 		</fieldset>
 		<fieldset class="form-group">
-			<legend>Personality</legend>
+			<legend>{{t "characterEditor.personality"}}</legend>
 			<FormField @model={{@character}} @field="firstImpression" @type="textarea" />
 			<FormField @model={{@character}} @field="corePersonality" @type="textarea" />
 		</fieldset>
 		<fieldset class="form-group">
-			<legend>Background, Notes & Details</legend>
+			<legend>{{t "characterEditor.backgroundNotesDetails"}}</legend>
 			<FormField @model={{@character}} @field="background" @type="textarea" />
 			<FormField @model={{@character}} @field="notes" @type="textarea" />
 		</fieldset>

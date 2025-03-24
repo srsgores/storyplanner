@@ -9,10 +9,10 @@
 				</Timeline>
 			</li>
 		{{else}}
-			<li><p>No timelines here</p></li>
+			<li><p>{{t "timeline.noTimelinesMessage"}}</p></li>
 		{{/each}}
 		<li class="add-timeline">
-			<button type="button" {{on "click" this.addTimeline}}>Add timeline {{svg-jar "add"}}</button>
+			<button type="button" {{on "click" this.addTimeline}}>{{t "timeline.addButton"}} {{svg-jar "add"}}</button>
 		</li>
 	</ol>
 </article>

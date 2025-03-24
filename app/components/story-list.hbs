@@ -24,7 +24,7 @@
 					</LinkTo>
 					<ul class="story-actions">
 						<li class="story-action">
-							<button type="button" {{on "click" (fn this.removeStory story)}}>Remove</button>
+							<button type="button" {{on "click" (fn this.removeStory story)}}>{{t "story.actions.remove"}}</button>
 						</li>
 					</ul>
 				</li>
@@ -32,8 +32,8 @@
 		</ul>
 	{{else}}
 		<dialog role="dialog">
-			<h3>No stories found</h3>
-			<LinkTo @route="stories.create">Create a story</LinkTo>
+			<h3>{{t "story.noStoriesFound"}}</h3>
+			<LinkTo @route="stories.create">{{t "story.actions.create"}}</LinkTo>
 		</dialog>
 	{{/if}}
 

@@ -2,13 +2,13 @@
 
 <ul class="duration-options">
 	<li class="duration-option">
-		<FormField @model={{this}} @field="unit" @type="radio" name="{{this.elementId}}-unit" @value="minutes" />
+		<FormField @model={{this}} @field="unit" @type="radio" name="{{this.elementId}}-unit" @value="minutes" @labelText={{t "duration.unit.minutes"}} />
 	</li>
 	<li class="duration-option">
-		<FormField @model={{this}} @field="unit" @type="radio" name="{{this.elementId}}-unit" @value="hours" />
+		<FormField @model={{this}} @field="unit" @type="radio" name="{{this.elementId}}-unit" @value="hours" @labelText={{t "duration.unit.hours"}} />
 	</li>
 	<li class="duration-option">
-		<FormField @model={{this}} @field="unit" @type="radio" name="{{this.elementId}}-unit" @value="days" />
+		<FormField @model={{this}} @field="unit" @type="radio" name="{{this.elementId}}-unit" @value="days" @labelText={{t "duration.unit.days"}} />
 	</li>
 </ul>
 

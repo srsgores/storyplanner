@@ -1,11 +1,11 @@
 {{#if this.eventDuration}}
-	<output for="{{this.elementId}}-start-time {{this.elementId}}-end-time" data-form="{{this.elementId}}-form" aria-atomic="true" aria-live="assertive" class="event-meta-duration"><span class="visuallyhidden">{{@node.name}} will last </span>{{moment-duration this.eventDuration}}</output>
+	<output for="{{this.elementId}}-start-time {{this.elementId}}-end-time" data-form="{{this.elementId}}-form" aria-atomic="true" aria-live="assertive" class="event-meta-duration"><span class="visuallyhidden">{{t "event.duration" name=@node.name}}</span>{{moment-duration this.eventDuration}}</output>
 {{/if}}
 
 <form action="" class="node-editor" id="{{this.elementId}}-form" ...attributes>
 	{{yield}}
 	<fieldset>
-		<legend class="visuallyhidden">Basic Information</legend>
+		<legend class="visuallyhidden">{{t "node.basicInfo"}}</legend>
 		<FormField @model={{@node}} @field="title" class="node-title" />
 		{{#if @node.isLoading}}
 			<progress></progress>
@@ -16,9 +16,9 @@
 	</fieldset>
 	{{#if this.isEvent}}
 		<details {{on "toggle" this.toggleEditEventTimings}}>
-			<summary><span class="visuallyhidden">Event Timing</span>{{svg-jar "access_time"}}</summary>
+			<summary><span class="visuallyhidden">{{t "event.timing"}}</span>{{svg-jar "access_time"}}</summary>
 			<fieldset aria-live="assertive" aria-atomic="true">
-				<legend class="visuallyhidden">Timing Information</legend>
+				<legend class="visuallyhidden">{{t "event.timingInfo"}}</legend>
 				{{#if this.eventTimingsToggled}}
 					<FormField @model={{@node}} @field="startTime" @type="datetime-local" @max={{@node.endTime}} @fieldId="{{this.elementId}}-start-time" />
 					<FormField @model={{@node}} @field="endTime" @type="datetime-local" @min={{@node.startTime}} @fieldId="{{this.elementId}}-end-time" />

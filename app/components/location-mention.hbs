@@ -2,7 +2,7 @@
 	{{#if @payload.model.name.length}}
 		{{@payload.model.name}}
 	{{else}}
-		Unnamed location
+		{{t "location.unnamed"}}
 	{{/if}}
 	{{yield}}
 </LinkTo>
