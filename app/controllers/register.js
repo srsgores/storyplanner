@@ -4,7 +4,7 @@ import {action} from "@ember/action";
 
 export default class RegisterController extends Controller {
 	@service session;
-	@action register(username, password) {
-		return this.session.authenticate("", {username, password});
+	@action register() {
+		return this.session.authenticate("authenticator:netlify");
 	}
 }

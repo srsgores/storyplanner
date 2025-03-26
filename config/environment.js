@@ -9,6 +9,10 @@ module.exports = function (environment) {
 		"ember-local-storage": {
 			fileExport: true
 		},
+		"ember-simple-auth": {
+			routeAfterAuthentication: "authenticated.index",
+			routeIfAlreadyAuthenticated: "authenticated.index"
+		},
 		OPENAI: {
 			API_KEY: process.env.OPEN_AI_SECRET_KEY,
 			MODEL: process.env.OPEN_AI_MODEL

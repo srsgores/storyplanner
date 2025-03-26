@@ -4,6 +4,7 @@ import {inject as service} from "@ember/service";
 import {tracked} from "@glimmer/tracking";
 
 export default class SettingsController extends Controller {
+	@service("store") store;
 	@service settings;
 	@tracked uploadedSettingsFile;
 

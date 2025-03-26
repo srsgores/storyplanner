@@ -4,11 +4,11 @@ This document outlines the backend API implementation for StoryPlanner using Net
 
 ## Technology Stack
 
--   **Database**: [Fireproof](https://use-fireproof.com/) - A local-first database built on immutable logs that provides CRDT-based synchronization
--   **Backend**: [Netlify](https://www.netlify.com/) - For hosting, serverless functions, and identity management
--   **Storage**: [Netlify Blobs](https://docs.netlify.com/blobs/overview/) - For blob storage
--   **Authentication**: Netlify Identity - For user authentication across devices
--   **Frontend**: Ember.js with custom Fireproof adapter for Ember Data
+- **Database**: [Fireproof](https://use-fireproof.com/) - A local-first database built on immutable logs that provides CRDT-based synchronization
+- **Backend**: [Netlify](https://www.netlify.com/) - For hosting, serverless functions, and identity management
+- **Storage**: [Netlify Blobs](https://docs.netlify.com/blobs/overview/) - For blob storage
+- **Authentication**: Netlify Identity - For user authentication across devices
+- **Frontend**: Ember.js with custom Fireproof adapter for Ember Data
 
 ## Architecture
 
@@ -20,11 +20,11 @@ StoryPlanner uses a local-first architecture with Fireproof as the primary datab
 
 The sync functionality allows users to:
 
--   Work offline and automatically sync when reconnected
--   Manually trigger synchronization
--   See the current connection and sync status
--   Toggle automatic synchronization
--   Login/logout to enable multi-device synchronization
+- Work offline and automatically sync when reconnected
+- Manually trigger synchronization
+- See the current connection and sync status
+- Toggle automatic synchronization
+- Login/logout to enable multi-device synchronization
 
 ### Sync Process Flow
 
@@ -39,9 +39,9 @@ The sync process works as follows:
 
 Fireproof stores data in the following format:
 
--   Each document has a unique ID
--   Documents include a `type` field to identify the model type
--   Relationships are stored in a `relationships` field
+- Each document has a unique ID
+- Documents include a `type` field to identify the model type
+- Relationships are stored in a `relationships` field
 
 ### Blob Storage
 
@@ -51,12 +51,12 @@ Large binary data (like images) is stored in Netlify Blobs rather than in the da
 
 Before setting up the sync functionality, you need:
 
--   Node.js and npm
--   Netlify CLI
--   A Netlify account
--   A deployed Netlify site (or local development environment)
--   Netlify Identity enabled on your site
--   Netlify Blobs set up for your site
+- Node.js and npm
+- Netlify CLI
+- A Netlify account
+- A deployed Netlify site (or local development environment)
+- Netlify Identity enabled on your site
+- Netlify Blobs set up for your site
 
 ## Installation
 
@@ -125,19 +125,19 @@ Add the sync status component to your application:
 
 The component will automatically:
 
--   Display the current connection status
--   Show authentication status and login/logout buttons
--   Display the last sync time
--   Provide options for manual sync and enabling/disabling auto-sync
--   Show error messages when applicable
+- Display the current connection status
+- Show authentication status and login/logout buttons
+- Display the last sync time
+- Provide options for manual sync and enabling/disabling auto-sync
+- Show error messages when applicable
 
 ## Configuration Options
 
 The data-sync service defines several constants that can be adjusted:
 
--   `RECONNECT_INTERVAL` (default: 5000ms) - Time to wait before reconnecting after going offline
--   `AUTO_SYNC_INTERVAL` (default: 60000ms) - Interval for automatic sync when enabled
--   `SYNC_DEBOUNCE` (default: 2000ms) - Debounce period for rapid sync requests
+- `RECONNECT_INTERVAL` (default: 5000ms) - Time to wait before reconnecting after going offline
+- `AUTO_SYNC_INTERVAL` (default: 60000ms) - Interval for automatic sync when enabled
+- `SYNC_DEBOUNCE` (default: 2000ms) - Debounce period for rapid sync requests
 
 ## Key Components
 
@@ -152,7 +152,7 @@ The sync implementation consists of several key components:
 
 Netlify Functions are used for server-side operations:
 
--   **sync.js**: Handles data synchronization between clients
+- **sync.js**: Handles data synchronization between clients
 
 ## Troubleshooting
 

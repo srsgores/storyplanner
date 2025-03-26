@@ -1,31 +1,29 @@
 import Route from "@ember/routing/route";
 import {inject as service} from "@ember/service";
-import ApplicationRouteMixin from "ember-simple-auth/mixins/application-route-mixin";
 
-export default class ApplicationRoute extends Route.extend(ApplicationRouteMixin) {
+export default class ApplicationRoute extends Route {
+	@service("router") router;
 	@service intl;
 	@service session;
 	@service("data-sync") dataSync;
 
 	beforeModel() {
-		super.beforeModel(...arguments);
 		this.intl.setLocale(["en-ca"]);
 	}
+
 	setupController(controller) {
-		super.afterModel();
+		super.setupController(...arguments);
 		controller.navItems = ["stories", "settings"];
 	}
 
-	// Configure session events if needed
+	// Configure session events
 	sessionAuthenticated() {
-		// The default implementation will redirect to configure.routeAfterAuthentication
-		// which defaults to 'index'
-		super.sessionAuthenticated(...arguments);
+		// Redirect to the intended route or default route after authentication
+		this.router.transitionTo(this.session.attemptedTransition?.routeName || "index");
 	}
 
 	sessionInvalidated() {
-		// The default implementation will redirect to configure.routeAfterInvalidation
-		// which defaults to 'login' if it exists or 'index' otherwise
-		super.sessionInvalidated(...arguments);
+		// Redirect to login page after logout
+		this.router.transitionTo("login");
 	}
 }
