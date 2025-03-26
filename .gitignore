@@ -26,3 +26,6 @@
 /package.json.ember-try
 
 .idea
+
+# Local Netlify folder
+.netlify
