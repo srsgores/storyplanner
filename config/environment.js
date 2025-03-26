@@ -5,7 +5,7 @@ module.exports = function (environment) {
 		modulePrefix: "storyplanner-octane",
 		environment,
 		rootURL: "/",
-		locationType: "auto",
+		locationType: "history",
 		"ember-simple-auth": {
 			routeAfterAuthentication: "authenticated.index",
 			routeIfAlreadyAuthenticated: "authenticated.index"
